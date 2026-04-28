@@ -1,9 +1,9 @@
 # Auto generated from als_kg.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-28T13:08:20
+# Generation date: 2026-04-28T14:41:28
 # Schema: als_kg
 #
 # id: https://alskb.org/ontology/als_kg
-# description: Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Follows OWL 2 / RDF / OBO conventions with formal class hierarchies, direct object properties, optional evidence-bearing association classes, and semantic web alignment. Suitable for export to OWL, RDF/Turtle, or integration with biomedical ontology ecosystems.
+# description: Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Uses a local default namespace for ALS-specific classes and slots, explicit Biolink/ontology URIs only for externally defined concepts and predicates, direct object properties for canonical KG edges, and optional evidence-bearing association classes for provenance-rich statements.
 # license: MIT
 
 import dataclasses
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Boolean, Date, Float, Integer, Str
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "2.1.0"
+version = "2.1.2"
 
 # Namespaces
 BFO = CurieNamespace('BFO', 'http://purl.obolibrary.org/obo/BFO_')
@@ -84,11 +84,12 @@ OMIM = CurieNamespace('OMIM', 'https://omim.org/entry/')
 ORPHANET = CurieNamespace('ORPHANET', 'http://www.orpha.net/ORDO/Orphanet_')
 PMID = CurieNamespace('PMID', 'https://pubmed.ncbi.nlm.nih.gov/')
 RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
+REACTOME = CurieNamespace('Reactome', 'https://identifiers.org/reactome/')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UMLS = CurieNamespace('UMLS', 'https://uts.nlm.nih.gov/uts/umls/concept/')
 UNIPROTKB = CurieNamespace('UniProtKB', 'https://www.uniprot.org/uniprot/')
-ALSKB = CurieNamespace('alskb', 'https://alskb.org/ontology/')
+ALSKB = CurieNamespace('alskb', 'https://cair2015.github.io/als-kg/elements/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DBSNP = CurieNamespace('dbSNP', 'https://www.ncbi.nlm.nih.gov/snp/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
@@ -168,6 +169,14 @@ class GoIdentifier(String):
     type_model_uri = ALSKB.GoIdentifier
 
 
+class ReactomeIdentifier(String):
+    """ Reactome stable pathway identifier as a CURIE (e.g. Reactome:R-HSA-5673001) """
+    type_class_uri = XSD["string"]
+    type_class_curie = "xsd:string"
+    type_name = "ReactomeIdentifier"
+    type_model_uri = ALSKB.ReactomeIdentifier
+
+
 class CtdIdentifier(String):
     """ CTD chemical/stressor identifier """
     type_class_uri = XSD["string"]
@@ -222,6 +231,10 @@ class MolecularFunctionGoId(GoIdentifier):
 
 
 class CellularComponentGoId(GoIdentifier):
+    pass
+
+
+class PathwayReactomeId(ReactomeIdentifier):
     pass
 
 
@@ -975,6 +988,50 @@ class CellularComponent(BiologicalConcept):
 
 
 @dataclass(repr=False)
+class Pathway(BiologicalConcept):
+    """
+    Reactome pathway entity representing a curated biological pathway or reaction-level pathway context relevant to
+    ALS mechanisms, including neuroinflammation, RNA metabolism, protein homeostasis, mitochondrial dysfunction, and
+    axonal transport.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOLINK["Pathway"]
+    class_class_curie: ClassVar[str] = "biolink:Pathway"
+    class_name: ClassVar[str] = "Pathway"
+    class_model_uri: ClassVar[URIRef] = ALSKB.Pathway
+
+    reactome_id: Union[str, PathwayReactomeId] = None
+    id: str = None
+    label: str = None
+    pathway_name: Optional[str] = None
+    pathway_definition: Optional[str] = None
+    species: Optional[str] = None
+    parent_pathway: Optional[Union[Union[str, ReactomeIdentifier], list[Union[str, ReactomeIdentifier]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.reactome_id):
+            self.MissingRequiredField("reactome_id")
+        if not isinstance(self.reactome_id, PathwayReactomeId):
+            self.reactome_id = PathwayReactomeId(self.reactome_id)
+
+        if self.pathway_name is not None and not isinstance(self.pathway_name, str):
+            self.pathway_name = str(self.pathway_name)
+
+        if self.pathway_definition is not None and not isinstance(self.pathway_definition, str):
+            self.pathway_definition = str(self.pathway_definition)
+
+        if self.species is not None and not isinstance(self.species, str):
+            self.species = str(self.species)
+
+        if not isinstance(self.parent_pathway, list):
+            self.parent_pathway = [self.parent_pathway] if self.parent_pathway is not None else []
+        self.parent_pathway = [v if isinstance(v, ReactomeIdentifier) else ReactomeIdentifier(v) for v in self.parent_pathway]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class DiseaseSubtype(Disease):
     """
     Molecularly-defined disease subtype derived from clustering analysis (transcriptomics, proteomics, multi-omics).
@@ -1367,6 +1424,54 @@ class ProteinProteinInteractionAssociation(Association):
 
         if self.assay is not None and not isinstance(self.assay, str):
             self.assay = str(self.assay)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProteinPathwayAssociation(Association):
+    """
+    Optional association for Protein -> Pathway when Reactome evidence code, source release, pathway hierarchy,
+    species, or annotation provenance are needed. Materializes to protein_participates_in_pathway.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ALSKB["ProteinPathwayAssociation"]
+    class_class_curie: ClassVar[str] = "alskb:ProteinPathwayAssociation"
+    class_name: ClassVar[str] = "ProteinPathwayAssociation"
+    class_model_uri: ClassVar[URIRef] = ALSKB.ProteinPathwayAssociation
+
+    subject: str = None
+    object: str = None
+    has_protein: Union[str, ProteinUniprotId] = None
+    has_pathway: Union[str, PathwayReactomeId] = None
+    predicate: Optional[str] = "alskb:protein_participates_in_pathway"
+    reactome_evidence_code: Optional[str] = None
+    pathway_role: Optional[str] = None
+    species: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.has_protein):
+            self.MissingRequiredField("has_protein")
+        if not isinstance(self.has_protein, ProteinUniprotId):
+            self.has_protein = ProteinUniprotId(self.has_protein)
+
+        if self._is_empty(self.has_pathway):
+            self.MissingRequiredField("has_pathway")
+        if not isinstance(self.has_pathway, PathwayReactomeId):
+            self.has_pathway = PathwayReactomeId(self.has_pathway)
+
+        if self.predicate is not None and not isinstance(self.predicate, str):
+            self.predicate = str(self.predicate)
+
+        if self.reactome_evidence_code is not None and not isinstance(self.reactome_evidence_code, str):
+            self.reactome_evidence_code = str(self.reactome_evidence_code)
+
+        if self.pathway_role is not None and not isinstance(self.pathway_role, str):
+            self.pathway_role = str(self.pathway_role)
+
+        if self.species is not None and not isinstance(self.species, str):
+            self.species = str(self.species)
 
         super().__post_init__(**kwargs)
 
@@ -1873,13 +1978,16 @@ slots.has_phenotype = Slot(uri=ALSKB.has_phenotype, name="has_phenotype", curie=
 slots.has_protein = Slot(uri=ALSKB.has_protein, name="has_protein", curie=ALSKB.curie('has_protein'),
                    model_uri=ALSKB.has_protein, domain=None, range=Optional[Union[str, ProteinUniprotId]])
 
+slots.has_pathway = Slot(uri=ALSKB.has_pathway, name="has_pathway", curie=ALSKB.curie('has_pathway'),
+                   model_uri=ALSKB.has_pathway, domain=None, range=Optional[Union[str, PathwayReactomeId]])
+
 slots.has_variant = Slot(uri=ALSKB.has_variant, name="has_variant", curie=ALSKB.curie('has_variant'),
                    model_uri=ALSKB.has_variant, domain=None, range=Optional[Union[str, VariantClinvarId]])
 
 slots.disease_manifests_as_phenotype = Slot(uri=BIOLINK.has_phenotype, name="disease_manifests_as_phenotype", curie=BIOLINK.curie('has_phenotype'),
                    model_uri=ALSKB.disease_manifests_as_phenotype, domain=Disease, range=Optional[Union[Union[str, PhenotypeHpoId], list[Union[str, PhenotypeHpoId]]]])
 
-slots.disease_affects_anatomy = Slot(uri=BIOLINK.affects, name="disease_affects_anatomy", curie=BIOLINK.curie('affects'),
+slots.disease_affects_anatomy = Slot(uri=ALSKB.disease_affects_anatomy, name="disease_affects_anatomy", curie=ALSKB.curie('disease_affects_anatomy'),
                    model_uri=ALSKB.disease_affects_anatomy, domain=Disease, range=Optional[Union[Union[str, AnatomyUberonId], list[Union[str, AnatomyUberonId]]]])
 
 slots.gene_associated_with_disease = Slot(uri=BIOLINK.gene_associated_with_condition, name="gene_associated_with_disease", curie=BIOLINK.curie('gene_associated_with_condition'),
@@ -1888,7 +1996,7 @@ slots.gene_associated_with_disease = Slot(uri=BIOLINK.gene_associated_with_condi
 slots.variant_associated_with_disease = Slot(uri=BIOLINK.variant_associated_with_condition, name="variant_associated_with_disease", curie=BIOLINK.curie('variant_associated_with_condition'),
                    model_uri=ALSKB.variant_associated_with_disease, domain=Variant, range=Optional[Union[Union[str, DiseaseMondoId], list[Union[str, DiseaseMondoId]]]])
 
-slots.variant_affects_protein = Slot(uri=BIOLINK.affects, name="variant_affects_protein", curie=BIOLINK.curie('affects'),
+slots.variant_affects_protein = Slot(uri=ALSKB.variant_affects_protein, name="variant_affects_protein", curie=ALSKB.curie('variant_affects_protein'),
                    model_uri=ALSKB.variant_affects_protein, domain=Variant, range=Optional[Union[Union[str, ProteinUniprotId], list[Union[str, ProteinUniprotId]]]])
 
 slots.gene_encodes_protein = Slot(uri=RO['0002205'], name="gene_encodes_protein", curie=RO.curie('0002205'),
@@ -1897,13 +2005,16 @@ slots.gene_encodes_protein = Slot(uri=RO['0002205'], name="gene_encodes_protein"
 slots.protein_interacts_with_protein = Slot(uri=BIOLINK.interacts_with, name="protein_interacts_with_protein", curie=BIOLINK.curie('interacts_with'),
                    model_uri=ALSKB.protein_interacts_with_protein, domain=Protein, range=Optional[Union[Union[str, ProteinUniprotId], list[Union[str, ProteinUniprotId]]]])
 
+slots.protein_participates_in_pathway = Slot(uri=BIOLINK.participates_in, name="protein_participates_in_pathway", curie=BIOLINK.curie('participates_in'),
+                   model_uri=ALSKB.protein_participates_in_pathway, domain=Protein, range=Optional[Union[Union[str, PathwayReactomeId], list[Union[str, PathwayReactomeId]]]])
+
 slots.drug_targets_molecular_entity = Slot(uri=BIOLINK.targets, name="drug_targets_molecular_entity", curie=BIOLINK.curie('targets'),
                    model_uri=ALSKB.drug_targets_molecular_entity, domain=Drug, range=Optional[Union[Union[dict, MolecularEntity], list[Union[dict, MolecularEntity]]]])
 
-slots.drug_treats_or_modulates_disease = Slot(uri=BIOLINK.treats, name="drug_treats_or_modulates_disease", curie=BIOLINK.curie('treats'),
+slots.drug_treats_or_modulates_disease = Slot(uri=ALSKB.drug_treats_or_modulates_disease, name="drug_treats_or_modulates_disease", curie=ALSKB.curie('drug_treats_or_modulates_disease'),
                    model_uri=ALSKB.drug_treats_or_modulates_disease, domain=Drug, range=Optional[Union[Union[str, DiseaseMondoId], list[Union[str, DiseaseMondoId]]]])
 
-slots.exposure_associated_with_disease = Slot(uri=BIOLINK.associated_with, name="exposure_associated_with_disease", curie=BIOLINK.curie('associated_with'),
+slots.exposure_associated_with_disease = Slot(uri=ALSKB.exposure_associated_with_disease, name="exposure_associated_with_disease", curie=ALSKB.curie('exposure_associated_with_disease'),
                    model_uri=ALSKB.exposure_associated_with_disease, domain=ExposureOrStressor, range=Optional[Union[Union[str, DiseaseMondoId], list[Union[str, DiseaseMondoId]]]])
 
 slots.transcription_factor_regulates_gene = Slot(uri=BIOLINK.regulates, name="transcription_factor_regulates_gene", curie=BIOLINK.curie('regulates'),
@@ -2005,13 +2116,13 @@ slots.relationship__evidence_source = Slot(uri=ALSKB.evidence_source, name="rela
 slots.relationship__ingest_date = Slot(uri=ALSKB.ingest_date, name="relationship__ingest_date", curie=ALSKB.curie('ingest_date'),
                    model_uri=ALSKB.relationship__ingest_date, domain=None, range=Optional[str])
 
-slots.diseaseOrPhenotype__mondo_id = Slot(uri=MONDO[''], name="diseaseOrPhenotype__mondo_id", curie=MONDO.curie(''),
+slots.diseaseOrPhenotype__mondo_id = Slot(uri=ALSKB.mondo_id, name="diseaseOrPhenotype__mondo_id", curie=ALSKB.curie('mondo_id'),
                    model_uri=ALSKB.diseaseOrPhenotype__mondo_id, domain=None, range=Optional[Union[str, MondoIdentifier]])
 
-slots.diseaseOrPhenotype__hpo_id = Slot(uri=HP[''], name="diseaseOrPhenotype__hpo_id", curie=HP.curie(''),
+slots.diseaseOrPhenotype__hpo_id = Slot(uri=ALSKB.hpo_id, name="diseaseOrPhenotype__hpo_id", curie=ALSKB.curie('hpo_id'),
                    model_uri=ALSKB.diseaseOrPhenotype__hpo_id, domain=None, range=Optional[Union[str, HpoIdentifier]])
 
-slots.disease__mondo_id = Slot(uri=MONDO[''], name="disease__mondo_id", curie=MONDO.curie(''),
+slots.disease__mondo_id = Slot(uri=ALSKB.mondo_id, name="disease__mondo_id", curie=ALSKB.curie('mondo_id'),
                    model_uri=ALSKB.disease__mondo_id, domain=None, range=URIRef)
 
 slots.disease__name = Slot(uri=SCHEMA.name, name="disease__name", curie=SCHEMA.curie('name'),
@@ -2023,19 +2134,19 @@ slots.disease__disease_type = Slot(uri=ALSKB.disease_type, name="disease__diseas
 slots.disease__onset_type = Slot(uri=ALSKB.onset_type, name="disease__onset_type", curie=ALSKB.curie('onset_type'),
                    model_uri=ALSKB.disease__onset_type, domain=None, range=Optional[Union[str, "OnsetTypeEnum"]])
 
-slots.disease__umls_cui = Slot(uri=UMLS[''], name="disease__umls_cui", curie=UMLS.curie(''),
+slots.disease__umls_cui = Slot(uri=ALSKB.umls_cui, name="disease__umls_cui", curie=ALSKB.curie('umls_cui'),
                    model_uri=ALSKB.disease__umls_cui, domain=None, range=Optional[str])
 
-slots.disease__omim_id = Slot(uri=OMIM[''], name="disease__omim_id", curie=OMIM.curie(''),
+slots.disease__omim_id = Slot(uri=ALSKB.omim_id, name="disease__omim_id", curie=ALSKB.curie('omim_id'),
                    model_uri=ALSKB.disease__omim_id, domain=None, range=Optional[str])
 
-slots.disease__orphanet_id = Slot(uri=ORPHANET[''], name="disease__orphanet_id", curie=ORPHANET.curie(''),
+slots.disease__orphanet_id = Slot(uri=ALSKB.orphanet_id, name="disease__orphanet_id", curie=ALSKB.curie('orphanet_id'),
                    model_uri=ALSKB.disease__orphanet_id, domain=None, range=Optional[str])
 
-slots.disease__icd10_code = Slot(uri=ICD10CM[''], name="disease__icd10_code", curie=ICD10CM.curie(''),
+slots.disease__icd10_code = Slot(uri=ALSKB.icd10_code, name="disease__icd10_code", curie=ALSKB.curie('icd10_code'),
                    model_uri=ALSKB.disease__icd10_code, domain=None, range=Optional[str])
 
-slots.phenotype__hpo_id = Slot(uri=HP[''], name="phenotype__hpo_id", curie=HP.curie(''),
+slots.phenotype__hpo_id = Slot(uri=ALSKB.hpo_id, name="phenotype__hpo_id", curie=ALSKB.curie('hpo_id'),
                    model_uri=ALSKB.phenotype__hpo_id, domain=None, range=URIRef)
 
 slots.phenotype__frequency = Slot(uri=ALSKB.frequency, name="phenotype__frequency", curie=ALSKB.curie('frequency'),
@@ -2044,25 +2155,25 @@ slots.phenotype__frequency = Slot(uri=ALSKB.frequency, name="phenotype__frequenc
 slots.phenotype__severity = Slot(uri=ALSKB.severity, name="phenotype__severity", curie=ALSKB.curie('severity'),
                    model_uri=ALSKB.phenotype__severity, domain=None, range=Optional[str])
 
-slots.anatomy__uberon_id = Slot(uri=UBERON[''], name="anatomy__uberon_id", curie=UBERON.curie(''),
+slots.anatomy__uberon_id = Slot(uri=ALSKB.uberon_id, name="anatomy__uberon_id", curie=ALSKB.curie('uberon_id'),
                    model_uri=ALSKB.anatomy__uberon_id, domain=None, range=URIRef)
 
 slots.anatomy__bto_id = Slot(uri=ALSKB.bto_id, name="anatomy__bto_id", curie=ALSKB.curie('bto_id'),
                    model_uri=ALSKB.anatomy__bto_id, domain=None, range=Optional[str])
 
-slots.anatomy__mesh_id = Slot(uri=MESH[''], name="anatomy__mesh_id", curie=MESH.curie(''),
+slots.anatomy__mesh_id = Slot(uri=ALSKB.mesh_id, name="anatomy__mesh_id", curie=ALSKB.curie('mesh_id'),
                    model_uri=ALSKB.anatomy__mesh_id, domain=None, range=Optional[str])
 
 slots.anatomy__anatomical_system = Slot(uri=ALSKB.anatomical_system, name="anatomy__anatomical_system", curie=ALSKB.curie('anatomical_system'),
                    model_uri=ALSKB.anatomy__anatomical_system, domain=None, range=Optional[str])
 
-slots.gene__ncbi_gene_id = Slot(uri=NCBIGENE[''], name="gene__ncbi_gene_id", curie=NCBIGENE.curie(''),
+slots.gene__ncbi_gene_id = Slot(uri=ALSKB.ncbi_gene_id, name="gene__ncbi_gene_id", curie=ALSKB.curie('ncbi_gene_id'),
                    model_uri=ALSKB.gene__ncbi_gene_id, domain=None, range=URIRef)
 
-slots.gene__hgnc_symbol = Slot(uri=HGNC[''], name="gene__hgnc_symbol", curie=HGNC.curie(''),
+slots.gene__hgnc_symbol = Slot(uri=ALSKB.hgnc_symbol, name="gene__hgnc_symbol", curie=ALSKB.curie('hgnc_symbol'),
                    model_uri=ALSKB.gene__hgnc_symbol, domain=None, range=Optional[str])
 
-slots.gene__ensembl_id = Slot(uri=ENSEMBL[''], name="gene__ensembl_id", curie=ENSEMBL.curie(''),
+slots.gene__ensembl_id = Slot(uri=ALSKB.ensembl_id, name="gene__ensembl_id", curie=ALSKB.curie('ensembl_id'),
                    model_uri=ALSKB.gene__ensembl_id, domain=None, range=Optional[str])
 
 slots.gene__chromosome = Slot(uri=ALSKB.chromosome, name="gene__chromosome", curie=ALSKB.curie('chromosome'),
@@ -2089,7 +2200,7 @@ slots.protein__uniprot_id = Slot(uri=UNIPROTKB[''], name="protein__uniprot_id", 
 slots.protein__protein_name = Slot(uri=SCHEMA.name, name="protein__protein_name", curie=SCHEMA.curie('name'),
                    model_uri=ALSKB.protein__protein_name, domain=None, range=Optional[str])
 
-slots.protein__hgnc_symbol = Slot(uri=HGNC[''], name="protein__hgnc_symbol", curie=HGNC.curie(''),
+slots.protein__hgnc_symbol = Slot(uri=ALSKB.hgnc_symbol, name="protein__hgnc_symbol", curie=ALSKB.curie('hgnc_symbol'),
                    model_uri=ALSKB.protein__hgnc_symbol, domain=None, range=Optional[str])
 
 slots.protein__molecular_weight_kda = Slot(uri=ALSKB.molecular_weight_kda, name="protein__molecular_weight_kda", curie=ALSKB.curie('molecular_weight_kda'),
@@ -2107,10 +2218,10 @@ slots.protein__aggregation_prone = Slot(uri=ALSKB.aggregation_prone, name="prote
 slots.protein__has_prion_like_domain = Slot(uri=ALSKB.has_prion_like_domain, name="protein__has_prion_like_domain", curie=ALSKB.curie('has_prion_like_domain'),
                    model_uri=ALSKB.protein__has_prion_like_domain, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.variant__clinvar_id = Slot(uri=CLINVAR[''], name="variant__clinvar_id", curie=CLINVAR.curie(''),
+slots.variant__clinvar_id = Slot(uri=ALSKB.clinvar_id, name="variant__clinvar_id", curie=ALSKB.curie('clinvar_id'),
                    model_uri=ALSKB.variant__clinvar_id, domain=None, range=URIRef)
 
-slots.variant__rsid = Slot(uri=DBSNP[''], name="variant__rsid", curie=DBSNP.curie(''),
+slots.variant__rsid = Slot(uri=ALSKB.rsid, name="variant__rsid", curie=ALSKB.curie('rsid'),
                    model_uri=ALSKB.variant__rsid, domain=None, range=Optional[str])
 
 slots.variant__hgvs_c = Slot(uri=ALSKB.hgvs_c, name="variant__hgvs_c", curie=ALSKB.curie('hgvs_c'),
@@ -2128,16 +2239,16 @@ slots.variant__clinical_significance = Slot(uri=ALSKB.clinical_significance, nam
 slots.variant__als_class = Slot(uri=ALSKB.als_class, name="variant__als_class", curie=ALSKB.curie('als_class'),
                    model_uri=ALSKB.variant__als_class, domain=None, range=Optional[str])
 
-slots.variant__maf = Slot(uri=ALSKB.minor_allele_frequency, name="variant__maf", curie=ALSKB.curie('minor_allele_frequency'),
+slots.variant__maf = Slot(uri=ALSKB.maf, name="variant__maf", curie=ALSKB.curie('maf'),
                    model_uri=ALSKB.variant__maf, domain=None, range=Optional[float])
 
-slots.drug__drugbank_id = Slot(uri=DRUGBANK[''], name="drug__drugbank_id", curie=DRUGBANK.curie(''),
+slots.drug__drugbank_id = Slot(uri=ALSKB.drugbank_id, name="drug__drugbank_id", curie=ALSKB.curie('drugbank_id'),
                    model_uri=ALSKB.drug__drugbank_id, domain=None, range=URIRef)
 
 slots.drug__drug_name = Slot(uri=SCHEMA.name, name="drug__drug_name", curie=SCHEMA.curie('name'),
                    model_uri=ALSKB.drug__drug_name, domain=None, range=Optional[str])
 
-slots.drug__chembl_id = Slot(uri=CHEMBL[''], name="drug__chembl_id", curie=CHEMBL.curie(''),
+slots.drug__chembl_id = Slot(uri=ALSKB.chembl_id, name="drug__chembl_id", curie=ALSKB.curie('chembl_id'),
                    model_uri=ALSKB.drug__chembl_id, domain=None, range=Optional[str])
 
 slots.drug__inchi_key = Slot(uri=ALSKB.inchi_key, name="drug__inchi_key", curie=ALSKB.curie('inchi_key'),
@@ -2161,7 +2272,7 @@ slots.drug__mechanism = Slot(uri=ALSKB.mechanism, name="drug__mechanism", curie=
 slots.drug__indication = Slot(uri=ALSKB.indication, name="drug__indication", curie=ALSKB.curie('indication'),
                    model_uri=ALSKB.drug__indication, domain=None, range=Optional[str])
 
-slots.exposureOrStressor__ctd_id = Slot(uri=CTD[''], name="exposureOrStressor__ctd_id", curie=CTD.curie(''),
+slots.exposureOrStressor__ctd_id = Slot(uri=ALSKB.ctd_id, name="exposureOrStressor__ctd_id", curie=ALSKB.curie('ctd_id'),
                    model_uri=ALSKB.exposureOrStressor__ctd_id, domain=None, range=URIRef)
 
 slots.exposureOrStressor__exposure_name = Slot(uri=SCHEMA.name, name="exposureOrStressor__exposure_name", curie=SCHEMA.curie('name'),
@@ -2170,16 +2281,16 @@ slots.exposureOrStressor__exposure_name = Slot(uri=SCHEMA.name, name="exposureOr
 slots.exposureOrStressor__exposure_type = Slot(uri=ALSKB.exposure_type, name="exposureOrStressor__exposure_type", curie=ALSKB.curie('exposure_type'),
                    model_uri=ALSKB.exposureOrStressor__exposure_type, domain=None, range=Optional[str])
 
-slots.exposureOrStressor__mesh_id = Slot(uri=MESH[''], name="exposureOrStressor__mesh_id", curie=MESH.curie(''),
+slots.exposureOrStressor__mesh_id = Slot(uri=ALSKB.mesh_id, name="exposureOrStressor__mesh_id", curie=ALSKB.curie('mesh_id'),
                    model_uri=ALSKB.exposureOrStressor__mesh_id, domain=None, range=Optional[str])
 
-slots.exposureOrStressor__cas_number = Slot(uri=CAS[''], name="exposureOrStressor__cas_number", curie=CAS.curie(''),
+slots.exposureOrStressor__cas_number = Slot(uri=ALSKB.cas_number, name="exposureOrStressor__cas_number", curie=ALSKB.curie('cas_number'),
                    model_uri=ALSKB.exposureOrStressor__cas_number, domain=None, range=Optional[str])
 
 slots.exposureOrStressor__als_relevance = Slot(uri=ALSKB.als_relevance, name="exposureOrStressor__als_relevance", curie=ALSKB.curie('als_relevance'),
                    model_uri=ALSKB.exposureOrStressor__als_relevance, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.biologicalProcess__go_id = Slot(uri=GO[''], name="biologicalProcess__go_id", curie=GO.curie(''),
+slots.biologicalProcess__go_id = Slot(uri=ALSKB.go_id, name="biologicalProcess__go_id", curie=ALSKB.curie('go_id'),
                    model_uri=ALSKB.biologicalProcess__go_id, domain=None, range=URIRef)
 
 slots.biologicalProcess__process_name = Slot(uri=SCHEMA.name, name="biologicalProcess__process_name", curie=SCHEMA.curie('name'),
@@ -2188,7 +2299,7 @@ slots.biologicalProcess__process_name = Slot(uri=SCHEMA.name, name="biologicalPr
 slots.biologicalProcess__go_definition = Slot(uri=IAO['0000115'], name="biologicalProcess__go_definition", curie=IAO.curie('0000115'),
                    model_uri=ALSKB.biologicalProcess__go_definition, domain=None, range=Optional[str])
 
-slots.molecularFunction__go_id = Slot(uri=GO[''], name="molecularFunction__go_id", curie=GO.curie(''),
+slots.molecularFunction__go_id = Slot(uri=ALSKB.go_id, name="molecularFunction__go_id", curie=ALSKB.curie('go_id'),
                    model_uri=ALSKB.molecularFunction__go_id, domain=None, range=URIRef)
 
 slots.molecularFunction__function_name = Slot(uri=SCHEMA.name, name="molecularFunction__function_name", curie=SCHEMA.curie('name'),
@@ -2197,7 +2308,7 @@ slots.molecularFunction__function_name = Slot(uri=SCHEMA.name, name="molecularFu
 slots.molecularFunction__go_definition = Slot(uri=IAO['0000115'], name="molecularFunction__go_definition", curie=IAO.curie('0000115'),
                    model_uri=ALSKB.molecularFunction__go_definition, domain=None, range=Optional[str])
 
-slots.cellularComponent__go_id = Slot(uri=GO[''], name="cellularComponent__go_id", curie=GO.curie(''),
+slots.cellularComponent__go_id = Slot(uri=ALSKB.go_id, name="cellularComponent__go_id", curie=ALSKB.curie('go_id'),
                    model_uri=ALSKB.cellularComponent__go_id, domain=None, range=URIRef)
 
 slots.cellularComponent__component_name = Slot(uri=SCHEMA.name, name="cellularComponent__component_name", curie=SCHEMA.curie('name'),
@@ -2205,6 +2316,21 @@ slots.cellularComponent__component_name = Slot(uri=SCHEMA.name, name="cellularCo
 
 slots.cellularComponent__go_definition = Slot(uri=IAO['0000115'], name="cellularComponent__go_definition", curie=IAO.curie('0000115'),
                    model_uri=ALSKB.cellularComponent__go_definition, domain=None, range=Optional[str])
+
+slots.pathway__reactome_id = Slot(uri=ALSKB.reactome_id, name="pathway__reactome_id", curie=ALSKB.curie('reactome_id'),
+                   model_uri=ALSKB.pathway__reactome_id, domain=None, range=URIRef)
+
+slots.pathway__pathway_name = Slot(uri=SCHEMA.name, name="pathway__pathway_name", curie=SCHEMA.curie('name'),
+                   model_uri=ALSKB.pathway__pathway_name, domain=None, range=Optional[str])
+
+slots.pathway__pathway_definition = Slot(uri=IAO['0000115'], name="pathway__pathway_definition", curie=IAO.curie('0000115'),
+                   model_uri=ALSKB.pathway__pathway_definition, domain=None, range=Optional[str])
+
+slots.pathway__species = Slot(uri=ALSKB.species, name="pathway__species", curie=ALSKB.curie('species'),
+                   model_uri=ALSKB.pathway__species, domain=None, range=Optional[str])
+
+slots.pathway__parent_pathway = Slot(uri=ALSKB.parent_pathway, name="pathway__parent_pathway", curie=ALSKB.curie('parent_pathway'),
+                   model_uri=ALSKB.pathway__parent_pathway, domain=None, range=Optional[Union[Union[str, ReactomeIdentifier], list[Union[str, ReactomeIdentifier]]]])
 
 slots.diseaseSubtype__subtype_id = Slot(uri=ALSKB.subtype_id, name="diseaseSubtype__subtype_id", curie=ALSKB.curie('subtype_id'),
                    model_uri=ALSKB.diseaseSubtype__subtype_id, domain=None, range=Optional[str])
@@ -2373,6 +2499,24 @@ slots.proteinProteinInteractionAssociation__interaction_type = Slot(uri=ALSKB.in
 
 slots.proteinProteinInteractionAssociation__assay = Slot(uri=ALSKB.assay, name="proteinProteinInteractionAssociation__assay", curie=ALSKB.curie('assay'),
                    model_uri=ALSKB.proteinProteinInteractionAssociation__assay, domain=None, range=Optional[str])
+
+slots.proteinPathwayAssociation__has_protein = Slot(uri=ALSKB.has_protein, name="proteinPathwayAssociation__has_protein", curie=ALSKB.curie('has_protein'),
+                   model_uri=ALSKB.proteinPathwayAssociation__has_protein, domain=None, range=Union[str, ProteinUniprotId])
+
+slots.proteinPathwayAssociation__has_pathway = Slot(uri=ALSKB.has_pathway, name="proteinPathwayAssociation__has_pathway", curie=ALSKB.curie('has_pathway'),
+                   model_uri=ALSKB.proteinPathwayAssociation__has_pathway, domain=None, range=Union[str, PathwayReactomeId])
+
+slots.proteinPathwayAssociation__predicate = Slot(uri=RDF.predicate, name="proteinPathwayAssociation__predicate", curie=RDF.curie('predicate'),
+                   model_uri=ALSKB.proteinPathwayAssociation__predicate, domain=None, range=Optional[str])
+
+slots.proteinPathwayAssociation__reactome_evidence_code = Slot(uri=ALSKB.reactome_evidence_code, name="proteinPathwayAssociation__reactome_evidence_code", curie=ALSKB.curie('reactome_evidence_code'),
+                   model_uri=ALSKB.proteinPathwayAssociation__reactome_evidence_code, domain=None, range=Optional[str])
+
+slots.proteinPathwayAssociation__pathway_role = Slot(uri=ALSKB.pathway_role, name="proteinPathwayAssociation__pathway_role", curie=ALSKB.curie('pathway_role'),
+                   model_uri=ALSKB.proteinPathwayAssociation__pathway_role, domain=None, range=Optional[str])
+
+slots.proteinPathwayAssociation__species = Slot(uri=ALSKB.species, name="proteinPathwayAssociation__species", curie=ALSKB.curie('species'),
+                   model_uri=ALSKB.proteinPathwayAssociation__species, domain=None, range=Optional[str])
 
 slots.drugTargetAssociation__has_drug = Slot(uri=ALSKB.has_drug, name="drugTargetAssociation__has_drug", curie=ALSKB.curie('has_drug'),
                    model_uri=ALSKB.drugTargetAssociation__has_drug, domain=None, range=Union[str, DrugDrugbankId])

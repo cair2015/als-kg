@@ -1,12 +1,16 @@
+---
 id: https://alskb.org/ontology/als_kg
 name: als_kg
 title: ALS Knowledge Graph Ontology Model
-description: Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Follows OWL 2 / RDF / OBO conventions with formal class hierarchies, direct object properties, optional evidence-bearing association classes, and semantic web alignment. Suitable for export to OWL, RDF/Turtle, or integration with biomedical ontology ecosystems.
-version: 2.1.0
+description: >-
+  Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Uses a local default namespace for ALS-specific classes
+  and slots, explicit Biolink/ontology URIs only for externally defined concepts and predicates, direct object properties
+  for canonical KG edges, and optional evidence-bearing association classes for provenance-rich statements.
+version: 2.1.2
 license: MIT
 prefixes:
   linkml: https://w3id.org/linkml/
-  alskb: https://alskb.org/ontology/
+  alskb: https://cair2015.github.io/als-kg/elements/
   biolink: https://w3id.org/biolink/vocab/
   owl: http://www.w3.org/2002/07/owl#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -20,6 +24,7 @@ prefixes:
   ClinVar: https://www.ncbi.nlm.nih.gov/clinvar/variation/
   DrugBank: https://www.drugbank.ca/drugs/
   GO: http://purl.obolibrary.org/obo/GO_
+  Reactome: https://identifiers.org/reactome/
   CTD: http://ctdbase.org/detail.go?type=chem&acc=
   xsd: http://www.w3.org/2001/XMLSchema#
   schema: http://schema.org/
@@ -68,7 +73,9 @@ slots:
     multivalued: true
     slot_uri: oboInOwl:hasRelatedSynonym
   xref:
-    description: 'Cross-reference to equivalent entity in another ontology. Format: ONTOLOGY_PREFIX:identifier (e.g. OMIM:104300, KEGG:hsa123456, GO:0006810)'
+    description: >-
+      Cross-reference to equivalent entity in another ontology. Format: ONTOLOGY_PREFIX:identifier (e.g. OMIM:104300, Reactome:R-HSA-5673001,
+      GO:0006810)
     range: string
     multivalued: true
     slot_uri: oboInOwl:hasDbXref
@@ -99,31 +106,27 @@ slots:
   has_anatomy:
     description: Referenced anatomy entity in an association record.
     range: Anatomy
-    slot_uri: alskb:has_anatomy
   has_disease:
     description: Referenced disease entity in an association record.
     range: Disease
-    slot_uri: alskb:has_disease
   has_drug:
     description: Referenced drug entity in an association record.
     range: Drug
-    slot_uri: alskb:has_drug
   has_gene:
     description: Referenced gene entity in an association record.
     range: Gene
-    slot_uri: alskb:has_gene
   has_phenotype:
     description: Referenced phenotype entity in an association record.
     range: Phenotype
-    slot_uri: alskb:has_phenotype
   has_protein:
     description: Referenced protein entity in an association record.
     range: Protein
-    slot_uri: alskb:has_protein
+  has_pathway:
+    description: Referenced Reactome pathway entity in an association record.
+    range: Pathway
   has_variant:
     description: Referenced variant entity in an association record.
     range: Variant
-    slot_uri: alskb:has_variant
   disease_manifests_as_phenotype:
     description: Disease has or presents with a phenotype or clinical feature.
     slot_uri: biolink:has_phenotype
@@ -135,7 +138,8 @@ slots:
     domain: Disease
     range: Anatomy
     multivalued: true
-    slot_uri: biolink:affects
+    close_mappings:
+    - biolink:affects
   gene_associated_with_disease:
     description: Gene has causal, risk, modifier, protective, or correlative association with disease.
     slot_uri: biolink:gene_associated_with_condition
@@ -150,10 +154,11 @@ slots:
     multivalued: true
   variant_affects_protein:
     description: Sequence variant changes or is predicted to affect a protein product.
-    slot_uri: biolink:affects
     domain: Variant
     range: Protein
     multivalued: true
+    close_mappings:
+    - biolink:affects
   gene_encodes_protein:
     description: Gene encodes a protein product.
     domain: Gene
@@ -166,6 +171,12 @@ slots:
     domain: Protein
     range: Protein
     multivalued: true
+  protein_participates_in_pathway:
+    description: Protein participates in or is annotated to a Reactome pathway.
+    slot_uri: biolink:participates_in
+    domain: Protein
+    range: Pathway
+    multivalued: true
   drug_targets_molecular_entity:
     description: Drug, biologic, ASO, or other therapeutic agent targets a gene or protein.
     slot_uri: biolink:targets
@@ -174,16 +185,18 @@ slots:
     multivalued: true
   drug_treats_or_modulates_disease:
     description: Drug treats, modifies, palliates, or is being investigated for a disease.
-    slot_uri: biolink:treats
     domain: Drug
     range: Disease
     multivalued: true
+    close_mappings:
+    - biolink:treats
   exposure_associated_with_disease:
     description: Environmental exposure or stressor is associated with disease risk or progression.
-    slot_uri: biolink:associated_with
     domain: ExposureOrStressor
     range: Disease
     multivalued: true
+    close_mappings:
+    - biolink:associated_with
   transcription_factor_regulates_gene:
     description: Transcription factor regulates the expression of a target gene.
     slot_uri: biolink:regulates
@@ -237,7 +250,6 @@ slots:
     range: float
     minimum_value: 0.0
     maximum_value: 1.0
-    slot_uri: alskb:confidence
   evidence_type:
     description: Type of supporting evidence
     range: EvidenceTypeEnum
@@ -245,11 +257,9 @@ slots:
   evidence_source:
     description: Specific study/publication supporting the statement
     range: string
-    slot_uri: alskb:evidence_source
   ingest_date:
     description: Date of ETL ingest
     range: date
-    slot_uri: alskb:ingest_date
   last_updated:
     description: Last modification date
     range: date
@@ -259,42 +269,47 @@ types:
     typeof: string
     uri: xsd:string
     description: MONDO disease ontology identifier (e.g. MONDO:0007743)
-    pattern: ^MONDO:\d{7}$
+    pattern: "^MONDO:\\d{7}$"
   HpoIdentifier:
     typeof: string
     uri: xsd:string
     description: HPO phenotype term identifier (e.g. HP:0007354)
-    pattern: ^HP:\d{7}$
+    pattern: "^HP:\\d{7}$"
   UberonIdentifier:
     typeof: string
     uri: xsd:string
     description: UBERON anatomy ontology identifier
-    pattern: ^UBERON:\d+$
+    pattern: "^UBERON:\\d+$"
   NcbiGeneIdentifier:
     typeof: string
     uri: xsd:string
     description: NCBI Entrez Gene numeric ID
-    pattern: ^\d+$
+    pattern: "^\\d+$"
   UniprotIdentifier:
     typeof: string
     uri: xsd:string
     description: UniProt accession identifier
-    pattern: ^[A-Z0-9]{6}$
+    pattern: "^[A-Z0-9]{6}$"
   ClinvarIdentifier:
     typeof: string
     uri: xsd:string
     description: ClinVar variation numeric ID
-    pattern: ^\d+$
+    pattern: "^\\d+$"
   DrugBankIdentifier:
     typeof: string
     uri: xsd:string
     description: DrugBank primary identifier (e.g. DB00533)
-    pattern: ^DB\d{5}$
+    pattern: "^DB\\d{5}$"
   GoIdentifier:
     typeof: string
     uri: xsd:string
     description: Gene Ontology term identifier (e.g. GO:0006810)
-    pattern: ^GO:\d{7}$
+    pattern: '^GO:\d{7}$'
+  ReactomeIdentifier:
+    typeof: string
+    uri: xsd:string
+    description: Reactome stable pathway identifier as a CURIE (e.g. Reactome:R-HSA-5673001)
+    pattern: '^Reactome:R-HSA-\d+(\.\d+)?$'
   CtdIdentifier:
     typeof: string
     uri: xsd:string
@@ -378,7 +393,9 @@ enums:
         description: Extracted via natural language processing
 classes:
   NamedEntity:
-    description: Root class for all named entities in the ALS-KG ontology. Provides core ontology metadata (id, label, definition, synonyms, xrefs).
+    description: >-
+      Root class for all named entities in the ALS-KG ontology. Provides core ontology metadata (id, label, definition, synonyms,
+      xrefs).
     abstract: true
     attributes:
       id:
@@ -413,7 +430,9 @@ classes:
         slot_uri: dcterms:modified
     class_uri: biolink:NamedThing
   OntologyClass:
-    description: Abstract base for entity classes (nodes in knowledge graph). Inherits from NamedEntity with semantic web compatible metadata.
+    description: >-
+      Abstract base for entity classes (nodes in knowledge graph). Inherits from NamedEntity with semantic web compatible
+      metadata.
     abstract: true
     is_a: NamedEntity
     attributes:
@@ -422,10 +441,11 @@ classes:
         slot_uri: dcterms:hasVersion
       ingest_date:
         description: When entity was imported into ALS-KG
-        slot_uri: alskb:ingest_date
     class_uri: owl:Class
   Relationship:
-    description: 'Abstract base for reified relationships (edges with explicit properties). Follows RDF triple pattern: subject, predicate, object. Can carry additional metadata (confidence, evidence, provenance).'
+    description: >-
+      Abstract base for reified relationships (edges with explicit properties). Follows RDF triple pattern: subject, predicate,
+      object. Can carry additional metadata (confidence, evidence, provenance).
     abstract: true
     attributes:
       subject:
@@ -445,16 +465,13 @@ classes:
         slot_uri: dcterms:source
       confidence:
         description: Confidence score (0-1)
-        slot_uri: alskb:confidence
       evidence_type:
         description: Type of evidence supporting relationship
         slot_uri: ECO:0000000
       evidence_source:
         description: Citation or study ID
-        slot_uri: alskb:evidence_source
       ingest_date:
         description: Ingest date
-        slot_uri: alskb:ingest_date
     class_uri: rdf:Statement
   DiseaseOrPhenotype:
     description: Abstract parent class for all disease/phenotype entities. Following MONDO and HPO ontology patterns.
@@ -464,14 +481,14 @@ classes:
       mondo_id:
         description: MONDO cross-reference
         range: MondoIdentifier
-        slot_uri: 'MONDO:'
       hpo_id:
         description: HPO cross-reference
         range: HpoIdentifier
-        slot_uri: 'HP:'
     class_uri: biolink:DiseaseOrPhenotypicFeature
   Disease:
-    description: Disease entity. Encompasses ALS (MONDO:0007743), related neurodegenerative disorders (FTD, PLS, PMA, SMA), and comorbidities. Follows MONDO disease hierarchy via is_a relationships.
+    description: >-
+      Disease entity. Encompasses ALS (MONDO:0007743), related neurodegenerative disorders (FTD, PLS, PMA, SMA), and comorbidities.
+      Follows MONDO disease hierarchy via is_a relationships.
     class_uri: biolink:Disease
     is_a: DiseaseOrPhenotype
     attributes:
@@ -479,30 +496,25 @@ classes:
         range: MondoIdentifier
         identifier: true
         required: true
-        slot_uri: 'MONDO:'
       name:
         description: Disease name (preferred from MONDO)
         slot_uri: schema:name
       disease_type:
         range: DiseaseTypeEnum
-        slot_uri: alskb:disease_type
       onset_type:
         range: OnsetTypeEnum
-        slot_uri: alskb:onset_type
       umls_cui:
         description: UMLS Concept Unique Identifier
-        slot_uri: 'UMLS:'
       omim_id:
         description: OMIM (Online Mendelian Inheritance in Man) ID
-        slot_uri: 'OMIM:'
       orphanet_id:
         description: Orphanet rare disease identifier
-        slot_uri: 'ORPHANET:'
       icd10_code:
         description: ICD-10-CM code for billing/clinical use
-        slot_uri: 'ICD10CM:'
   Phenotype:
-    description: Phenotypic feature (HPO term). Represents observable/measurable characteristics associated with diseases. Distinct from drug side effects which are modeled via DrugCausesPhenotype relationships.
+    description: >-
+      Phenotypic feature (HPO term). Represents observable/measurable characteristics associated with diseases. Distinct from
+      drug side effects which are modeled via DrugCausesPhenotype relationships.
     class_uri: biolink:PhenotypicFeature
     is_a: DiseaseOrPhenotype
     attributes:
@@ -510,17 +522,16 @@ classes:
         range: HpoIdentifier
         identifier: true
         required: true
-        slot_uri: 'HP:'
       frequency:
         description: Frequency of phenotype in affected individuals (e.g. Frequent 75-99%)
         range: string
-        slot_uri: alskb:frequency
       severity:
         description: Severity scale
         range: string
-        slot_uri: alskb:severity
   Anatomy:
-    description: 'Anatomical structure (UBERON ontology). ALS-specific relevance: motor cortex, spinal cord, anterior horn cells, neuromuscular junction. Linked to gene expression and disease manifestation.'
+    description: >-
+      Anatomical structure (UBERON ontology). ALS-specific relevance: motor cortex, spinal cord, anterior horn cells, neuromuscular
+      junction. Linked to gene expression and disease manifestation.
     class_uri: biolink:AnatomicalEntity
     is_a: OntologyClass
     attributes:
@@ -528,23 +539,23 @@ classes:
         range: UberonIdentifier
         identifier: true
         required: true
-        slot_uri: 'UBERON:'
       bto_id:
         description: Brenda Tissue Ontology ID
-        slot_uri: alskb:bto_id
       mesh_id:
         description: MeSH cross-reference
-        slot_uri: 'MeSH:'
       anatomical_system:
         description: Anatomical system classification
-        slot_uri: alskb:anatomical_system
   MolecularEntity:
-    description: Abstract base for molecular-level entities (genes, proteins, variants). Directly related to disease mechanisms via molecular interactions.
+    description: >-
+      Abstract base for molecular-level entities (genes, proteins, variants). Directly related to disease mechanisms via molecular
+      interactions.
     abstract: true
     is_a: OntologyClass
     class_uri: biolink:MolecularEntity
   Gene:
-    description: 'Human gene entity (Entrez/NCBI model). Separate from protein product to properly distinguish genotype from phenotype. Key ALS genes: C9orf72, SOD1, TARDBP, FUS, TBK1, NEK1, SQSTM1, VCP, OPTN.'
+    description: >-
+      Human gene entity (Entrez/NCBI model). Separate from protein product to properly distinguish genotype from phenotype.
+      Key ALS genes: C9orf72, SOD1, TARDBP, FUS, TBK1, NEK1, SQSTM1, VCP, OPTN.
     class_uri: biolink:Gene
     is_a: MolecularEntity
     attributes:
@@ -552,41 +563,35 @@ classes:
         range: NcbiGeneIdentifier
         identifier: true
         required: true
-        slot_uri: 'NCBIGene:'
       hgnc_symbol:
         description: Official HGNC gene symbol
-        slot_uri: 'HGNC:'
       ensembl_id:
         description: Ensembl gene identifier
-        slot_uri: 'ENSEMBL:'
       chromosome:
         description: Cytogenetic location (e.g. 21q22.11 for SOD1)
-        slot_uri: alskb:chromosome
       genomic_pos_start:
         range: integer
         description: GRCh38 start coordinate (1-based)
-        slot_uri: alskb:genomic_pos_start
       genomic_pos_end:
         range: integer
         description: GRCh38 end coordinate
-        slot_uri: alskb:genomic_pos_end
       als_risk_tier:
         description: Evidence tier for ALS association (ALSoD classification) - definitive, strong, moderate, or candidate
         range: string
-        slot_uri: alskb:als_risk_tier
   TranscriptionFactor:
-    description: 'Gene encoding a transcription factor (TF). Subclass of Gene, carries both :Gene and :TranscriptionFactor labels. Source: DoRothEA + ENCODE TF annotations.'
-    class_uri: alskb:TranscriptionFactor
+    description: >-
+      Gene encoding a transcription factor (TF). Subclass of Gene, carries both :Gene and :TranscriptionFactor labels. Source:
+      DoRothEA + ENCODE TF annotations.
     is_a: Gene
     attributes:
       tf_family:
         description: Structural family (C2H2-ZF, bHLH, Homeodomain, etc.)
-        slot_uri: alskb:tf_family
       dorothea_confidence:
         description: DoRothEA confidence level (A=high, D=low)
-        slot_uri: alskb:dorothea_confidence
   Protein:
-    description: 'Protein product (UniProt model). Distinct from Gene entity to capture protein-specific properties: aggregation propensity, prion-like domains, subcellular localization.'
+    description: >-
+      Protein product (UniProt model). Distinct from Gene entity to capture protein-specific properties: aggregation propensity,
+      prion-like domains, subcellular localization.
     class_uri: biolink:Protein
     is_a: MolecularEntity
     attributes:
@@ -600,28 +605,24 @@ classes:
         slot_uri: schema:name
       hgnc_symbol:
         description: Gene name (cross-reference to Gene entity)
-        slot_uri: 'HGNC:'
       molecular_weight_kda:
         range: float
         description: Molecular weight in kDa
-        slot_uri: alskb:molecular_weight_kda
       protein_family:
         description: Protein family classification (Pfam)
-        slot_uri: alskb:protein_family
       subcellular_location:
         description: Cellular compartment(s) where protein is localized (e.g. mitochondrion, nucleus, axon)
         multivalued: true
-        slot_uri: alskb:subcellular_location
       aggregation_prone:
         range: boolean
         description: Known to form aggregates (TDP-43, SOD1, FUS)
-        slot_uri: alskb:aggregation_prone
       has_prion_like_domain:
         range: boolean
         description: Contains intrinsically disordered prion-like region
-        slot_uri: alskb:has_prion_like_domain
   Variant:
-    description: Genetic sequence variant (ClinVar model). Includes SNVs, indels, repeat expansions (C9orf72), and structural variants. Links to genes, proteins, and disease associations.
+    description: >-
+      Genetic sequence variant (ClinVar model). Includes SNVs, indels, repeat expansions (C9orf72), and structural variants.
+      Links to genes, proteins, and disease associations.
     class_uri: biolink:SequenceVariant
     is_a: MolecularEntity
     attributes:
@@ -629,38 +630,32 @@ classes:
         range: ClinvarIdentifier
         identifier: true
         required: true
-        slot_uri: 'ClinVar:'
       rsid:
         description: dbSNP reference SNP ID
-        slot_uri: 'dbSNP:'
       hgvs_c:
         description: HGVS coding sequence notation (e.g. c.10A>G)
-        slot_uri: alskb:hgvs_c
       hgvs_p:
         description: HGVS protein notation (e.g. p.Ala4Val)
-        slot_uri: alskb:hgvs_p
       variant_type:
         range: VariantTypeEnum
-        slot_uri: alskb:variant_type
       clinical_significance:
         description: ClinVar clinical interpretation
-        slot_uri: alskb:clinical_significance
       als_class:
         description: ALS-specific classification (causal, risk, modifier, protective)
-        slot_uri: alskb:als_class
       maf:
         range: float
         description: Minor allele frequency in gnomAD non-neuro cohort
         minimum_value: 0.0
         maximum_value: 1.0
-        slot_uri: alskb:minor_allele_frequency
   ChemicalEntity:
     description: Abstract base for chemical and pharmacological entities (drugs, exposures, metabolites).
     abstract: true
     is_a: OntologyClass
     class_uri: biolink:ChemicalEntity
   Drug:
-    description: 'Pharmaceutical compound (DrugBank model). ALS-approved drugs: Riluzole, Edaravone, Tofersen, AMX0035. Includes mechanism, targets, side effects.'
+    description: >-
+      Pharmaceutical compound (DrugBank model). ALS-approved drugs: Riluzole, Edaravone, Tofersen, AMX0035. Includes mechanism,
+      targets, side effects.
     class_uri: biolink:Drug
     is_a: ChemicalEntity
     attributes:
@@ -668,37 +663,30 @@ classes:
         range: DrugBankIdentifier
         identifier: true
         required: true
-        slot_uri: 'DrugBank:'
       drug_name:
         description: Preferred drug name
         slot_uri: schema:name
       chembl_id:
         description: ChEMBL compound ID
-        slot_uri: 'ChEMBL:'
       inchi_key:
         description: Standard InChIKey hash
-        slot_uri: alskb:inchi_key
       smiles:
         description: Canonical SMILES string
-        slot_uri: alskb:smiles
       drug_type:
         description: Categorization (small molecule, biologic, ASO, cell therapy, gene therapy)
-        slot_uri: alskb:drug_type
       als_approved:
         range: boolean
         description: FDA approval status for ALS treatment
-        slot_uri: alskb:als_approved
       trial_status:
         description: Highest clinical trial phase reached
-        slot_uri: alskb:trial_status
       mechanism:
         description: Known mechanism of action
-        slot_uri: alskb:mechanism
       indication:
         description: Clinical indication
-        slot_uri: alskb:indication
   ExposureOrStressor:
-    description: 'Environmental exposure or chemical stressor from CTD ontology. ALS-relevant: BMAA, organophosphate pesticides, heavy metals, solvents.'
+    description: >-
+      Environmental exposure or chemical stressor from CTD ontology. ALS-relevant: BMAA, organophosphate pesticides, heavy
+      metals, solvents.
     class_uri: biolink:ChemicalSubstance
     is_a: ChemicalEntity
     attributes:
@@ -706,30 +694,28 @@ classes:
         range: CtdIdentifier
         identifier: true
         required: true
-        slot_uri: 'CTD:'
       exposure_name:
         description: Standard name of exposure/stressor
         slot_uri: schema:name
       exposure_type:
         description: Category (chemical, metal, pesticide, radiation, biological, other)
-        slot_uri: alskb:exposure_type
       mesh_id:
         description: MeSH ID for exposure agent
-        slot_uri: 'MeSH:'
       cas_number:
         description: CAS Registry number
-        slot_uri: 'CAS:'
       als_relevance:
         range: boolean
         description: Flagged as ALS-relevant in literature
-        slot_uri: alskb:als_relevance
   BiologicalConcept:
-    description: Abstract base for functional/biological concepts from GO and related ontologies. Represents processes, functions, and compartments involved in ALS pathology.
+    description: >-
+      Abstract base for functional/biological concepts from GO and related ontologies. Represents processes, functions, and
+      compartments involved in ALS pathology.
     abstract: true
     is_a: OntologyClass
-    class_uri: alskb:BiologicalConcept
   BiologicalProcess:
-    description: 'Gene Ontology Biological Process term. ALS-relevant: protein aggregation, oxidative stress, neuroinflammation, axonal transport, neurodegeneration, apoptosis.'
+    description: >-
+      Gene Ontology Biological Process term. ALS-relevant: protein aggregation, oxidative stress, neuroinflammation, axonal
+      transport, neurodegeneration, apoptosis.
     class_uri: biolink:BiologicalProcess
     is_a: BiologicalConcept
     attributes:
@@ -737,7 +723,6 @@ classes:
         range: GoIdentifier
         identifier: true
         required: true
-        slot_uri: 'GO:'
       process_name:
         description: Standard process name from GO
         slot_uri: schema:name
@@ -745,7 +730,9 @@ classes:
         description: GO textual definition
         slot_uri: IAO:0000115
   MolecularFunction:
-    description: Gene Ontology Molecular Function term. Describes biochemical activities (catalytic, binding, etc.) performed by gene products.
+    description: >-
+      Gene Ontology Molecular Function term. Describes biochemical activities (catalytic, binding, etc.) performed by gene
+      products.
     class_uri: biolink:MolecularActivity
     is_a: BiologicalConcept
     attributes:
@@ -753,7 +740,6 @@ classes:
         range: GoIdentifier
         identifier: true
         required: true
-        slot_uri: 'GO:'
       function_name:
         description: Molecular function name from GO
         slot_uri: schema:name
@@ -761,7 +747,9 @@ classes:
         description: GO textual definition
         slot_uri: IAO:0000115
   CellularComponent:
-    description: 'Gene Ontology Cellular Component term. ALS-critical compartments: stress granule, P-body, cytoplasm, nucleus, axon, neuromuscular junction, mitochondrion.'
+    description: >-
+      Gene Ontology Cellular Component term. ALS-critical compartments: stress granule, P-body, cytoplasm, nucleus, axon,
+      neuromuscular junction, mitochondrion.
     class_uri: biolink:CellularComponent
     is_a: BiologicalConcept
     attributes:
@@ -769,51 +757,69 @@ classes:
         range: GoIdentifier
         identifier: true
         required: true
-        slot_uri: 'GO:'
       component_name:
         description: Cellular component name from GO
         slot_uri: schema:name
       go_definition:
         description: GO textual definition
         slot_uri: IAO:0000115
+  Pathway:
+    description: >-
+      Reactome pathway entity representing a curated biological pathway or reaction-level pathway context relevant to ALS
+      mechanisms, including neuroinflammation, RNA metabolism, protein homeostasis, mitochondrial dysfunction, and axonal transport.
+    class_uri: biolink:Pathway
+    is_a: BiologicalConcept
+    attributes:
+      reactome_id:
+        range: ReactomeIdentifier
+        identifier: true
+        required: true
+      pathway_name:
+        description: Standard Reactome pathway name
+        slot_uri: schema:name
+      pathway_definition:
+        description: Reactome pathway description or summary when available
+        slot_uri: IAO:0000115
+      species:
+        description: Species for the Reactome pathway; expected to be Homo sapiens for human ALS KG assertions
+      parent_pathway:
+        description: Parent Reactome pathway CURIE when available
+        range: ReactomeIdentifier
+        multivalued: true
   DiseaseSubtype:
-    description: Molecularly-defined disease subtype derived from clustering analysis (transcriptomics, proteomics, multi-omics). Represents cohort stratification. Links to Disease via is_a relationship; carries distinct clinical correlates.
-    class_uri: alskb:DiseaseSubtype
+    description: >-
+      Molecularly-defined disease subtype derived from clustering analysis (transcriptomics, proteomics, multi-omics). Represents
+      cohort stratification. Links to Disease via is_a relationship; carries distinct clinical correlates.
     is_a: Disease
     attributes:
       subtype_id:
         description: Custom subtype identifier
-        slot_uri: alskb:subtype_id
       cluster_method:
         description: Clustering approach (NMF, WGCNA, scRNA-seq, consensus)
-        slot_uri: alskb:cluster_method
       cluster_id:
         range: integer
         description: Cluster number from analysis
-        slot_uri: alskb:cluster_id
       signature_genes:
         description: Top discriminative genes for subtype
         multivalued: true
-        slot_uri: alskb:signature_genes
       n_patients:
         range: integer
         description: Number of patients in subtype
-        slot_uri: alskb:n_patients
       cohort:
         description: Source patient cohort (AnswerALS, NYGC, PRO-ACT)
-        slot_uri: alskb:cohort
       clinical_correlate:
         description: Associated clinical feature or phenotype
-        slot_uri: alskb:clinical_correlate
       median_survival_months:
         range: float
         description: Median survival from symptom onset
-        slot_uri: alskb:median_survival_months
       source_publication:
         description: DOI or PMID reference
         slot_uri: dcterms:bibliographicCitation
   Association:
-    description: Abstract base for optional evidence-bearing associations. Use when a relationship cannot be represented sufficiently by a direct object property because the edge needs provenance, evidence, confidence, or additional qualifiers. The subject/predicate/object fields allow the association to be materialized as an RDF triple or property-graph edge.
+    description: >-
+      Abstract base for optional evidence-bearing associations. Use when a relationship cannot be represented sufficiently
+      by a direct object property because the edge needs provenance, evidence, confidence, or additional qualifiers. The subject/predicate/object
+      fields allow the association to be materialized as an RDF triple or property-graph edge.
     abstract: true
     is_a: Relationship
     attributes:
@@ -847,335 +853,304 @@ classes:
         slot_uri: ECO:0000000
       evidence_source:
         description: Publication, study, database record, or extraction artifact supporting the association
-        slot_uri: alskb:evidence_source
       confidence:
         description: Normalized confidence score from 0 to 1
-        slot_uri: alskb:confidence
       ingest_date:
         description: Date this association was ingested
-        slot_uri: alskb:ingest_date
       last_updated:
         description: Date this association was last modified
         slot_uri: dcterms:modified
     class_uri: biolink:Association
   DiseasePhenotypeAssociation:
-    description: Optional association for Disease -> Phenotype when the clinical feature requires edge metadata such as frequency, onset, severity, source cohort, or evidence. Materializes to disease_manifests_as_phenotype.
+    description: >-
+      Optional association for Disease -> Phenotype when the clinical feature requires edge metadata such as frequency, onset,
+      severity, source cohort, or evidence. Materializes to disease_manifests_as_phenotype.
     is_a: Association
     attributes:
       has_disease:
         range: Disease
         required: true
-        slot_uri: alskb:has_disease
       has_phenotype:
         range: Phenotype
         required: true
-        slot_uri: alskb:has_phenotype
       predicate:
         ifabsent: alskb:disease_manifests_as_phenotype
         slot_uri: rdf:predicate
       frequency:
         description: Frequency in affected population or cohort
-        slot_uri: alskb:frequency
       severity:
         description: Typical severity or severity distribution
-        slot_uri: alskb:severity
       onset_type:
         range: OnsetTypeEnum
         description: Onset pattern when phenotype is onset-specific
-        slot_uri: alskb:onset_type
       cohort:
         description: Cohort or study population supporting this phenotype annotation
-        slot_uri: alskb:cohort
-    class_uri: alskb:DiseasePhenotypeAssociation
   GeneDiseaseAssociation:
-    description: Optional association for Gene -> Disease when causal/risk/protective or correlative gene-disease edges need evidence, scores, statistics, or source-specific qualifiers. Materializes to gene_associated_with_disease.
+    description: >-
+      Optional association for Gene -> Disease when causal/risk/protective or correlative gene-disease edges need evidence,
+      scores, statistics, or source-specific qualifiers. Materializes to gene_associated_with_disease.
     is_a: Association
     attributes:
       has_gene:
         range: Gene
         required: true
-        slot_uri: alskb:has_gene
       has_disease:
         range: Disease
         required: true
-        slot_uri: alskb:has_disease
       predicate:
         ifabsent: alskb:gene_associated_with_disease
         slot_uri: rdf:predicate
       association_type:
         description: causal, risk_factor, protective, modifier, biomarker, or correlative
-        slot_uri: alskb:association_type
       association_score:
         range: float
         description: Source-specific gene-disease association score
-        slot_uri: alskb:association_score
       p_value:
         range: float
         description: Statistical significance when available
-        slot_uri: alskb:p_value
       odds_ratio:
         range: float
         description: Genetic association odds ratio when available
-        slot_uri: alskb:odds_ratio
       effect_direction:
         description: increased_risk, decreased_risk, protective, upregulated, downregulated, or unknown
-        slot_uri: alskb:effect_direction
       evidence_count:
         range: integer
         description: Number of supporting studies or records
-        slot_uri: alskb:evidence_count
-    class_uri: alskb:GeneDiseaseAssociation
   VariantDiseaseAssociation:
-    description: Optional association for Variant -> Disease when variant-level evidence, clinical significance, inheritance, penetrance, or source assertions are needed. Materializes to variant_associated_with_disease.
+    description: >-
+      Optional association for Variant -> Disease when variant-level evidence, clinical significance, inheritance, penetrance,
+      or source assertions are needed. Materializes to variant_associated_with_disease.
     is_a: Association
     attributes:
       has_variant:
         range: Variant
         required: true
-        slot_uri: alskb:has_variant
       has_disease:
         range: Disease
         required: true
-        slot_uri: alskb:has_disease
       predicate:
         ifabsent: alskb:variant_associated_with_disease
         slot_uri: rdf:predicate
       clinical_significance:
         description: ClinVar/ACMG or ALS-specific clinical interpretation
-        slot_uri: alskb:clinical_significance
       inheritance_mode:
         description: autosomal_dominant, autosomal_recessive, X_linked, mitochondrial, complex, or unknown
-        slot_uri: alskb:inheritance_mode
       penetrance:
         description: Complete, reduced, age-dependent, or unknown penetrance
-        slot_uri: alskb:penetrance
       association_type:
         description: causal, risk_factor, modifier, protective, or uncertain
-        slot_uri: alskb:association_type
-    class_uri: alskb:VariantDiseaseAssociation
   VariantProteinEffectAssociation:
-    description: Optional association for Variant -> Protein when protein consequence, predicted effect, assay result, or functional evidence is needed. Materializes to variant_affects_protein.
+    description: >-
+      Optional association for Variant -> Protein when protein consequence, predicted effect, assay result, or functional
+      evidence is needed. Materializes to variant_affects_protein.
     is_a: Association
     attributes:
       has_variant:
         range: Variant
         required: true
-        slot_uri: alskb:has_variant
       has_protein:
         range: Protein
         required: true
-        slot_uri: alskb:has_protein
       predicate:
         ifabsent: alskb:variant_affects_protein
         slot_uri: rdf:predicate
       functional_consequence:
         description: missense, frameshift, nonsense, splice_site, synonymous, repeat_expansion, or structural
-        slot_uri: alskb:functional_consequence
       predicted_effect:
         description: loss_of_function, gain_of_function, dominant_negative, aggregation_prone, no_change, or unknown
-        slot_uri: alskb:predicted_effect
       assay:
         description: Functional assay or computational method supporting the effect
-        slot_uri: alskb:assay
-    class_uri: alskb:VariantProteinEffectAssociation
   ProteinProteinInteractionAssociation:
-    description: Optional association for Protein -> Protein when interaction score, interaction type, database evidence, or assay metadata are needed. Materializes to protein_interacts_with_protein.
+    description: >-
+      Optional association for Protein -> Protein when interaction score, interaction type, database evidence, or assay metadata
+      are needed. Materializes to protein_interacts_with_protein.
     is_a: Association
     attributes:
       protein_1:
         range: Protein
         required: true
-        slot_uri: alskb:protein_1
       protein_2:
         range: Protein
         required: true
-        slot_uri: alskb:protein_2
       predicate:
         ifabsent: alskb:protein_interacts_with_protein
         slot_uri: rdf:predicate
       interaction_score:
         range: float
         description: Source-specific confidence score such as STRING combined score
-        slot_uri: alskb:interaction_score
       interaction_type:
         description: direct, indirect, physical, genetic, colocalization, pathway, or predicted
-        slot_uri: alskb:interaction_type
       assay:
         description: Assay or method supporting the interaction
-        slot_uri: alskb:assay
-    class_uri: alskb:ProteinProteinInteractionAssociation
+  ProteinPathwayAssociation:
+    description: >-
+      Optional association for Protein -> Pathway when Reactome evidence code, source release, pathway hierarchy, species,
+      or annotation provenance are needed. Materializes to protein_participates_in_pathway.
+    is_a: Association
+    attributes:
+      has_protein:
+        range: Protein
+        required: true
+      has_pathway:
+        range: Pathway
+        required: true
+      predicate:
+        ifabsent: alskb:protein_participates_in_pathway
+        slot_uri: rdf:predicate
+      reactome_evidence_code:
+        description: Reactome evidence code or inferred/electronic/manual annotation category when available
+      pathway_role:
+        description: participant, catalyst, regulator, input, output, or member, when this detail is available
+      species:
+        description: Species context for the Reactome protein-pathway annotation
   DrugTargetAssociation:
-    description: Optional association for Drug -> MolecularEntity when action type, binding affinity, target class, or mechanism evidence is needed. Materializes to drug_targets_molecular_entity.
+    description: >-
+      Optional association for Drug -> MolecularEntity when action type, binding affinity, target class, or mechanism evidence
+      is needed. Materializes to drug_targets_molecular_entity.
     is_a: Association
     attributes:
       has_drug:
         range: Drug
         required: true
-        slot_uri: alskb:has_drug
       target:
         description: Gene or protein target
         range: MolecularEntity
         required: true
-        slot_uri: alskb:target
       predicate:
         ifabsent: alskb:drug_targets_molecular_entity
         slot_uri: rdf:predicate
       action_type:
         description: inhibitor, activator, binder, antagonist, agonist, modulator, ASO_knockdown, or unknown
-        slot_uri: alskb:action_type
       binding_affinity_nm:
         range: float
         description: Binding affinity in nanomolar when available
-        slot_uri: alskb:binding_affinity_nm
       mechanism:
         description: Mechanistic description of target modulation
-        slot_uri: alskb:mechanism
-    class_uri: alskb:DrugTargetAssociation
   DrugDiseaseTherapeuticAssociation:
-    description: Optional association for Drug -> Disease when therapeutic indication, approval status, clinical-trial evidence, or outcome metadata are needed. Materializes to drug_treats_or_modulates_disease.
+    description: >-
+      Optional association for Drug -> Disease when therapeutic indication, approval status, clinical-trial evidence, or outcome
+      metadata are needed. Materializes to drug_treats_or_modulates_disease.
     is_a: Association
     attributes:
       has_drug:
         range: Drug
         required: true
-        slot_uri: alskb:has_drug
       has_disease:
         range: Disease
         required: true
-        slot_uri: alskb:has_disease
       predicate:
         ifabsent: alskb:drug_treats_or_modulates_disease
         slot_uri: rdf:predicate
       relation_type:
         description: treats, disease_modifying, symptomatic, palliative, contraindicated, off_label, or investigational
-        slot_uri: alskb:relation_type
       approval_status:
         description: approved, investigational, withdrawn, off_label, failed_trial, or unknown
-        slot_uri: alskb:approval_status
       clinical_phase:
         description: Highest clinical development phase for ALS or ALS subtype
-        slot_uri: alskb:clinical_phase
       outcome_measure:
         description: ALSFRS-R, survival, respiratory function, biomarker, or other endpoint
-        slot_uri: alskb:outcome_measure
-    class_uri: alskb:DrugDiseaseTherapeuticAssociation
   ExposureDiseaseAssociation:
-    description: Optional association for ExposureOrStressor -> Disease when epidemiology, mechanism, dose, duration, population, or study design metadata are needed. Materializes to exposure_associated_with_disease.
+    description: >-
+      Optional association for ExposureOrStressor -> Disease when epidemiology, mechanism, dose, duration, population, or
+      study design metadata are needed. Materializes to exposure_associated_with_disease.
     is_a: Association
     attributes:
       exposure:
         range: ExposureOrStressor
         required: true
-        slot_uri: alskb:exposure
       has_disease:
         range: Disease
         required: true
-        slot_uri: alskb:has_disease
       predicate:
         ifabsent: alskb:exposure_associated_with_disease
         slot_uri: rdf:predicate
       association_type:
         description: risk_factor, protective, trigger, modifier, or correlative
-        slot_uri: alskb:association_type
       mechanism:
         description: Proposed biological mechanism
-        slot_uri: alskb:mechanism
       epidemiological_support:
         range: boolean
-        slot_uri: alskb:epidemiological_support
       odds_ratio:
         range: float
         description: Epidemiological odds ratio or equivalent effect estimate
-        slot_uri: alskb:odds_ratio
       population:
         description: Population, geography, occupation, or cohort context
-        slot_uri: alskb:population
-    class_uri: alskb:ExposureDiseaseAssociation
   TranscriptionFactorRegulationAssociation:
-    description: Optional association for TranscriptionFactor -> Gene when direction, confidence, tissue/cell context, or assay evidence are needed. Materializes to transcription_factor_regulates_gene.
+    description: >-
+      Optional association for TranscriptionFactor -> Gene when direction, confidence, tissue/cell context, or assay evidence
+      are needed. Materializes to transcription_factor_regulates_gene.
     is_a: Association
     attributes:
       transcription_factor:
         range: TranscriptionFactor
         required: true
-        slot_uri: alskb:transcription_factor
       target_gene:
         range: Gene
         required: true
-        slot_uri: alskb:target_gene
       predicate:
         ifabsent: alskb:transcription_factor_regulates_gene
         slot_uri: rdf:predicate
       regulation_type:
         description: activation, repression, bidirectional, context_dependent, or unknown
-        slot_uri: alskb:regulation_type
       confidence_level:
         description: Source-specific confidence level such as DoRothEA A-D
-        slot_uri: alskb:confidence_level
       tissue_or_cell_type:
         description: Tissue or cell type context for the regulatory relationship
-        slot_uri: alskb:tissue_or_cell_type
-    class_uri: alskb:TranscriptionFactorRegulationAssociation
   GeneExpressionAssociation:
-    description: Optional association for Gene -> Anatomy when expression level, specificity, tissue, cell type, disease stage, or differential-expression qualifiers are needed. Materializes to gene_expressed_in_anatomy.
+    description: >-
+      Optional association for Gene -> Anatomy when expression level, specificity, tissue, cell type, disease stage, or differential-expression
+      qualifiers are needed. Materializes to gene_expressed_in_anatomy.
     is_a: Association
     attributes:
       has_gene:
         range: Gene
         required: true
-        slot_uri: alskb:has_gene
       has_anatomy:
         range: Anatomy
         required: true
-        slot_uri: alskb:has_anatomy
       predicate:
         ifabsent: alskb:gene_expressed_in_anatomy
         slot_uri: rdf:predicate
       expression_level:
         description: high, medium, low, absent, upregulated, downregulated, or not_detected
-        slot_uri: alskb:expression_level
       specificity_index:
         range: float
         description: Tissue-specificity score from 0 to 1
-        slot_uri: alskb:specificity_index
       log2_fold_change:
         range: float
         description: Differential expression log2 fold change when available
-        slot_uri: alskb:log2_fold_change
       adjusted_p_value:
         range: float
         description: Multiple-testing-adjusted p-value when available
-        slot_uri: alskb:adjusted_p_value
       tissue_or_cell_type:
         description: Tissue or cell-type context
-        slot_uri: alskb:tissue_or_cell_type
       disease_stage:
         description: Disease stage or clinical context
-        slot_uri: alskb:disease_stage
-    class_uri: alskb:GeneExpressionAssociation
   DiseaseDiseaseAssociation:
-    description: Optional association for Disease -> Disease when disease-disease edges need relation type, similarity score, shared mechanism, or comorbidity statistics. Materializes to disease_related_to_disease.
+    description: >-
+      Optional association for Disease -> Disease when disease-disease edges need relation type, similarity score, shared
+      mechanism, or comorbidity statistics. Materializes to disease_related_to_disease.
     is_a: Association
     attributes:
       disease_1:
         range: Disease
         required: true
-        slot_uri: alskb:disease_1
       disease_2:
         range: Disease
         required: true
-        slot_uri: alskb:disease_2
       predicate:
         ifabsent: alskb:disease_related_to_disease
         slot_uri: rdf:predicate
       relation_type:
         description: comorbidity, shared_pathway, shared_gene, phenotypic_similarity, differential_diagnosis, or disease_subtype
-        slot_uri: alskb:relation_type
       similarity_score:
         range: float
         description: Semantic similarity or clinical overlap score from 0 to 1
-        slot_uri: alskb:similarity_score
       shared_mechanism:
         description: Shared biological mechanism, pathway, or clinical rationale
-        slot_uri: alskb:shared_mechanism
-    class_uri: alskb:DiseaseDiseaseAssociation
+comments:
+- Reactome pathways are modeled as Pathway entities using Reactome stable identifiers; KEGG pathway prefixes and KEGG-specific mappings are intentionally omitted.
+- >-
+  URI policy: ALS-KG-specific classes and slots use the schema default_prefix (alskb) and do not need explicit class_uri/slot_uri
+  declarations. Use class_uri/slot_uri only when a term is intended to be equivalent to an external model term; use exact_mappings
+  or close_mappings when alignment is useful but not identical.

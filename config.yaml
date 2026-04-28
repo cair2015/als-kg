@@ -6,6 +6,7 @@
 # By default all generators are run. Specify here the ones to skip.
 excludes:
   - markdown
+  - sqltable
 
 # Alternatively only specify the generators to run
 # (comment out the above "excludes" section)
@@ -54,7 +55,7 @@ generator_args:
     mergeimports: true
   shex:
     mergeimports: true
-  sqlddl:
+  sqltable:
     mergeimports: true
   typescript:
     mergeimports: true

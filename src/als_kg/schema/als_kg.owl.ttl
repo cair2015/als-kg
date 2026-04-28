@@ -1,0 +1,3064 @@
+@prefix alskb: <https://cair2015.github.io/als-kg/elements/> .
+@prefix biolink: <https://w3id.org/biolink/vocab/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://alskb.org/ontology/als_kg.owl.ttl> a owl:Ontology ;
+    rdfs:label "als_kg" ;
+    dcterms:license "MIT" ;
+    dcterms:title "ALS Knowledge Graph Ontology Model" ;
+    pav:version "2.1.2" ;
+    skos:definition "Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Uses a local default namespace for ALS-specific classes and slots, explicit Biolink/ontology URIs only for externally defined concepts and predicates, direct object properties for canonical KG edges, and optional evidence-bearing association classes for provenance-rich statements." ;
+    skos:note "Reactome pathways are modeled as Pathway entities using Reactome stable identifiers; KEGG pathway prefixes and KEGG-specific mappings are intentionally omitted.",
+        "URI policy: ALS-KG-specific classes and slots use the schema default_prefix (alskb) and do not need explicit class_uri/slot_uri declarations. Use class_uri/slot_uri only when a term is intended to be equivalent to an external model term; use exact_mappings or close_mappings when alignment is useful but not identical." .
+
+alskb:DiseaseDiseaseAssociation a owl:Class ;
+    rdfs:label "DiseaseDiseaseAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:disease_1 ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:disease_1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:disease_2 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:similarity_score ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:relation_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:relation_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:similarity_score ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:disease_2 ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:shared_mechanism ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:shared_mechanism ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Disease ;
+            owl:onProperty alskb:disease_2 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:shared_mechanism ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:relation_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Disease ;
+            owl:onProperty alskb:disease_1 ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:similarity_score ],
+        alskb:Association ;
+    skos:definition "Optional association for Disease -> Disease when disease-disease edges need relation type, similarity score, shared mechanism, or comorbidity statistics. Materializes to disease_related_to_disease." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:DiseasePhenotypeAssociation a owl:Class ;
+    rdfs:label "DiseasePhenotypeAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_phenotype ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:frequency ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:frequency ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:onset_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:severity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:severity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:frequency ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:cohort ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:onset_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Disease ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:severity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_phenotype ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:OnsetTypeEnum ;
+            owl:onProperty alskb:onset_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Phenotype ;
+            owl:onProperty alskb:has_phenotype ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:cohort ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:cohort ],
+        alskb:Association ;
+    skos:definition "Optional association for Disease -> Phenotype when the clinical feature requires edge metadata such as frequency, onset, severity, source cohort, or evidence. Materializes to disease_manifests_as_phenotype." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:DiseaseSubtype a owl:Class ;
+    rdfs:label "DiseaseSubtype" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:median_survival_months ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:subtype_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:source_publication ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:cohort ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:clinical_correlate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:signature_genes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty alskb:cluster_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:clinical_correlate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:cluster_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:clinical_correlate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:median_survival_months ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:median_survival_months ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:source_publication ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:n_patients ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:cluster_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:subtype_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:cluster_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:cluster_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:cohort ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:signature_genes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:n_patients ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:source_publication ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty alskb:n_patients ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:cluster_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:subtype_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:cohort ],
+        alskb:Disease ;
+    skos:definition "Molecularly-defined disease subtype derived from clustering analysis (transcriptomics, proteomics, multi-omics). Represents cohort stratification. Links to Disease via is_a relationship; carries distinct clinical correlates." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:DrugDiseaseTherapeuticAssociation a owl:Class ;
+    rdfs:label "DrugDiseaseTherapeuticAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:clinical_phase ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:outcome_measure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:relation_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:relation_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:approval_status ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:clinical_phase ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:approval_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_drug ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:approval_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Drug ;
+            owl:onProperty alskb:has_drug ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:outcome_measure ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_drug ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Disease ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:clinical_phase ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:outcome_measure ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:relation_type ],
+        alskb:Association ;
+    skos:definition "Optional association for Drug -> Disease when therapeutic indication, approval status, clinical-trial evidence, or outcome metadata are needed. Materializes to drug_treats_or_modulates_disease." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:DrugTargetAssociation a owl:Class ;
+    rdfs:label "DrugTargetAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:binding_affinity_nm ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:binding_affinity_nm ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_drug ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:action_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:target ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:binding_affinity_nm ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_drug ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Drug ;
+            owl:onProperty alskb:has_drug ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:action_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:MolecularEntity ;
+            owl:onProperty alskb:target ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:target ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:action_type ],
+        alskb:Association ;
+    skos:definition "Optional association for Drug -> MolecularEntity when action type, binding affinity, target class, or mechanism evidence is needed. Materializes to drug_targets_molecular_entity." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:ExposureDiseaseAssociation a owl:Class ;
+    rdfs:label "ExposureDiseaseAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:odds_ratio ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:exposure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:population ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:population ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:epidemiological_support ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:exposure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:epidemiological_support ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:ExposureOrStressor ;
+            owl:onProperty alskb:exposure ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:population ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:odds_ratio ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:odds_ratio ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty alskb:epidemiological_support ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Disease ;
+            owl:onProperty alskb:has_disease ],
+        alskb:Association ;
+    skos:definition "Optional association for ExposureOrStressor -> Disease when epidemiology, mechanism, dose, duration, population, or study design metadata are needed. Materializes to exposure_associated_with_disease." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:GeneDiseaseAssociation a owl:Class ;
+    rdfs:label "GeneDiseaseAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:association_score ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:effect_direction ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Gene ;
+            owl:onProperty alskb:has_gene ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:association_score ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:p_value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:effect_direction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:association_score ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:p_value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:p_value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:evidence_count ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:odds_ratio ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Disease ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:odds_ratio ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_gene ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty alskb:evidence_count ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:effect_direction ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_gene ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:evidence_count ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:odds_ratio ],
+        alskb:Association ;
+    skos:definition "Optional association for Gene -> Disease when causal/risk/protective or correlative gene-disease edges need evidence, scores, statistics, or source-specific qualifiers. Materializes to gene_associated_with_disease." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:GeneExpressionAssociation a owl:Class ;
+    rdfs:label "GeneExpressionAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:specificity_index ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:log2_fold_change ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_anatomy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Anatomy ;
+            owl:onProperty alskb:has_anatomy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:adjusted_p_value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:specificity_index ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:specificity_index ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_gene ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:adjusted_p_value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:tissue_or_cell_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:expression_level ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:disease_stage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:log2_fold_change ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:tissue_or_cell_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:adjusted_p_value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:log2_fold_change ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Gene ;
+            owl:onProperty alskb:has_gene ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_gene ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:disease_stage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_anatomy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:expression_level ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:disease_stage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:tissue_or_cell_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:expression_level ],
+        alskb:Association ;
+    skos:definition "Optional association for Gene -> Anatomy when expression level, specificity, tissue, cell type, disease stage, or differential-expression qualifiers are needed. Materializes to gene_expressed_in_anatomy." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:ProteinPathwayAssociation a owl:Class ;
+    rdfs:label "ProteinPathwayAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:pathway_role ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:pathway_role ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:reactome_evidence_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:species ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:species ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_pathway ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Pathway ;
+            owl:onProperty alskb:has_pathway ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:reactome_evidence_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:species ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:reactome_evidence_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_protein ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_protein ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_pathway ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:pathway_role ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Protein ;
+            owl:onProperty alskb:has_protein ],
+        alskb:Association ;
+    skos:definition "Optional association for Protein -> Pathway when Reactome evidence code, source release, pathway hierarchy, species, or annotation provenance are needed. Materializes to protein_participates_in_pathway." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:ProteinProteinInteractionAssociation a owl:Class ;
+    rdfs:label "ProteinProteinInteractionAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:protein_2 ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:protein_2 ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:protein_1 ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:interaction_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:assay ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:assay ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:interaction_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:interaction_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:interaction_score ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Protein ;
+            owl:onProperty alskb:protein_1 ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:assay ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Protein ;
+            owl:onProperty alskb:protein_2 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:interaction_score ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:protein_1 ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:interaction_score ],
+        alskb:Association ;
+    skos:definition "Optional association for Protein -> Protein when interaction score, interaction type, database evidence, or assay metadata are needed. Materializes to protein_interacts_with_protein." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:TranscriptionFactorRegulationAssociation a owl:Class ;
+    rdfs:label "TranscriptionFactorRegulationAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:tissue_or_cell_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Gene ;
+            owl:onProperty alskb:target_gene ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:confidence_level ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:confidence_level ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:regulation_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:target_gene ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:regulation_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:regulation_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:tissue_or_cell_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:TranscriptionFactor ;
+            owl:onProperty alskb:transcription_factor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:tissue_or_cell_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:transcription_factor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:confidence_level ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:transcription_factor ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:target_gene ],
+        alskb:Association ;
+    skos:definition "Optional association for TranscriptionFactor -> Gene when direction, confidence, tissue/cell context, or assay evidence are needed. Materializes to transcription_factor_regulates_gene." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:VariantDiseaseAssociation a owl:Class ;
+    rdfs:label "VariantDiseaseAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:inheritance_mode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:clinical_significance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:penetrance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:clinical_significance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_variant ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:inheritance_mode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:association_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:penetrance ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:inheritance_mode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:clinical_significance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Disease ;
+            owl:onProperty alskb:has_disease ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_variant ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Variant ;
+            owl:onProperty alskb:has_variant ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:penetrance ],
+        alskb:Association ;
+    skos:definition "Optional association for Variant -> Disease when variant-level evidence, clinical significance, inheritance, penetrance, or source assertions are needed. Materializes to variant_associated_with_disease." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:VariantProteinEffectAssociation a owl:Class ;
+    rdfs:label "VariantProteinEffectAssociation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Protein ;
+            owl:onProperty alskb:has_protein ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:functional_consequence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:assay ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicted_effect ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicted_effect ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:Variant ;
+            owl:onProperty alskb:has_variant ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:functional_consequence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:assay ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:predicted_effect ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:assay ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_protein ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:has_variant ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:functional_consequence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_protein ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_variant ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        alskb:Association ;
+    skos:definition "Optional association for Variant -> Protein when protein consequence, predicted effect, assay result, or functional evidence is needed. Materializes to variant_affects_protein." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:disease_affects_anatomy a owl:ObjectProperty ;
+    rdfs:label "disease_affects_anatomy" ;
+    rdfs:domain alskb:Disease ;
+    rdfs:range alskb:Anatomy ;
+    skos:closeMatch biolink:affects ;
+    skos:definition "Disease affects, involves, or primarily manifests in an anatomical structure." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:disease_manifests_as_phenotype a owl:ObjectProperty ;
+    rdfs:label "disease_manifests_as_phenotype" ;
+    rdfs:domain alskb:Disease ;
+    rdfs:range alskb:Phenotype ;
+    skos:definition "Disease has or presents with a phenotype or clinical feature." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:disease_related_to_disease a owl:ObjectProperty ;
+    rdfs:label "disease_related_to_disease" ;
+    rdfs:domain alskb:Disease ;
+    rdfs:range alskb:Disease ;
+    skos:definition "Disease is related to another disease by comorbidity, shared etiology, similar mechanism, or phenotypic similarity." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:drug_targets_molecular_entity a owl:ObjectProperty ;
+    rdfs:label "drug_targets_molecular_entity" ;
+    rdfs:domain alskb:Drug ;
+    rdfs:range alskb:MolecularEntity ;
+    skos:definition "Drug, biologic, ASO, or other therapeutic agent targets a gene or protein." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:drug_treats_or_modulates_disease a owl:ObjectProperty ;
+    rdfs:label "drug_treats_or_modulates_disease" ;
+    rdfs:domain alskb:Drug ;
+    rdfs:range alskb:Disease ;
+    skos:closeMatch biolink:treats ;
+    skos:definition "Drug treats, modifies, palliates, or is being investigated for a disease." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:exposure_associated_with_disease a owl:ObjectProperty ;
+    rdfs:label "exposure_associated_with_disease" ;
+    rdfs:domain alskb:ExposureOrStressor ;
+    rdfs:range alskb:Disease ;
+    skos:closeMatch biolink:associated_with ;
+    skos:definition "Environmental exposure or stressor is associated with disease risk or progression." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:gene_associated_with_disease a owl:ObjectProperty ;
+    rdfs:label "gene_associated_with_disease" ;
+    rdfs:domain alskb:Gene ;
+    rdfs:range alskb:Disease ;
+    skos:definition "Gene has causal, risk, modifier, protective, or correlative association with disease." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:gene_encodes_protein a owl:ObjectProperty ;
+    rdfs:label "gene_encodes_protein" ;
+    rdfs:domain alskb:Gene ;
+    rdfs:range alskb:Protein ;
+    skos:definition "Gene encodes a protein product." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:gene_expressed_in_anatomy a owl:ObjectProperty ;
+    rdfs:label "gene_expressed_in_anatomy" ;
+    rdfs:domain alskb:Gene ;
+    rdfs:range alskb:Anatomy ;
+    skos:definition "Gene is expressed in an anatomical structure, tissue, or cell-type context." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:gene_has_molecular_function a owl:ObjectProperty ;
+    rdfs:label "gene_has_molecular_function" ;
+    rdfs:domain alskb:Gene ;
+    rdfs:range alskb:MolecularFunction ;
+    skos:definition "Gene or gene product has a molecular activity or function." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:gene_participates_in_process a owl:ObjectProperty ;
+    rdfs:label "gene_participates_in_process" ;
+    rdfs:domain alskb:Gene ;
+    rdfs:range alskb:BiologicalProcess ;
+    skos:definition "Gene or gene product participates in a biological process." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:protein_interacts_with_protein a owl:ObjectProperty ;
+    rdfs:label "protein_interacts_with_protein" ;
+    rdfs:domain alskb:Protein ;
+    rdfs:range alskb:Protein ;
+    skos:definition "Protein physically or functionally interacts with another protein." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:protein_localized_to_cellular_component a owl:ObjectProperty ;
+    rdfs:label "protein_localized_to_cellular_component" ;
+    rdfs:domain alskb:Protein ;
+    rdfs:range alskb:CellularComponent ;
+    skos:definition "Protein localizes to or is active in a cellular component." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:protein_participates_in_pathway a owl:ObjectProperty ;
+    rdfs:label "protein_participates_in_pathway" ;
+    rdfs:domain alskb:Protein ;
+    rdfs:range alskb:Pathway ;
+    skos:definition "Protein participates in or is annotated to a Reactome pathway." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:source_url a owl:DatatypeProperty ;
+    rdfs:label "source_url" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "URL to source resource" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:transcription_factor_regulates_gene a owl:ObjectProperty ;
+    rdfs:label "transcription_factor_regulates_gene" ;
+    rdfs:domain alskb:TranscriptionFactor ;
+    rdfs:range alskb:Gene ;
+    skos:definition "Transcription factor regulates the expression of a target gene." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:variant_affects_protein a owl:ObjectProperty ;
+    rdfs:label "variant_affects_protein" ;
+    rdfs:domain alskb:Variant ;
+    rdfs:range alskb:Protein ;
+    skos:closeMatch biolink:affects ;
+    skos:definition "Sequence variant changes or is predicted to affect a protein product." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:variant_associated_with_disease a owl:ObjectProperty ;
+    rdfs:label "variant_associated_with_disease" ;
+    rdfs:domain alskb:Variant ;
+    rdfs:range alskb:Disease ;
+    skos:definition "Sequence variant has causal, risk, modifier, protective, or correlative association with disease." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:BiologicalProcess a owl:Class ;
+    rdfs:label "BiologicalProcess" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:process_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:process_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:process_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:go_definition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:go_definition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:go_definition ],
+        alskb:BiologicalConcept ;
+    skos:definition "Gene Ontology Biological Process term. ALS-relevant: protein aggregation, oxidative stress, neuroinflammation, axonal transport, neurodegeneration, apoptosis." ;
+    skos:exactMatch biolink:BiologicalProcess ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:CellularComponent a owl:Class ;
+    rdfs:label "CellularComponent" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:go_definition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:go_definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:go_definition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:component_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:component_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:component_name ],
+        alskb:BiologicalConcept ;
+    skos:definition "Gene Ontology Cellular Component term. ALS-critical compartments: stress granule, P-body, cytoplasm, nucleus, axon, neuromuscular junction, mitochondrion." ;
+    skos:exactMatch biolink:CellularComponent ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:MolecularFunction a owl:Class ;
+    rdfs:label "MolecularFunction" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:function_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:go_definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:function_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:go_definition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:go_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:go_definition ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:function_name ],
+        alskb:BiologicalConcept ;
+    skos:definition "Gene Ontology Molecular Function term. Describes biochemical activities (catalytic, binding, etc.) performed by gene products." ;
+    skos:exactMatch biolink:MolecularActivity ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:NamedEntity a owl:Class ;
+    rdfs:label "NamedEntity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:synonym ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:xref ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:definition ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:label ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:xref ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:label ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:comment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:comment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:is_obsolete ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:is_obsolete ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:last_updated ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:last_updated ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:comment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:synonym ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:last_updated ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:is_obsolete ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:label ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:source ] ;
+    skos:definition "Root class for all named entities in the ALS-KG ontology. Provides core ontology metadata (id, label, definition, synonyms, xrefs)." ;
+    skos:exactMatch biolink:NamedThing ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:Relationship a owl:Class ;
+    rdfs:label "Relationship" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:evidence_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:subject ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:subject ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:subject ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:confidence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:evidence_source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:evidence_source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:evidence_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:confidence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:confidence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:evidence_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:evidence_source ] ;
+    skos:definition "Abstract base for reified relationships (edges with explicit properties). Follows RDF triple pattern: subject, predicate, object. Can carry additional metadata (confidence, evidence, provenance)." ;
+    skos:exactMatch rdf:Statement ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:ChemicalEntity a owl:Class ;
+    rdfs:label "ChemicalEntity" ;
+    rdfs:subClassOf alskb:OntologyClass ;
+    skos:definition "Abstract base for chemical and pharmacological entities (drugs, exposures, metabolites)." ;
+    skos:exactMatch biolink:ChemicalEntity ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:DiseaseOrPhenotype a owl:Class ;
+    rdfs:label "DiseaseOrPhenotype" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:mondo_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:hpo_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:mondo_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:mondo_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:hpo_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:hpo_id ],
+        alskb:OntologyClass ;
+    skos:definition "Abstract parent class for all disease/phenotype entities. Following MONDO and HPO ontology patterns." ;
+    skos:exactMatch biolink:DiseaseOrPhenotypicFeature ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+<https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#familial> a owl:Class ;
+    rdfs:label "familial" ;
+    rdfs:subClassOf alskb:DiseaseTypeEnum ;
+    skos:definition "Inherited pattern of occurrence" .
+
+<https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#sporadic> a owl:Class ;
+    rdfs:label "sporadic" ;
+    rdfs:subClassOf alskb:DiseaseTypeEnum ;
+    skos:definition "Occurs without family history" .
+
+<https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#syndromic> a owl:Class ;
+    rdfs:label "syndromic" ;
+    rdfs:subClassOf alskb:DiseaseTypeEnum ;
+    skos:definition "Part of larger syndrome" .
+
+<https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#computational> a owl:Class ;
+    rdfs:label "computational" ;
+    rdfs:subClassOf alskb:EvidenceTypeEnum ;
+    skos:definition "Result of computational analysis" .
+
+<https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#curated> a owl:Class ;
+    rdfs:label "curated" ;
+    rdfs:subClassOf alskb:EvidenceTypeEnum ;
+    skos:definition "Manually curated from literature" .
+
+<https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#experimental> a owl:Class ;
+    rdfs:label "experimental" ;
+    rdfs:subClassOf alskb:EvidenceTypeEnum ;
+    skos:definition "Derived from wet-lab experiments" .
+
+<https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#inferred> a owl:Class ;
+    rdfs:label "inferred" ;
+    rdfs:subClassOf alskb:EvidenceTypeEnum ;
+    skos:definition "Inferred from other statements" .
+
+<https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#predicted> a owl:Class ;
+    rdfs:label "predicted" ;
+    rdfs:subClassOf alskb:EvidenceTypeEnum ;
+    skos:definition "Machine learning prediction" .
+
+<https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#text_mined> a owl:Class ;
+    rdfs:label "text_mined" ;
+    rdfs:subClassOf alskb:EvidenceTypeEnum ;
+    skos:definition "Extracted via natural language processing" .
+
+alskb:ExposureOrStressor a owl:Class ;
+    rdfs:label "ExposureOrStressor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:als_relevance ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:exposure_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:mesh_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:ctd_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:ctd_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:exposure_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:cas_number ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:ctd_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:mesh_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:mesh_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:als_relevance ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty alskb:als_relevance ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:exposure_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:exposure_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:cas_number ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:exposure_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:cas_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:exposure_type ],
+        alskb:ChemicalEntity ;
+    skos:definition "Environmental exposure or chemical stressor from CTD ontology. ALS-relevant: BMAA, organophosphate pesticides, heavy metals, solvents." ;
+    skos:exactMatch biolink:ChemicalSubstance ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+<https://cair2015.github.io/als-kg/elements/GeneTypeEnum#lncRNA> a owl:Class ;
+    rdfs:label "lncRNA" ;
+    rdfs:subClassOf alskb:GeneTypeEnum .
+
+<https://cair2015.github.io/als-kg/elements/GeneTypeEnum#miRNA> a owl:Class ;
+    rdfs:label "miRNA" ;
+    rdfs:subClassOf alskb:GeneTypeEnum .
+
+<https://cair2015.github.io/als-kg/elements/GeneTypeEnum#other> a owl:Class ;
+    rdfs:label "other" ;
+    rdfs:subClassOf alskb:GeneTypeEnum .
+
+<https://cair2015.github.io/als-kg/elements/GeneTypeEnum#protein_coding> a owl:Class ;
+    rdfs:label "protein_coding" ;
+    rdfs:subClassOf alskb:GeneTypeEnum .
+
+<https://cair2015.github.io/als-kg/elements/GeneTypeEnum#pseudogene> a owl:Class ;
+    rdfs:label "pseudogene" ;
+    rdfs:subClassOf alskb:GeneTypeEnum .
+
+<https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#bulbar> a owl:Class ;
+    rdfs:label "bulbar" ;
+    rdfs:subClassOf alskb:OnsetTypeEnum ;
+    skos:definition "Facial/tongue muscles affected first" .
+
+<https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#generalized> a owl:Class ;
+    rdfs:label "generalized" ;
+    rdfs:subClassOf alskb:OnsetTypeEnum ;
+    skos:definition "Multiple sites affected simultaneously" .
+
+<https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#limb> a owl:Class ;
+    rdfs:label "limb" ;
+    rdfs:subClassOf alskb:OnsetTypeEnum ;
+    skos:definition "Arm or leg muscles affected first" .
+
+<https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#respiratory> a owl:Class ;
+    rdfs:label "respiratory" ;
+    rdfs:subClassOf alskb:OnsetTypeEnum ;
+    skos:definition "Breathing muscles affected first" .
+
+<https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#unknown> a owl:Class ;
+    rdfs:label "unknown" ;
+    rdfs:subClassOf alskb:OnsetTypeEnum ;
+    skos:definition "Onset location unknown" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#affects> a owl:Class ;
+    rdfs:label "affects" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Causal or functional modification" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#associated_with> a owl:Class ;
+    rdfs:label "associated_with" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Statistical/empirical association" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#has_participant> a owl:Class ;
+    rdfs:label "has_participant" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Process has participant" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#is_a> a owl:Class ;
+    rdfs:label "is_a" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Subclass relationship (taxonomic)" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#negatively_regulates> a owl:Class ;
+    rdfs:label "negatively_regulates" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Downregulation/inhibition" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#part_of> a owl:Class ;
+    rdfs:label "part_of" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Mereological (compositional) relationship" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#participates_in> a owl:Class ;
+    rdfs:label "participates_in" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Agent participates in process" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#positively_regulates> a owl:Class ;
+    rdfs:label "positively_regulates" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Upregulation/activation" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#proper_part_of> a owl:Class ;
+    rdfs:label "proper_part_of" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Strict part-of (excludes identity)" .
+
+<https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#regulates> a owl:Class ;
+    rdfs:label "regulates" ;
+    rdfs:subClassOf alskb:RelationshipTypeEnum ;
+    skos:definition "Regulatory relationship (direction unspecified)" .
+
+alskb:TranscriptionFactor a owl:Class ;
+    rdfs:label "TranscriptionFactor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:tf_family ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:dorothea_confidence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:dorothea_confidence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:tf_family ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:tf_family ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:dorothea_confidence ],
+        alskb:Gene ;
+    skos:definition "Gene encoding a transcription factor (TF). Subclass of Gene, carries both :Gene and :TranscriptionFactor labels. Source: DoRothEA + ENCODE TF annotations." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+<https://cair2015.github.io/als-kg/elements/VariantTypeEnum#CNV> a owl:Class ;
+    rdfs:label "CNV" ;
+    rdfs:subClassOf alskb:VariantTypeEnum ;
+    skos:definition "Copy number variation" .
+
+<https://cair2015.github.io/als-kg/elements/VariantTypeEnum#SNV> a owl:Class ;
+    rdfs:label "SNV" ;
+    rdfs:subClassOf alskb:VariantTypeEnum ;
+    skos:definition "Single nucleotide variant" .
+
+<https://cair2015.github.io/als-kg/elements/VariantTypeEnum#indel> a owl:Class ;
+    rdfs:label "indel" ;
+    rdfs:subClassOf alskb:VariantTypeEnum ;
+    skos:definition "Insertion or deletion" .
+
+<https://cair2015.github.io/als-kg/elements/VariantTypeEnum#repeat_expansion> a owl:Class ;
+    rdfs:label "repeat_expansion" ;
+    rdfs:subClassOf alskb:VariantTypeEnum ;
+    skos:definition "Trinucleotide repeat expansion" .
+
+<https://cair2015.github.io/als-kg/elements/VariantTypeEnum#structural> a owl:Class ;
+    rdfs:label "structural" ;
+    rdfs:subClassOf alskb:VariantTypeEnum ;
+    skos:definition "Structural variant (inversion, translocation)" .
+
+alskb:parent_pathway a owl:DatatypeProperty ;
+    rdfs:label "parent_pathway" ;
+    skos:definition "Parent Reactome pathway CURIE when available" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:signature_genes a owl:DatatypeProperty ;
+    rdfs:label "signature_genes" ;
+    skos:definition "Top discriminative genes for subtype" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:subcellular_location a owl:DatatypeProperty ;
+    rdfs:label "subcellular_location" ;
+    skos:definition "Cellular compartment(s) where protein is localized (e.g. mitochondrion, nucleus, axon)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:synonym a owl:DatatypeProperty ;
+    rdfs:label "synonym" ;
+    rdfs:range xsd:string ;
+    skos:definition "Alternative names",
+        "Alternative names or labels" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:xref a owl:DatatypeProperty ;
+    rdfs:label "xref" ;
+    rdfs:range xsd:string ;
+    skos:definition "Cross-reference to equivalent entity in another ontology. Format: ONTOLOGY_PREFIX:identifier (e.g. OMIM:104300, Reactome:R-HSA-5673001, GO:0006810)",
+        "Cross-references to external ontologies" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:Pathway a owl:Class ;
+    rdfs:label "Pathway" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:pathway_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:species ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:pathway_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:reactome_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:pathway_definition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:pathway_definition ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:pathway_definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:parent_pathway ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:parent_pathway ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:pathway_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:reactome_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:reactome_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:species ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:species ],
+        alskb:BiologicalConcept ;
+    skos:definition "Reactome pathway entity representing a curated biological pathway or reaction-level pathway context relevant to ALS mechanisms, including neuroinflammation, RNA metabolism, protein homeostasis, mitochondrial dysfunction, and axonal transport." ;
+    skos:exactMatch biolink:Pathway ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:Phenotype a owl:Class ;
+    rdfs:label "Phenotype" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:frequency ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:severity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:hpo_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:hpo_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:severity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:severity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:hpo_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:frequency ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:frequency ],
+        alskb:DiseaseOrPhenotype ;
+    skos:definition "Phenotypic feature (HPO term). Represents observable/measurable characteristics associated with diseases. Distinct from drug side effects which are modeled via DrugCausesPhenotype relationships." ;
+    skos:exactMatch biolink:PhenotypicFeature ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:action_type a owl:DatatypeProperty ;
+    rdfs:label "action_type" ;
+    skos:definition "inhibitor, activator, binder, antagonist, agonist, modulator, ASO_knockdown, or unknown" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:adjusted_p_value a owl:DatatypeProperty ;
+    rdfs:label "adjusted_p_value" ;
+    skos:definition "Multiple-testing-adjusted p-value when available" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:aggregation_prone a owl:DatatypeProperty ;
+    rdfs:label "aggregation_prone" ;
+    skos:definition "Known to form aggregates (TDP-43, SOD1, FUS)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:als_approved a owl:DatatypeProperty ;
+    rdfs:label "als_approved" ;
+    skos:definition "FDA approval status for ALS treatment" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:als_class a owl:DatatypeProperty ;
+    rdfs:label "als_class" ;
+    skos:definition "ALS-specific classification (causal, risk, modifier, protective)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:als_relevance a owl:DatatypeProperty ;
+    rdfs:label "als_relevance" ;
+    skos:definition "Flagged as ALS-relevant in literature" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:als_risk_tier a owl:DatatypeProperty ;
+    rdfs:label "als_risk_tier" ;
+    skos:definition "Evidence tier for ALS association (ALSoD classification) - definitive, strong, moderate, or candidate" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:anatomical_system a owl:DatatypeProperty ;
+    rdfs:label "anatomical_system" ;
+    skos:definition "Anatomical system classification" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:approval_status a owl:DatatypeProperty ;
+    rdfs:label "approval_status" ;
+    skos:definition "approved, investigational, withdrawn, off_label, failed_trial, or unknown" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:association_id a owl:DatatypeProperty ;
+    rdfs:label "association_id" ;
+    skos:definition "Stable identifier for the association record" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:association_label a owl:DatatypeProperty ;
+    rdfs:label "association_label" ;
+    skos:definition "Human-readable summary of the association" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:association_score a owl:DatatypeProperty ;
+    rdfs:label "association_score" ;
+    skos:definition "Source-specific gene-disease association score" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:binding_affinity_nm a owl:DatatypeProperty ;
+    rdfs:label "binding_affinity_nm" ;
+    skos:definition "Binding affinity in nanomolar when available" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:bto_id a owl:DatatypeProperty ;
+    rdfs:label "bto_id" ;
+    skos:definition "Brenda Tissue Ontology ID" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:cas_number a owl:DatatypeProperty ;
+    rdfs:label "cas_number" ;
+    skos:definition "CAS Registry number" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:chembl_id a owl:DatatypeProperty ;
+    rdfs:label "chembl_id" ;
+    skos:definition "ChEMBL compound ID" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:chromosome a owl:DatatypeProperty ;
+    rdfs:label "chromosome" ;
+    skos:definition "Cytogenetic location (e.g. 21q22.11 for SOD1)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:clinical_correlate a owl:DatatypeProperty ;
+    rdfs:label "clinical_correlate" ;
+    skos:definition "Associated clinical feature or phenotype" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:clinical_phase a owl:DatatypeProperty ;
+    rdfs:label "clinical_phase" ;
+    skos:definition "Highest clinical development phase for ALS or ALS subtype" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:clinvar_id a owl:DatatypeProperty ;
+    rdfs:label "clinvar_id" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:cluster_id a owl:DatatypeProperty ;
+    rdfs:label "cluster_id" ;
+    skos:definition "Cluster number from analysis" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:cluster_method a owl:DatatypeProperty ;
+    rdfs:label "cluster_method" ;
+    skos:definition "Clustering approach (NMF, WGCNA, scRNA-seq, consensus)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:comment a owl:DatatypeProperty ;
+    rdfs:label "comment" ;
+    rdfs:range xsd:string ;
+    skos:definition "Informal comment or note on entity",
+        "Informal notes or comments" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:component_name a owl:DatatypeProperty ;
+    rdfs:label "component_name" ;
+    skos:definition "Cellular component name from GO" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:confidence_level a owl:DatatypeProperty ;
+    rdfs:label "confidence_level" ;
+    skos:definition "Source-specific confidence level such as DoRothEA A-D" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:ctd_id a owl:DatatypeProperty ;
+    rdfs:label "ctd_id" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:definition a owl:DatatypeProperty ;
+    rdfs:label "definition" ;
+    rdfs:range xsd:string ;
+    skos:definition "Formal textual definition",
+        "Textual definition following OBO definition format" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:disease_1 a owl:ObjectProperty ;
+    rdfs:label "disease_1" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:disease_2 a owl:ObjectProperty ;
+    rdfs:label "disease_2" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:disease_stage a owl:DatatypeProperty ;
+    rdfs:label "disease_stage" ;
+    skos:definition "Disease stage or clinical context" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:disease_type a owl:ObjectProperty ;
+    rdfs:label "disease_type" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:dorothea_confidence a owl:DatatypeProperty ;
+    rdfs:label "dorothea_confidence" ;
+    skos:definition "DoRothEA confidence level (A=high, D=low)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:drug_name a owl:DatatypeProperty ;
+    rdfs:label "drug_name" ;
+    skos:definition "Preferred drug name" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:drug_type a owl:DatatypeProperty ;
+    rdfs:label "drug_type" ;
+    skos:definition "Categorization (small molecule, biologic, ASO, cell therapy, gene therapy)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:drugbank_id a owl:DatatypeProperty ;
+    rdfs:label "drugbank_id" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:effect_direction a owl:DatatypeProperty ;
+    rdfs:label "effect_direction" ;
+    skos:definition "increased_risk, decreased_risk, protective, upregulated, downregulated, or unknown" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:ensembl_id a owl:DatatypeProperty ;
+    rdfs:label "ensembl_id" ;
+    skos:definition "Ensembl gene identifier" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:epidemiological_support a owl:DatatypeProperty ;
+    rdfs:label "epidemiological_support" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:evidence_count a owl:DatatypeProperty ;
+    rdfs:label "evidence_count" ;
+    skos:definition "Number of supporting studies or records" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:exposure a owl:ObjectProperty ;
+    rdfs:label "exposure" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:exposure_name a owl:DatatypeProperty ;
+    rdfs:label "exposure_name" ;
+    skos:definition "Standard name of exposure/stressor" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:exposure_type a owl:DatatypeProperty ;
+    rdfs:label "exposure_type" ;
+    skos:definition "Category (chemical, metal, pesticide, radiation, biological, other)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:expression_level a owl:DatatypeProperty ;
+    rdfs:label "expression_level" ;
+    skos:definition "high, medium, low, absent, upregulated, downregulated, or not_detected" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:function_name a owl:DatatypeProperty ;
+    rdfs:label "function_name" ;
+    skos:definition "Molecular function name from GO" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:functional_consequence a owl:DatatypeProperty ;
+    rdfs:label "functional_consequence" ;
+    skos:definition "missense, frameshift, nonsense, splice_site, synonymous, repeat_expansion, or structural" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:genomic_pos_end a owl:DatatypeProperty ;
+    rdfs:label "genomic_pos_end" ;
+    skos:definition "GRCh38 end coordinate" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:genomic_pos_start a owl:DatatypeProperty ;
+    rdfs:label "genomic_pos_start" ;
+    skos:definition "GRCh38 start coordinate (1-based)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:has_anatomy a owl:ObjectProperty ;
+    rdfs:label "has_anatomy" ;
+    rdfs:range alskb:Anatomy ;
+    skos:definition "Referenced anatomy entity in an association record." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:has_pathway a owl:ObjectProperty ;
+    rdfs:label "has_pathway" ;
+    rdfs:range alskb:Pathway ;
+    skos:definition "Referenced Reactome pathway entity in an association record." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:has_phenotype a owl:ObjectProperty ;
+    rdfs:label "has_phenotype" ;
+    rdfs:range alskb:Phenotype ;
+    skos:definition "Referenced phenotype entity in an association record." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:has_prion_like_domain a owl:DatatypeProperty ;
+    rdfs:label "has_prion_like_domain" ;
+    skos:definition "Contains intrinsically disordered prion-like region" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:hgvs_c a owl:DatatypeProperty ;
+    rdfs:label "hgvs_c" ;
+    skos:definition "HGVS coding sequence notation (e.g. c.10A>G)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:hgvs_p a owl:DatatypeProperty ;
+    rdfs:label "hgvs_p" ;
+    skos:definition "HGVS protein notation (e.g. p.Ala4Val)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:icd10_code a owl:DatatypeProperty ;
+    rdfs:label "icd10_code" ;
+    skos:definition "ICD-10-CM code for billing/clinical use" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:id a owl:DatatypeProperty ;
+    rdfs:label "id" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Persistent unique identifier (IRI)",
+        "Unique identifier (IRI or URI)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:inchi_key a owl:DatatypeProperty ;
+    rdfs:label "inchi_key" ;
+    skos:definition "Standard InChIKey hash" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:indication a owl:DatatypeProperty ;
+    rdfs:label "indication" ;
+    skos:definition "Clinical indication" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:inheritance_mode a owl:DatatypeProperty ;
+    rdfs:label "inheritance_mode" ;
+    skos:definition "autosomal_dominant, autosomal_recessive, X_linked, mitochondrial, complex, or unknown" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:interaction_score a owl:DatatypeProperty ;
+    rdfs:label "interaction_score" ;
+    skos:definition "Source-specific confidence score such as STRING combined score" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:interaction_type a owl:DatatypeProperty ;
+    rdfs:label "interaction_type" ;
+    skos:definition "direct, indirect, physical, genetic, colocalization, pathway, or predicted" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:is_obsolete a owl:DatatypeProperty ;
+    rdfs:label "is_obsolete" ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Deprecation flag",
+        "Whether this entity is deprecated/obsolete" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:label a owl:DatatypeProperty ;
+    rdfs:label "label" ;
+    rdfs:range xsd:string ;
+    skos:definition "Human-readable label for the entity",
+        "Preferred human-readable label" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:log2_fold_change a owl:DatatypeProperty ;
+    rdfs:label "log2_fold_change" ;
+    skos:definition "Differential expression log2 fold change when available" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:maf a owl:DatatypeProperty ;
+    rdfs:label "maf" ;
+    skos:definition "Minor allele frequency in gnomAD non-neuro cohort" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:median_survival_months a owl:DatatypeProperty ;
+    rdfs:label "median_survival_months" ;
+    skos:definition "Median survival from symptom onset" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:molecular_weight_kda a owl:DatatypeProperty ;
+    rdfs:label "molecular_weight_kda" ;
+    skos:definition "Molecular weight in kDa" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:n_patients a owl:DatatypeProperty ;
+    rdfs:label "n_patients" ;
+    skos:definition "Number of patients in subtype" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:name a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    skos:definition "Disease name (preferred from MONDO)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:ncbi_gene_id a owl:DatatypeProperty ;
+    rdfs:label "ncbi_gene_id" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:omim_id a owl:DatatypeProperty ;
+    rdfs:label "omim_id" ;
+    skos:definition "OMIM (Online Mendelian Inheritance in Man) ID" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:orphanet_id a owl:DatatypeProperty ;
+    rdfs:label "orphanet_id" ;
+    skos:definition "Orphanet rare disease identifier" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:outcome_measure a owl:DatatypeProperty ;
+    rdfs:label "outcome_measure" ;
+    skos:definition "ALSFRS-R, survival, respiratory function, biomarker, or other endpoint" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:p_value a owl:DatatypeProperty ;
+    rdfs:label "p_value" ;
+    skos:definition "Statistical significance when available" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:pathway_definition a owl:DatatypeProperty ;
+    rdfs:label "pathway_definition" ;
+    skos:definition "Reactome pathway description or summary when available" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:pathway_name a owl:DatatypeProperty ;
+    rdfs:label "pathway_name" ;
+    skos:definition "Standard Reactome pathway name" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:pathway_role a owl:DatatypeProperty ;
+    rdfs:label "pathway_role" ;
+    skos:definition "participant, catalyst, regulator, input, output, or member, when this detail is available" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:penetrance a owl:DatatypeProperty ;
+    rdfs:label "penetrance" ;
+    skos:definition "Complete, reduced, age-dependent, or unknown penetrance" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:population a owl:DatatypeProperty ;
+    rdfs:label "population" ;
+    skos:definition "Population, geography, occupation, or cohort context" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:predicted_effect a owl:DatatypeProperty ;
+    rdfs:label "predicted_effect" ;
+    skos:definition "loss_of_function, gain_of_function, dominant_negative, aggregation_prone, no_change, or unknown" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:process_name a owl:DatatypeProperty ;
+    rdfs:label "process_name" ;
+    skos:definition "Standard process name from GO" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:protein_1 a owl:ObjectProperty ;
+    rdfs:label "protein_1" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:protein_2 a owl:ObjectProperty ;
+    rdfs:label "protein_2" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:protein_family a owl:DatatypeProperty ;
+    rdfs:label "protein_family" ;
+    skos:definition "Protein family classification (Pfam)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:protein_name a owl:DatatypeProperty ;
+    rdfs:label "protein_name" ;
+    skos:definition "Protein name (UniProt recommended name)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:reactome_evidence_code a owl:DatatypeProperty ;
+    rdfs:label "reactome_evidence_code" ;
+    skos:definition "Reactome evidence code or inferred/electronic/manual annotation category when available" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:reactome_id a owl:DatatypeProperty ;
+    rdfs:label "reactome_id" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:regulation_type a owl:DatatypeProperty ;
+    rdfs:label "regulation_type" ;
+    skos:definition "activation, repression, bidirectional, context_dependent, or unknown" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:rsid a owl:DatatypeProperty ;
+    rdfs:label "rsid" ;
+    skos:definition "dbSNP reference SNP ID" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:shared_mechanism a owl:DatatypeProperty ;
+    rdfs:label "shared_mechanism" ;
+    skos:definition "Shared biological mechanism, pathway, or clinical rationale" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:similarity_score a owl:DatatypeProperty ;
+    rdfs:label "similarity_score" ;
+    skos:definition "Semantic similarity or clinical overlap score from 0 to 1" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:smiles a owl:DatatypeProperty ;
+    rdfs:label "smiles" ;
+    skos:definition "Canonical SMILES string" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:source_publication a owl:DatatypeProperty ;
+    rdfs:label "source_publication" ;
+    skos:definition "DOI or PMID reference" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:specificity_index a owl:DatatypeProperty ;
+    rdfs:label "specificity_index" ;
+    skos:definition "Tissue-specificity score from 0 to 1" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:subtype_id a owl:DatatypeProperty ;
+    rdfs:label "subtype_id" ;
+    skos:definition "Custom subtype identifier" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:target a owl:ObjectProperty ;
+    rdfs:label "target" ;
+    skos:definition "Gene or protein target" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:target_gene a owl:ObjectProperty ;
+    rdfs:label "target_gene" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:tf_family a owl:DatatypeProperty ;
+    rdfs:label "tf_family" ;
+    skos:definition "Structural family (C2H2-ZF, bHLH, Homeodomain, etc.)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:transcription_factor a owl:ObjectProperty ;
+    rdfs:label "transcription_factor" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:trial_status a owl:DatatypeProperty ;
+    rdfs:label "trial_status" ;
+    skos:definition "Highest clinical trial phase reached" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:uberon_id a owl:DatatypeProperty ;
+    rdfs:label "uberon_id" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:umls_cui a owl:DatatypeProperty ;
+    rdfs:label "umls_cui" ;
+    skos:definition "UMLS Concept Unique Identifier" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:uniprot_id a owl:DatatypeProperty ;
+    rdfs:label "uniprot_id" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:variant_type a owl:ObjectProperty ;
+    rdfs:label "variant_type" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:Anatomy a owl:Class ;
+    rdfs:label "Anatomy" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:bto_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:uberon_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:mesh_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:anatomical_system ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:mesh_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:anatomical_system ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:bto_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:anatomical_system ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:bto_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:uberon_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:uberon_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:mesh_id ],
+        alskb:OntologyClass ;
+    skos:definition "Anatomical structure (UBERON ontology). ALS-specific relevance: motor cortex, spinal cord, anterior horn cells, neuromuscular junction. Linked to gene expression and disease manifestation." ;
+    skos:exactMatch biolink:AnatomicalEntity ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:BiologicalConcept a owl:Class ;
+    rdfs:label "BiologicalConcept" ;
+    rdfs:subClassOf alskb:OntologyClass ;
+    skos:definition "Abstract base for functional/biological concepts from GO and related ontologies. Represents processes, functions, and compartments involved in ALS pathology." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:DiseaseTypeEnum a owl:Class ;
+    rdfs:label "DiseaseTypeEnum" ;
+    owl:unionOf ( <https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#sporadic> <https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#familial> <https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#syndromic> ) ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> ;
+    linkml:permissible_values <https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#familial>,
+        <https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#sporadic>,
+        <https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum#syndromic> .
+
+alskb:Drug a owl:Class ;
+    rdfs:label "Drug" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:inchi_key ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:indication ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty alskb:als_approved ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:drugbank_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:chembl_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:indication ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:drug_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:drug_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:chembl_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:drug_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:drugbank_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:indication ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:smiles ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:trial_status ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:inchi_key ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:smiles ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:als_approved ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:als_approved ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:drugbank_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:drug_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:drug_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:inchi_key ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:drug_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:trial_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:smiles ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:chembl_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:mechanism ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:trial_status ],
+        alskb:ChemicalEntity ;
+    skos:definition "Pharmaceutical compound (DrugBank model). ALS-approved drugs: Riluzole, Edaravone, Tofersen, AMX0035. Includes mechanism, targets, side effects." ;
+    skos:exactMatch biolink:Drug ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:GeneTypeEnum a owl:Class ;
+    rdfs:label "GeneTypeEnum" ;
+    owl:unionOf ( <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#protein_coding> <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#lncRNA> <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#miRNA> <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#pseudogene> <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#other> ) ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> ;
+    linkml:permissible_values <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#lncRNA>,
+        <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#miRNA>,
+        <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#other>,
+        <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#protein_coding>,
+        <https://cair2015.github.io/als-kg/elements/GeneTypeEnum#pseudogene> .
+
+alskb:MolecularEntity a owl:Class ;
+    rdfs:label "MolecularEntity" ;
+    rdfs:subClassOf alskb:OntologyClass ;
+    skos:definition "Abstract base for molecular-level entities (genes, proteins, variants). Directly related to disease mechanisms via molecular interactions." ;
+    skos:exactMatch biolink:MolecularEntity ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:OntologyClass a owl:Class ;
+    rdfs:label "OntologyClass" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:source_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:source_version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:source_version ],
+        alskb:NamedEntity ;
+    skos:definition "Abstract base for entity classes (nodes in knowledge graph). Inherits from NamedEntity with semantic web compatible metadata." ;
+    skos:exactMatch owl:Class ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:Variant a owl:Class ;
+    rdfs:label "Variant" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:clinical_significance ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:variant_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:variant_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:hgvs_p ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:VariantTypeEnum ;
+            owl:onProperty alskb:variant_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:hgvs_p ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:maf ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:hgvs_c ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:hgvs_c ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:rsid ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:clinical_significance ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:clinvar_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:als_class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:als_class ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:als_class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:rsid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:hgvs_c ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:rsid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:clinvar_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:clinvar_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:hgvs_p ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:float ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0e+00 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:float ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 1e+00 ] ) ] ) ] ;
+            owl:onProperty alskb:maf ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:maf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:clinical_significance ],
+        alskb:MolecularEntity ;
+    skos:definition "Genetic sequence variant (ClinVar model). Includes SNVs, indels, repeat expansions (C9orf72), and structural variants. Links to genes, proteins, and disease associations." ;
+    skos:exactMatch biolink:SequenceVariant ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:VariantTypeEnum a owl:Class ;
+    rdfs:label "VariantTypeEnum" ;
+    owl:unionOf ( <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#SNV> <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#indel> <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#repeat_expansion> <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#CNV> <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#structural> ) ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> ;
+    linkml:permissible_values <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#CNV>,
+        <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#SNV>,
+        <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#indel>,
+        <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#repeat_expansion>,
+        <https://cair2015.github.io/als-kg/elements/VariantTypeEnum#structural> .
+
+alskb:assay a owl:DatatypeProperty .
+
+alskb:clinical_significance a owl:DatatypeProperty .
+
+alskb:cohort a owl:DatatypeProperty .
+
+alskb:confidence a owl:DatatypeProperty ;
+    rdfs:label "confidence" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:intersectionOf ( xsd:float [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:float ;
+                        owl:withRestrictions ( [ xsd:minInclusive 0e+00 ] ) ] [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:float ;
+                        owl:withRestrictions ( [ xsd:maxInclusive 1e+00 ] ) ] ) ] ;
+    skos:definition "Confidence or quality score (0.0-1.0)" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:evidence_source a owl:DatatypeProperty ;
+    rdfs:label "evidence_source" ;
+    rdfs:range xsd:string ;
+    skos:definition "Specific study/publication supporting the statement" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:evidence_type a owl:DatatypeProperty,
+        owl:ObjectProperty ;
+    rdfs:label "evidence_type" ;
+    rdfs:range alskb:EvidenceTypeEnum ;
+    skos:definition "Type of evidence supporting relationship",
+        "Type of supporting evidence" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:frequency a owl:DatatypeProperty .
+
+alskb:has_drug a owl:ObjectProperty ;
+    rdfs:label "has_drug" ;
+    rdfs:range alskb:Drug ;
+    skos:definition "Referenced drug entity in an association record." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:has_gene a owl:ObjectProperty ;
+    rdfs:label "has_gene" ;
+    rdfs:range alskb:Gene ;
+    skos:definition "Referenced gene entity in an association record." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:has_protein a owl:ObjectProperty ;
+    rdfs:label "has_protein" ;
+    rdfs:range alskb:Protein ;
+    skos:definition "Referenced protein entity in an association record." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:has_variant a owl:ObjectProperty ;
+    rdfs:label "has_variant" ;
+    rdfs:range alskb:Variant ;
+    skos:definition "Referenced variant entity in an association record." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:hgnc_symbol a owl:DatatypeProperty .
+
+alskb:hpo_id a owl:DatatypeProperty .
+
+alskb:last_updated a owl:DatatypeProperty ;
+    rdfs:label "last_updated" ;
+    rdfs:range xsd:date ;
+    skos:definition "Date this association was last modified",
+        "Last modification date",
+        "Last modification timestamp" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:mesh_id a owl:DatatypeProperty .
+
+alskb:mondo_id a owl:DatatypeProperty .
+
+alskb:object a owl:DatatypeProperty ;
+    rdfs:label "object" ;
+    rdfs:range xsd:string ;
+    skos:definition "Object entity IRI or CURIE used to materialize a direct edge",
+        "Object of the relationship (resource IRI)",
+        "Object resource IRI" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:odds_ratio a owl:DatatypeProperty .
+
+alskb:onset_type a owl:ObjectProperty .
+
+alskb:relation_type a owl:DatatypeProperty .
+
+alskb:severity a owl:DatatypeProperty .
+
+alskb:source_version a owl:DatatypeProperty ;
+    rdfs:label "source_version" ;
+    rdfs:range xsd:string ;
+    skos:definition "Data source version or release date",
+        "Source database/ontology version",
+        "Source version or release date" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:species a owl:DatatypeProperty .
+
+alskb:subject a owl:DatatypeProperty ;
+    rdfs:label "subject" ;
+    rdfs:range xsd:string ;
+    skos:definition "Subject entity IRI or CURIE used to materialize a direct edge",
+        "Subject of the relationship (resource IRI)",
+        "Subject resource IRI" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:tissue_or_cell_type a owl:DatatypeProperty .
+
+alskb:EvidenceTypeEnum a owl:Class ;
+    rdfs:label "EvidenceTypeEnum" ;
+    owl:unionOf ( <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#curated> <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#experimental> <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#computational> <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#inferred> <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#predicted> <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#text_mined> ) ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> ;
+    linkml:permissible_values <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#computational>,
+        <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#curated>,
+        <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#experimental>,
+        <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#inferred>,
+        <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#predicted>,
+        <https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum#text_mined> .
+
+alskb:OnsetTypeEnum a owl:Class ;
+    rdfs:label "OnsetTypeEnum" ;
+    owl:unionOf ( <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#bulbar> <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#limb> <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#respiratory> <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#generalized> <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#unknown> ) ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> ;
+    linkml:permissible_values <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#bulbar>,
+        <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#generalized>,
+        <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#limb>,
+        <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#respiratory>,
+        <https://cair2015.github.io/als-kg/elements/OnsetTypeEnum#unknown> .
+
+alskb:association_type a owl:DatatypeProperty .
+
+alskb:go_definition a owl:DatatypeProperty ;
+    rdfs:label "go_definition" ;
+    skos:definition "GO textual definition" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:go_id a owl:DatatypeProperty .
+
+alskb:ingest_date a owl:DatatypeProperty ;
+    rdfs:label "ingest_date" ;
+    rdfs:range xsd:date ;
+    skos:definition "Date of ETL ingest" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:mechanism a owl:DatatypeProperty .
+
+alskb:source a owl:DatatypeProperty ;
+    rdfs:label "source" ;
+    rdfs:range xsd:string ;
+    skos:definition "Data source for this association",
+        "Data source for this relationship",
+        "Data source name",
+        "Original source/database" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:RelationshipTypeEnum a owl:Class ;
+    rdfs:label "RelationshipTypeEnum" ;
+    owl:unionOf ( <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#is_a> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#part_of> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#proper_part_of> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#participates_in> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#has_participant> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#regulates> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#positively_regulates> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#negatively_regulates> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#associated_with> <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#affects> ) ;
+    skos:definition "Standard relationship types following RDF/OWL semantics" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> ;
+    linkml:permissible_values <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#affects>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#associated_with>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#has_participant>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#is_a>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#negatively_regulates>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#part_of>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#participates_in>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#positively_regulates>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#proper_part_of>,
+        <https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum#regulates> .
+
+alskb:Gene a owl:Class ;
+    rdfs:label "Gene" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:ncbi_gene_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty alskb:genomic_pos_end ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:genomic_pos_start ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:chromosome ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:als_risk_tier ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:hgnc_symbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:ensembl_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:genomic_pos_end ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:ncbi_gene_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:ncbi_gene_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:hgnc_symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty alskb:genomic_pos_start ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:chromosome ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:genomic_pos_end ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:chromosome ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:als_risk_tier ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:genomic_pos_start ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:ensembl_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:hgnc_symbol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:ensembl_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:als_risk_tier ],
+        alskb:MolecularEntity ;
+    skos:definition "Human gene entity (Entrez/NCBI model). Separate from protein product to properly distinguish genotype from phenotype. Key ALS genes: C9orf72, SOD1, TARDBP, FUS, TBK1, NEK1, SQSTM1, VCP, OPTN." ;
+    skos:exactMatch biolink:Gene ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:Protein a owl:Class ;
+    rdfs:label "Protein" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:subcellular_location ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:protein_family ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:molecular_weight_kda ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:has_prion_like_domain ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:molecular_weight_kda ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty alskb:aggregation_prone ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:subcellular_location ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:hgnc_symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:hgnc_symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:protein_family ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:uniprot_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:protein_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty alskb:has_prion_like_domain ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:protein_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:has_prion_like_domain ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty alskb:molecular_weight_kda ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:hgnc_symbol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:protein_family ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:aggregation_prone ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:aggregation_prone ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:uniprot_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:uniprot_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:protein_name ],
+        alskb:MolecularEntity ;
+    skos:definition "Protein product (UniProt model). Distinct from Gene entity to capture protein-specific properties: aggregation propensity, prion-like domains, subcellular localization." ;
+    skos:exactMatch biolink:Protein ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:Association a owl:Class ;
+    rdfs:label "Association" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:object ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:association_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:association_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:association_label ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:evidence_source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:source_version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:evidence_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:confidence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:evidence_source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:last_updated ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:confidence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty alskb:association_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:association_label ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:last_updated ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:source_version ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:association_label ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:object ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:evidence_source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:last_updated ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:subject ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:subject ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:subject ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:predicate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:source_version ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:confidence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:evidence_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:evidence_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:ingest_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:predicate ],
+        alskb:Relationship ;
+    skos:definition "Abstract base for optional evidence-bearing associations. Use when a relationship cannot be represented sufficiently by a direct object property because the edge needs provenance, evidence, confidence, or additional qualifiers. The subject/predicate/object fields allow the association to be materialized as an RDF triple or property-graph edge." ;
+    skos:exactMatch biolink:Association ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:has_disease a owl:ObjectProperty ;
+    rdfs:label "has_disease" ;
+    rdfs:range alskb:Disease ;
+    skos:definition "Referenced disease entity in an association record." ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:Disease a owl:Class ;
+    rdfs:label "Disease" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:icd10_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:mondo_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:mondo_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:omim_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:omim_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:umls_cui ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:onset_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:orphanet_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:orphanet_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:disease_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:orphanet_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:icd10_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:umls_cui ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:icd10_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty alskb:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty alskb:mondo_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:umls_cui ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:OnsetTypeEnum ;
+            owl:onProperty alskb:onset_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:onset_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:omim_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty alskb:disease_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom alskb:DiseaseTypeEnum ;
+            owl:onProperty alskb:disease_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty alskb:name ],
+        alskb:DiseaseOrPhenotype ;
+    skos:definition "Disease entity. Encompasses ALS (MONDO:0007743), related neurodegenerative disorders (FTD, PLS, PMA, SMA), and comorbidities. Follows MONDO disease hierarchy via is_a relationships." ;
+    skos:exactMatch biolink:Disease ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+alskb:predicate a owl:DatatypeProperty ;
+    rdfs:label "predicate" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Direct object property represented by this association",
+        "Predicate / property type IRI",
+        "Relationship type IRI" ;
+    skos:inScheme <https://alskb.org/ontology/als_kg> .
+
+xsd:string a rdfs:Datatype ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^GO:\\d{7}$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^Reactome:R-HSA-\\d+(\\.\\d+)?$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^UBERON:\\d+$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^\\d+$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^MONDO:\\d{7}$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^HP:\\d{7}$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^[A-Z0-9]{6}$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^DB\\d{5}$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^\\d+$" ] ) ] .
+
+
