@@ -1,0 +1,9 @@
+id: http://purl.obolibrary.org/obo/MONDO_0007739
+label: amyotrophic lateral sclerosis
+definition: A progressive neurodegenerative disease affecting upper and lower motor neurons.
+mondo_id: MONDO:0007739
+name: amyotrophic lateral sclerosis
+disease_type: sporadic
+onset_type: limb
+umls_cui: C0002736
+omim_id: "105400"

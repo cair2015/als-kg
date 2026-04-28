@@ -1,0 +1,10 @@
+id: https://www.ncbi.nlm.nih.gov/gene/6647
+label: SOD1
+definition: Superoxide dismutase 1, a well-established ALS-associated gene.
+ncbi_gene_id: "6647"
+hgnc_symbol: SOD1
+ensembl_id: ENSG00000142168
+chromosome: 21q22.11
+genomic_pos_start: 31631644
+genomic_pos_end: 31641526
+als_risk_tier: definitive

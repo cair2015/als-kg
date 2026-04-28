@@ -1,8 +1,8 @@
 # Auto generated from als_kg.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-28T14:41:28
+# Generation date: 2026-04-28T16:20:16
 # Schema: als_kg
 #
-# id: https://alskb.org/ontology/als_kg
+# id: https://cair2015.github.io/als-kg
 # description: Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Uses a local default namespace for ALS-specific classes and slots, explicit Biolink/ontology URIs only for externally defined concepts and predicates, direct object properties for canonical KG edges, and optional evidence-bearing association classes for provenance-rich statements.
 # license: MIT
 

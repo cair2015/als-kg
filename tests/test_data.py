@@ -24,3 +24,15 @@ def test_valid_data_files(filepath):
     )
     obj = yaml_loader.load(filepath, target_class=tgt_class)
     assert obj
+
+
+@pytest.mark.parametrize("filepath", INVALID_EXAMPLE_FILES)
+def test_invalid_data_files(filepath):
+    """Test invalid data files fail to load against the target class."""
+    target_class_name = Path(filepath).stem.split("-")[0]
+    tgt_class = getattr(
+        als_kg.datamodel.als_kg,
+        target_class_name,
+    )
+    with pytest.raises(Exception):
+        yaml_loader.load(filepath, target_class=tgt_class)

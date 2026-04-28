@@ -84,7 +84,7 @@ linkml_meta = LinkMLMeta({'comments': ['Reactome pathways are modeled as Pathway
                     'properties for canonical KG edges, and optional '
                     'evidence-bearing association classes for provenance-rich '
                     'statements.',
-     'id': 'https://alskb.org/ontology/als_kg',
+     'id': 'https://cair2015.github.io/als-kg',
      'imports': ['linkml:types'],
      'license': 'MIT',
      'name': 'als_kg',
@@ -167,46 +167,46 @@ linkml_meta = LinkMLMeta({'comments': ['Reactome pathways are modeled as Pathway
      'source_file': 'src/als_kg/schema/als_kg.yaml',
      'title': 'ALS Knowledge Graph Ontology Model',
      'types': {'ClinvarIdentifier': {'description': 'ClinVar variation numeric ID',
-                                     'from_schema': 'https://alskb.org/ontology/als_kg',
+                                     'from_schema': 'https://cair2015.github.io/als-kg',
                                      'name': 'ClinvarIdentifier',
                                      'pattern': '^\\d+$',
                                      'typeof': 'string',
                                      'uri': 'xsd:string'},
                'CtdIdentifier': {'description': 'CTD chemical/stressor identifier',
-                                 'from_schema': 'https://alskb.org/ontology/als_kg',
+                                 'from_schema': 'https://cair2015.github.io/als-kg',
                                  'name': 'CtdIdentifier',
                                  'typeof': 'string',
                                  'uri': 'xsd:string'},
                'DrugBankIdentifier': {'description': 'DrugBank primary identifier '
                                                      '(e.g. DB00533)',
-                                      'from_schema': 'https://alskb.org/ontology/als_kg',
+                                      'from_schema': 'https://cair2015.github.io/als-kg',
                                       'name': 'DrugBankIdentifier',
                                       'pattern': '^DB\\d{5}$',
                                       'typeof': 'string',
                                       'uri': 'xsd:string'},
                'GoIdentifier': {'description': 'Gene Ontology term identifier '
                                                '(e.g. GO:0006810)',
-                                'from_schema': 'https://alskb.org/ontology/als_kg',
+                                'from_schema': 'https://cair2015.github.io/als-kg',
                                 'name': 'GoIdentifier',
                                 'pattern': '^GO:\\d{7}$',
                                 'typeof': 'string',
                                 'uri': 'xsd:string'},
                'HpoIdentifier': {'description': 'HPO phenotype term identifier '
                                                 '(e.g. HP:0007354)',
-                                 'from_schema': 'https://alskb.org/ontology/als_kg',
+                                 'from_schema': 'https://cair2015.github.io/als-kg',
                                  'name': 'HpoIdentifier',
                                  'pattern': '^HP:\\d{7}$',
                                  'typeof': 'string',
                                  'uri': 'xsd:string'},
                'MondoIdentifier': {'description': 'MONDO disease ontology '
                                                   'identifier (e.g. MONDO:0007743)',
-                                   'from_schema': 'https://alskb.org/ontology/als_kg',
+                                   'from_schema': 'https://cair2015.github.io/als-kg',
                                    'name': 'MondoIdentifier',
                                    'pattern': '^MONDO:\\d{7}$',
                                    'typeof': 'string',
                                    'uri': 'xsd:string'},
                'NcbiGeneIdentifier': {'description': 'NCBI Entrez Gene numeric ID',
-                                      'from_schema': 'https://alskb.org/ontology/als_kg',
+                                      'from_schema': 'https://cair2015.github.io/als-kg',
                                       'name': 'NcbiGeneIdentifier',
                                       'pattern': '^\\d+$',
                                       'typeof': 'string',
@@ -214,20 +214,20 @@ linkml_meta = LinkMLMeta({'comments': ['Reactome pathways are modeled as Pathway
                'ReactomeIdentifier': {'description': 'Reactome stable pathway '
                                                      'identifier as a CURIE (e.g. '
                                                      'Reactome:R-HSA-5673001)',
-                                      'from_schema': 'https://alskb.org/ontology/als_kg',
+                                      'from_schema': 'https://cair2015.github.io/als-kg',
                                       'name': 'ReactomeIdentifier',
                                       'pattern': '^Reactome:R-HSA-\\d+(\\.\\d+)?$',
                                       'typeof': 'string',
                                       'uri': 'xsd:string'},
                'UberonIdentifier': {'description': 'UBERON anatomy ontology '
                                                    'identifier',
-                                    'from_schema': 'https://alskb.org/ontology/als_kg',
+                                    'from_schema': 'https://cair2015.github.io/als-kg',
                                     'name': 'UberonIdentifier',
                                     'pattern': '^UBERON:\\d+$',
                                     'typeof': 'string',
                                     'uri': 'xsd:string'},
                'UniprotIdentifier': {'description': 'UniProt accession identifier',
-                                     'from_schema': 'https://alskb.org/ontology/als_kg',
+                                     'from_schema': 'https://cair2015.github.io/als-kg',
                                      'name': 'UniprotIdentifier',
                                      'pattern': '^[A-Z0-9]{6}$',
                                      'typeof': 'string',
@@ -382,7 +382,7 @@ class NamedEntity(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'class_uri': 'biolink:NamedThing',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     id: str = Field(default=..., description="""Persistent unique identifier (IRI)""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'slot_uri': 'schema:identifier'} })
     label: str = Field(default=..., description="""Preferred human-readable label""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'slot_uri': 'rdfs:label'} })
@@ -404,7 +404,7 @@ class OntologyClass(NamedEntity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'class_uri': 'owl:Class',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     source_version: Optional[str] = Field(default=None, description="""Source database/ontology version""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass', 'Association'],
          'slot_uri': 'dcterms:hasVersion'} })
@@ -429,7 +429,7 @@ class Relationship(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'class_uri': 'rdf:Statement',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     subject: str = Field(default=..., description="""Subject resource IRI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Relationship', 'Association'], 'slot_uri': 'rdf:subject'} })
     predicate: str = Field(default=..., description="""Relationship type IRI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Relationship',
@@ -462,7 +462,7 @@ class DiseaseOrPhenotype(OntologyClass):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'class_uri': 'biolink:DiseaseOrPhenotypicFeature',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     mondo_id: Optional[str] = Field(default=None, description="""MONDO cross-reference""", json_schema_extra = { "linkml_meta": {'domain_of': ['DiseaseOrPhenotype', 'Disease']} })
     hpo_id: Optional[str] = Field(default=None, description="""HPO cross-reference""", json_schema_extra = { "linkml_meta": {'domain_of': ['DiseaseOrPhenotype', 'Phenotype']} })
@@ -488,7 +488,7 @@ class Disease(DiseaseOrPhenotype):
     Disease entity. Encompasses ALS (MONDO:0007743), related neurodegenerative disorders (FTD, PLS, PMA, SMA), and comorbidities. Follows MONDO disease hierarchy via is_a relationships.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:Disease',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     mondo_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseaseOrPhenotype', 'Disease']} })
     name: Optional[str] = Field(default=None, description="""Disease name (preferred from MONDO)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Disease'], 'slot_uri': 'schema:name'} })
@@ -521,7 +521,7 @@ class Phenotype(DiseaseOrPhenotype):
     Phenotypic feature (HPO term). Represents observable/measurable characteristics associated with diseases. Distinct from drug side effects which are modeled via DrugCausesPhenotype relationships.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:PhenotypicFeature',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     hpo_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseaseOrPhenotype', 'Phenotype']} })
     frequency: Optional[str] = Field(default=None, description="""Frequency of phenotype in affected individuals (e.g. Frequent 75-99%)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Phenotype', 'DiseasePhenotypeAssociation']} })
@@ -549,7 +549,7 @@ class Anatomy(OntologyClass):
     Anatomical structure (UBERON ontology). ALS-specific relevance: motor cortex, spinal cord, anterior horn cells, neuromuscular junction. Linked to gene expression and disease manifestation.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:AnatomicalEntity',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     uberon_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Anatomy']} })
     bto_id: Optional[str] = Field(default=None, description="""Brenda Tissue Ontology ID""", json_schema_extra = { "linkml_meta": {'domain_of': ['Anatomy']} })
@@ -578,7 +578,7 @@ class MolecularEntity(OntologyClass):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'class_uri': 'biolink:MolecularEntity',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     source_version: Optional[str] = Field(default=None, description="""Source database/ontology version""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass', 'Association'],
          'slot_uri': 'dcterms:hasVersion'} })
@@ -602,7 +602,7 @@ class Gene(MolecularEntity):
     Human gene entity (Entrez/NCBI model). Separate from protein product to properly distinguish genotype from phenotype. Key ALS genes: C9orf72, SOD1, TARDBP, FUS, TBK1, NEK1, SQSTM1, VCP, OPTN.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:Gene',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     ncbi_gene_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Gene']} })
     hgnc_symbol: Optional[str] = Field(default=None, description="""Official HGNC gene symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['Gene', 'Protein']} })
@@ -632,7 +632,7 @@ class TranscriptionFactor(Gene):
     """
     Gene encoding a transcription factor (TF). Subclass of Gene, carries both :Gene and :TranscriptionFactor labels. Source: DoRothEA + ENCODE TF annotations.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     tf_family: Optional[str] = Field(default=None, description="""Structural family (C2H2-ZF, bHLH, Homeodomain, etc.)""", json_schema_extra = { "linkml_meta": {'domain_of': ['TranscriptionFactor']} })
     dorothea_confidence: Optional[str] = Field(default=None, description="""DoRothEA confidence level (A=high, D=low)""", json_schema_extra = { "linkml_meta": {'domain_of': ['TranscriptionFactor']} })
@@ -665,7 +665,7 @@ class Protein(MolecularEntity):
     Protein product (UniProt model). Distinct from Gene entity to capture protein-specific properties: aggregation propensity, prion-like domains, subcellular localization.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:Protein',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     uniprot_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Protein'], 'slot_uri': 'UniProtKB:'} })
     protein_name: Optional[str] = Field(default=None, description="""Protein name (UniProt recommended name)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Protein'], 'slot_uri': 'schema:name'} })
@@ -697,7 +697,7 @@ class Variant(MolecularEntity):
     Genetic sequence variant (ClinVar model). Includes SNVs, indels, repeat expansions (C9orf72), and structural variants. Links to genes, proteins, and disease associations.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:SequenceVariant',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     clinvar_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Variant']} })
     rsid: Optional[str] = Field(default=None, description="""dbSNP reference SNP ID""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variant']} })
@@ -730,7 +730,7 @@ class ChemicalEntity(OntologyClass):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'class_uri': 'biolink:ChemicalEntity',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     source_version: Optional[str] = Field(default=None, description="""Source database/ontology version""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass', 'Association'],
          'slot_uri': 'dcterms:hasVersion'} })
@@ -754,7 +754,7 @@ class Drug(ChemicalEntity):
     Pharmaceutical compound (DrugBank model). ALS-approved drugs: Riluzole, Edaravone, Tofersen, AMX0035. Includes mechanism, targets, side effects.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:Drug',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     drugbank_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Drug']} })
     drug_name: Optional[str] = Field(default=None, description="""Preferred drug name""", json_schema_extra = { "linkml_meta": {'domain_of': ['Drug'], 'slot_uri': 'schema:name'} })
@@ -788,7 +788,7 @@ class ExposureOrStressor(ChemicalEntity):
     Environmental exposure or chemical stressor from CTD ontology. ALS-relevant: BMAA, organophosphate pesticides, heavy metals, solvents.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:ChemicalSubstance',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     ctd_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureOrStressor']} })
     exposure_name: Optional[str] = Field(default=None, description="""Standard name of exposure/stressor""", json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureOrStressor'], 'slot_uri': 'schema:name'} })
@@ -817,7 +817,7 @@ class BiologicalConcept(OntologyClass):
     """
     Abstract base for functional/biological concepts from GO and related ontologies. Represents processes, functions, and compartments involved in ALS pathology.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://cair2015.github.io/als-kg'})
 
     source_version: Optional[str] = Field(default=None, description="""Source database/ontology version""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass', 'Association'],
          'slot_uri': 'dcterms:hasVersion'} })
@@ -841,7 +841,7 @@ class BiologicalProcess(BiologicalConcept):
     Gene Ontology Biological Process term. ALS-relevant: protein aggregation, oxidative stress, neuroinflammation, axonal transport, neurodegeneration, apoptosis.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:BiologicalProcess',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     go_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['BiologicalProcess', 'MolecularFunction', 'CellularComponent']} })
     process_name: Optional[str] = Field(default=None, description="""Standard process name from GO""", json_schema_extra = { "linkml_meta": {'domain_of': ['BiologicalProcess'], 'slot_uri': 'schema:name'} })
@@ -869,7 +869,7 @@ class MolecularFunction(BiologicalConcept):
     Gene Ontology Molecular Function term. Describes biochemical activities (catalytic, binding, etc.) performed by gene products.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:MolecularActivity',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     go_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['BiologicalProcess', 'MolecularFunction', 'CellularComponent']} })
     function_name: Optional[str] = Field(default=None, description="""Molecular function name from GO""", json_schema_extra = { "linkml_meta": {'domain_of': ['MolecularFunction'], 'slot_uri': 'schema:name'} })
@@ -897,7 +897,7 @@ class CellularComponent(BiologicalConcept):
     Gene Ontology Cellular Component term. ALS-critical compartments: stress granule, P-body, cytoplasm, nucleus, axon, neuromuscular junction, mitochondrion.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:CellularComponent',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     go_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['BiologicalProcess', 'MolecularFunction', 'CellularComponent']} })
     component_name: Optional[str] = Field(default=None, description="""Cellular component name from GO""", json_schema_extra = { "linkml_meta": {'domain_of': ['CellularComponent'], 'slot_uri': 'schema:name'} })
@@ -925,7 +925,7 @@ class Pathway(BiologicalConcept):
     Reactome pathway entity representing a curated biological pathway or reaction-level pathway context relevant to ALS mechanisms, including neuroinflammation, RNA metabolism, protein homeostasis, mitochondrial dysfunction, and axonal transport.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'biolink:Pathway',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     reactome_id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['Pathway']} })
     pathway_name: Optional[str] = Field(default=None, description="""Standard Reactome pathway name""", json_schema_extra = { "linkml_meta": {'domain_of': ['Pathway'], 'slot_uri': 'schema:name'} })
@@ -953,7 +953,7 @@ class DiseaseSubtype(Disease):
     """
     Molecularly-defined disease subtype derived from clustering analysis (transcriptomics, proteomics, multi-omics). Represents cohort stratification. Links to Disease via is_a relationship; carries distinct clinical correlates.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     subtype_id: Optional[str] = Field(default=None, description="""Custom subtype identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['DiseaseSubtype']} })
     cluster_method: Optional[str] = Field(default=None, description="""Clustering approach (NMF, WGCNA, scRNA-seq, consensus)""", json_schema_extra = { "linkml_meta": {'domain_of': ['DiseaseSubtype']} })
@@ -996,7 +996,7 @@ class Association(Relationship):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'class_uri': 'biolink:Association',
-         'from_schema': 'https://alskb.org/ontology/als_kg'})
+         'from_schema': 'https://cair2015.github.io/als-kg'})
 
     association_id: Optional[str] = Field(default=None, description="""Stable identifier for the association record""", json_schema_extra = { "linkml_meta": {'domain_of': ['Association'], 'slot_uri': 'schema:identifier'} })
     association_label: Optional[str] = Field(default=None, description="""Human-readable summary of the association""", json_schema_extra = { "linkml_meta": {'domain_of': ['Association'], 'slot_uri': 'rdfs:label'} })
@@ -1032,7 +1032,7 @@ class DiseasePhenotypeAssociation(Association):
     """
     Optional association for Disease -> Phenotype when the clinical feature requires edge metadata such as frequency, onset, severity, source cohort, or evidence. Materializes to disease_manifests_as_phenotype.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     has_disease: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseasePhenotypeAssociation',
                        'GeneDiseaseAssociation',
@@ -1079,7 +1079,7 @@ class GeneDiseaseAssociation(Association):
     """
     Optional association for Gene -> Disease when causal/risk/protective or correlative gene-disease edges need evidence, scores, statistics, or source-specific qualifiers. Materializes to gene_associated_with_disease.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     has_gene: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['GeneDiseaseAssociation', 'GeneExpressionAssociation']} })
     has_disease: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseasePhenotypeAssociation',
@@ -1130,7 +1130,7 @@ class VariantDiseaseAssociation(Association):
     """
     Optional association for Variant -> Disease when variant-level evidence, clinical significance, inheritance, penetrance, or source assertions are needed. Materializes to variant_associated_with_disease.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     has_variant: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['VariantDiseaseAssociation', 'VariantProteinEffectAssociation']} })
     has_disease: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseasePhenotypeAssociation',
@@ -1179,7 +1179,7 @@ class VariantProteinEffectAssociation(Association):
     """
     Optional association for Variant -> Protein when protein consequence, predicted effect, assay result, or functional evidence is needed. Materializes to variant_affects_protein.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     has_variant: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['VariantDiseaseAssociation', 'VariantProteinEffectAssociation']} })
     has_protein: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['VariantProteinEffectAssociation', 'ProteinPathwayAssociation']} })
@@ -1222,7 +1222,7 @@ class ProteinProteinInteractionAssociation(Association):
     """
     Optional association for Protein -> Protein when interaction score, interaction type, database evidence, or assay metadata are needed. Materializes to protein_interacts_with_protein.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     protein_1: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProteinProteinInteractionAssociation']} })
     protein_2: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProteinProteinInteractionAssociation']} })
@@ -1265,7 +1265,7 @@ class ProteinPathwayAssociation(Association):
     """
     Optional association for Protein -> Pathway when Reactome evidence code, source release, pathway hierarchy, species, or annotation provenance are needed. Materializes to protein_participates_in_pathway.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     has_protein: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['VariantProteinEffectAssociation', 'ProteinPathwayAssociation']} })
     has_pathway: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ProteinPathwayAssociation']} })
@@ -1307,7 +1307,7 @@ class DrugTargetAssociation(Association):
     """
     Optional association for Drug -> MolecularEntity when action type, binding affinity, target class, or mechanism evidence is needed. Materializes to drug_targets_molecular_entity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     has_drug: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DrugTargetAssociation', 'DrugDiseaseTherapeuticAssociation']} })
     target: MolecularEntity = Field(default=..., description="""Gene or protein target""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugTargetAssociation']} })
@@ -1349,7 +1349,7 @@ class DrugDiseaseTherapeuticAssociation(Association):
     """
     Optional association for Drug -> Disease when therapeutic indication, approval status, clinical-trial evidence, or outcome metadata are needed. Materializes to drug_treats_or_modulates_disease.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     has_drug: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DrugTargetAssociation', 'DrugDiseaseTherapeuticAssociation']} })
     has_disease: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseasePhenotypeAssociation',
@@ -1397,7 +1397,7 @@ class ExposureDiseaseAssociation(Association):
     """
     Optional association for ExposureOrStressor -> Disease when epidemiology, mechanism, dose, duration, population, or study design metadata are needed. Materializes to exposure_associated_with_disease.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     exposure: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['ExposureDiseaseAssociation']} })
     has_disease: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseasePhenotypeAssociation',
@@ -1447,7 +1447,7 @@ class TranscriptionFactorRegulationAssociation(Association):
     """
     Optional association for TranscriptionFactor -> Gene when direction, confidence, tissue/cell context, or assay evidence are needed. Materializes to transcription_factor_regulates_gene.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     transcription_factor: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['TranscriptionFactorRegulationAssociation']} })
     target_gene: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['TranscriptionFactorRegulationAssociation']} })
@@ -1490,7 +1490,7 @@ class GeneExpressionAssociation(Association):
     """
     Optional association for Gene -> Anatomy when expression level, specificity, tissue, cell type, disease stage, or differential-expression qualifiers are needed. Materializes to gene_expressed_in_anatomy.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     has_gene: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['GeneDiseaseAssociation', 'GeneExpressionAssociation']} })
     has_anatomy: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['GeneExpressionAssociation']} })
@@ -1536,7 +1536,7 @@ class DiseaseDiseaseAssociation(Association):
     """
     Optional association for Disease -> Disease when disease-disease edges need relation type, similarity score, shared mechanism, or comorbidity statistics. Materializes to disease_related_to_disease.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://alskb.org/ontology/als_kg'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://cair2015.github.io/als-kg'})
 
     disease_1: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseaseDiseaseAssociation']} })
     disease_2: str = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['DiseaseDiseaseAssociation']} })
