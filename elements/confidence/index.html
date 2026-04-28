@@ -529,18 +529,18 @@ Alias: confidence</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Relationship/">Relationship</a></td>
-<td>Abstract base for reified relationships (edges with explicit properties)</td>
+<td><a href="../ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
+<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a></td>
-<td>Optional association for Disease -&gt; Phenotype when the clinical feature requi...</td>
+<td><a href="../ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
+<td>Optional association for Protein -&gt; Pathway when Reactome evidence code, sour...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DrugDiseaseTherapeuticAssociation/">DrugDiseaseTherapeuticAssociation</a></td>
-<td>Optional association for Drug -&gt; Disease when therapeutic indication, approva...</td>
+<td><a href="../DrugTargetAssociation/">DrugTargetAssociation</a></td>
+<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -549,8 +549,8 @@ Alias: confidence</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
-<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
+<td><a href="../DrugDiseaseTherapeuticAssociation/">DrugDiseaseTherapeuticAssociation</a></td>
+<td>Optional association for Drug -&gt; Disease when therapeutic indication, approva...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -559,8 +559,13 @@ Alias: confidence</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
-<td>Optional association for Protein -&gt; Pathway when Reactome evidence code, sour...</td>
+<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
+<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Relationship/">Relationship</a></td>
+<td>Abstract base for reified relationships (edges with explicit properties)</td>
 <td>no</td>
 </tr>
 <tr>
@@ -574,13 +579,8 @@ Alias: confidence</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
-<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DrugTargetAssociation/">DrugTargetAssociation</a></td>
-<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
+<td><a href="../DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
+<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -589,13 +589,13 @@ Alias: confidence</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
-<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
+<td><a href="../GeneExpressionAssociation/">GeneExpressionAssociation</a></td>
+<td>Optional association for Gene -&gt; Anatomy when expression level, specificity, ...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../GeneExpressionAssociation/">GeneExpressionAssociation</a></td>
-<td>Optional association for Gene -&gt; Anatomy when expression level, specificity, ...</td>
+<td><a href="../DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a></td>
+<td>Optional association for Disease -&gt; Phenotype when the clinical feature requi...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -656,7 +656,7 @@ Alias: confidence</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://alskb.org/ontology/als_kg</li>
+<li>from schema: https://cair2015.github.io/als-kg</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -681,7 +681,7 @@ Alias: confidence</p>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">confidence</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Confidence or quality score (0.0-1.0)</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://cair2015.github.io/als-kg</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">confidence</span>
 <span class="nt">domain_of</span><span class="p">:</span>

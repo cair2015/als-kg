@@ -529,63 +529,8 @@ Alias: is_obsolete</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExposureOrStressor/">ExposureOrStressor</a></td>
-<td>Environmental exposure or chemical stressor from CTD ontology</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DiseaseSubtype/">DiseaseSubtype</a></td>
-<td>Molecularly-defined disease subtype derived from clustering analysis (transcr...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Phenotype/">Phenotype</a></td>
-<td>Phenotypic feature (HPO term)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MolecularEntity/">MolecularEntity</a></td>
-<td>Abstract base for molecular-level entities (genes, proteins, variants)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../BiologicalConcept/">BiologicalConcept</a></td>
-<td>Abstract base for functional/biological concepts from GO and related ontologi...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../CellularComponent/">CellularComponent</a></td>
-<td>Gene Ontology Cellular Component term</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Drug/">Drug</a></td>
-<td>Pharmaceutical compound (DrugBank model)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Pathway/">Pathway</a></td>
-<td>Reactome pathway entity representing a curated biological pathway or reaction...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protein/">Protein</a></td>
-<td>Protein product (UniProt model)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Gene/">Gene</a></td>
-<td>Human gene entity (Entrez/NCBI model)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DiseaseOrPhenotype/">DiseaseOrPhenotype</a></td>
-<td>Abstract parent class for all disease/phenotype entities</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MolecularFunction/">MolecularFunction</a></td>
-<td>Gene Ontology Molecular Function term</td>
+<td><a href="../Disease/">Disease</a></td>
+<td>Disease entity</td>
 <td>no</td>
 </tr>
 <tr>
@@ -594,23 +539,13 @@ Alias: is_obsolete</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Disease/">Disease</a></td>
-<td>Disease entity</td>
+<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td>Abstract base for chemical and pharmacological entities (drugs, exposures, me...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Anatomy/">Anatomy</a></td>
-<td>Anatomical structure (UBERON ontology)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../BiologicalProcess/">BiologicalProcess</a></td>
-<td>Gene Ontology Biological Process term</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedEntity/">NamedEntity</a></td>
-<td>Root class for all named entities in the ALS-KG ontology</td>
+<td><a href="../BiologicalConcept/">BiologicalConcept</a></td>
+<td>Abstract base for functional/biological concepts from GO and related ontologi...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -619,13 +554,78 @@ Alias: is_obsolete</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Drug/">Drug</a></td>
+<td>Pharmaceutical compound (DrugBank model)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MolecularEntity/">MolecularEntity</a></td>
+<td>Abstract base for molecular-level entities (genes, proteins, variants)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Pathway/">Pathway</a></td>
+<td>Reactome pathway entity representing a curated biological pathway or reaction...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BiologicalProcess/">BiologicalProcess</a></td>
+<td>Gene Ontology Biological Process term</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../OntologyClass/">OntologyClass</a></td>
 <td>Abstract base for entity classes (nodes in knowledge graph)</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>Abstract base for chemical and pharmacological entities (drugs, exposures, me...</td>
+<td><a href="../ExposureOrStressor/">ExposureOrStressor</a></td>
+<td>Environmental exposure or chemical stressor from CTD ontology</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Anatomy/">Anatomy</a></td>
+<td>Anatomical structure (UBERON ontology)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CellularComponent/">CellularComponent</a></td>
+<td>Gene Ontology Cellular Component term</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Phenotype/">Phenotype</a></td>
+<td>Phenotypic feature (HPO term)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DiseaseOrPhenotype/">DiseaseOrPhenotype</a></td>
+<td>Abstract parent class for all disease/phenotype entities</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Gene/">Gene</a></td>
+<td>Human gene entity (Entrez/NCBI model)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedEntity/">NamedEntity</a></td>
+<td>Root class for all named entities in the ALS-KG ontology</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td>Protein product (UniProt model)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MolecularFunction/">MolecularFunction</a></td>
+<td>Gene Ontology Molecular Function term</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DiseaseSubtype/">DiseaseSubtype</a></td>
+<td>Molecularly-defined disease subtype derived from clustering analysis (transcr...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -686,7 +686,7 @@ Alias: is_obsolete</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://alskb.org/ontology/als_kg</li>
+<li>from schema: https://cair2015.github.io/als-kg</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -711,7 +711,7 @@ Alias: is_obsolete</p>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">is_obsolete</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Whether this entity is deprecated/obsolete</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://cair2015.github.io/als-kg</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owl:deprecated</span>
 <span class="nt">ifabsent</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span>

@@ -12,7 +12,7 @@ comments:
   and do not need explicit class_uri/slot_uri declarations. Use class_uri/slot_uri
   only when a term is intended to be equivalent to an external model term; use exact_mappings
   or close_mappings when alignment is useful but not identical.'
-id: https://alskb.org/ontology/als_kg
+id: https://cair2015.github.io/als-kg
 version: 2.1.2
 imports:
 - linkml:types
@@ -139,7 +139,7 @@ types:
     name: MondoIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/MondoIdentifier
     description: MONDO disease ontology identifier (e.g. MONDO:0007743)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -148,7 +148,7 @@ types:
     name: HpoIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/HpoIdentifier
     description: HPO phenotype term identifier (e.g. HP:0007354)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -157,7 +157,7 @@ types:
     name: UberonIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/UberonIdentifier
     description: UBERON anatomy ontology identifier
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -166,7 +166,7 @@ types:
     name: NcbiGeneIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/NcbiGeneIdentifier
     description: NCBI Entrez Gene numeric ID
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -175,7 +175,7 @@ types:
     name: UniprotIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/UniprotIdentifier
     description: UniProt accession identifier
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -184,7 +184,7 @@ types:
     name: ClinvarIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/ClinvarIdentifier
     description: ClinVar variation numeric ID
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -193,7 +193,7 @@ types:
     name: DrugBankIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/DrugBankIdentifier
     description: DrugBank primary identifier (e.g. DB00533)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -202,7 +202,7 @@ types:
     name: GoIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/GoIdentifier
     description: Gene Ontology term identifier (e.g. GO:0006810)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -211,7 +211,7 @@ types:
     name: ReactomeIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/ReactomeIdentifier
     description: Reactome stable pathway identifier as a CURIE (e.g. Reactome:R-HSA-5673001)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -220,7 +220,7 @@ types:
     name: CtdIdentifier
     definition_uri: https://cair2015.github.io/als-kg/elements/CtdIdentifier
     description: CTD chemical/stressor identifier
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     typeof: string
     base: str
     uri: xsd:string
@@ -496,7 +496,7 @@ enums:
   DiseaseTypeEnum:
     name: DiseaseTypeEnum
     definition_uri: https://cair2015.github.io/als-kg/elements/DiseaseTypeEnum
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     permissible_values:
       sporadic:
         text: sporadic
@@ -510,7 +510,7 @@ enums:
   OnsetTypeEnum:
     name: OnsetTypeEnum
     definition_uri: https://cair2015.github.io/als-kg/elements/OnsetTypeEnum
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     permissible_values:
       bulbar:
         text: bulbar
@@ -530,7 +530,7 @@ enums:
   GeneTypeEnum:
     name: GeneTypeEnum
     definition_uri: https://cair2015.github.io/als-kg/elements/GeneTypeEnum
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     permissible_values:
       protein_coding:
         text: protein_coding
@@ -545,7 +545,7 @@ enums:
   VariantTypeEnum:
     name: VariantTypeEnum
     definition_uri: https://cair2015.github.io/als-kg/elements/VariantTypeEnum
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     permissible_values:
       SNV:
         text: SNV
@@ -566,7 +566,7 @@ enums:
     name: RelationshipTypeEnum
     definition_uri: https://cair2015.github.io/als-kg/elements/RelationshipTypeEnum
     description: Standard relationship types following RDF/OWL semantics
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     permissible_values:
       is_a:
         text: is_a
@@ -601,7 +601,7 @@ enums:
   EvidenceTypeEnum:
     name: EvidenceTypeEnum
     definition_uri: https://cair2015.github.io/als-kg/elements/EvidenceTypeEnum
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     permissible_values:
       curated:
         text: curated
@@ -626,7 +626,7 @@ slots:
     name: id
     definition_uri: https://cair2015.github.io/als-kg/elements/id
     description: Unique identifier (IRI or URI)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:identifier
     slot_uri: schema:identifier
@@ -637,7 +637,7 @@ slots:
     name: label
     definition_uri: https://cair2015.github.io/als-kg/elements/label
     description: Human-readable label for the entity
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdfs:label
     slot_uri: rdfs:label
@@ -647,7 +647,7 @@ slots:
     name: definition
     definition_uri: https://cair2015.github.io/als-kg/elements/definition
     description: Textual definition following OBO definition format
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - IAO:0000115
     slot_uri: IAO:0000115
@@ -656,7 +656,7 @@ slots:
     name: synonym
     definition_uri: https://cair2015.github.io/als-kg/elements/synonym
     description: Alternative names or labels
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - oboInOwl:hasRelatedSynonym
     slot_uri: oboInOwl:hasRelatedSynonym
@@ -667,7 +667,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/xref
     description: 'Cross-reference to equivalent entity in another ontology. Format:
       ONTOLOGY_PREFIX:identifier (e.g. OMIM:104300, Reactome:R-HSA-5673001, GO:0006810)'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - oboInOwl:hasDbXref
     slot_uri: oboInOwl:hasDbXref
@@ -677,7 +677,7 @@ slots:
     name: comment
     definition_uri: https://cair2015.github.io/als-kg/elements/comment
     description: Informal comment or note on entity
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdfs:comment
     slot_uri: rdfs:comment
@@ -686,7 +686,7 @@ slots:
     name: is_obsolete
     definition_uri: https://cair2015.github.io/als-kg/elements/is_obsolete
     description: Whether this entity is deprecated/obsolete
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - owl:deprecated
     slot_uri: owl:deprecated
@@ -696,7 +696,7 @@ slots:
     name: subject
     definition_uri: https://cair2015.github.io/als-kg/elements/subject
     description: Subject of the relationship (resource IRI)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:subject
     slot_uri: rdf:subject
@@ -706,7 +706,7 @@ slots:
     name: predicate
     definition_uri: https://cair2015.github.io/als-kg/elements/predicate
     description: Predicate / property type IRI
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -716,7 +716,7 @@ slots:
     name: object
     definition_uri: https://cair2015.github.io/als-kg/elements/object
     description: Object of the relationship (resource IRI)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:object
     slot_uri: rdf:object
@@ -726,63 +726,63 @@ slots:
     name: has_anatomy
     definition_uri: https://cair2015.github.io/als-kg/elements/has_anatomy
     description: Referenced anatomy entity in an association record.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_anatomy
     range: Anatomy
   has_disease:
     name: has_disease
     definition_uri: https://cair2015.github.io/als-kg/elements/has_disease
     description: Referenced disease entity in an association record.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_disease
     range: Disease
   has_drug:
     name: has_drug
     definition_uri: https://cair2015.github.io/als-kg/elements/has_drug
     description: Referenced drug entity in an association record.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_drug
     range: Drug
   has_gene:
     name: has_gene
     definition_uri: https://cair2015.github.io/als-kg/elements/has_gene
     description: Referenced gene entity in an association record.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_gene
     range: Gene
   has_phenotype:
     name: has_phenotype
     definition_uri: https://cair2015.github.io/als-kg/elements/has_phenotype
     description: Referenced phenotype entity in an association record.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_phenotype
     range: Phenotype
   has_protein:
     name: has_protein
     definition_uri: https://cair2015.github.io/als-kg/elements/has_protein
     description: Referenced protein entity in an association record.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_protein
     range: Protein
   has_pathway:
     name: has_pathway
     definition_uri: https://cair2015.github.io/als-kg/elements/has_pathway
     description: Referenced Reactome pathway entity in an association record.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_pathway
     range: Pathway
   has_variant:
     name: has_variant
     definition_uri: https://cair2015.github.io/als-kg/elements/has_variant
     description: Referenced variant entity in an association record.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_variant
     range: Variant
   disease_manifests_as_phenotype:
     name: disease_manifests_as_phenotype
     definition_uri: https://cair2015.github.io/als-kg/elements/disease_manifests_as_phenotype
     description: Disease has or presents with a phenotype or clinical feature.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:has_phenotype
     domain: Disease
@@ -795,7 +795,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/disease_affects_anatomy
     description: Disease affects, involves, or primarily manifests in an anatomical
       structure.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     close_mappings:
     - biolink:affects
     domain: Disease
@@ -808,7 +808,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/gene_associated_with_disease
     description: Gene has causal, risk, modifier, protective, or correlative association
       with disease.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:gene_associated_with_condition
     domain: Gene
@@ -821,7 +821,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/variant_associated_with_disease
     description: Sequence variant has causal, risk, modifier, protective, or correlative
       association with disease.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:variant_associated_with_condition
     domain: Variant
@@ -833,7 +833,7 @@ slots:
     name: variant_affects_protein
     definition_uri: https://cair2015.github.io/als-kg/elements/variant_affects_protein
     description: Sequence variant changes or is predicted to affect a protein product.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     close_mappings:
     - biolink:affects
     domain: Variant
@@ -845,7 +845,7 @@ slots:
     name: gene_encodes_protein
     definition_uri: https://cair2015.github.io/als-kg/elements/gene_encodes_protein
     description: Gene encodes a protein product.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - RO:0002205
     domain: Gene
@@ -857,7 +857,7 @@ slots:
     name: protein_interacts_with_protein
     definition_uri: https://cair2015.github.io/als-kg/elements/protein_interacts_with_protein
     description: Protein physically or functionally interacts with another protein.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:interacts_with
     domain: Protein
@@ -869,7 +869,7 @@ slots:
     name: protein_participates_in_pathway
     definition_uri: https://cair2015.github.io/als-kg/elements/protein_participates_in_pathway
     description: Protein participates in or is annotated to a Reactome pathway.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:participates_in
     domain: Protein
@@ -882,7 +882,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/drug_targets_molecular_entity
     description: Drug, biologic, ASO, or other therapeutic agent targets a gene or
       protein.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:targets
     domain: Drug
@@ -897,7 +897,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/drug_treats_or_modulates_disease
     description: Drug treats, modifies, palliates, or is being investigated for a
       disease.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     close_mappings:
     - biolink:treats
     domain: Drug
@@ -910,7 +910,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/exposure_associated_with_disease
     description: Environmental exposure or stressor is associated with disease risk
       or progression.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     close_mappings:
     - biolink:associated_with
     domain: ExposureOrStressor
@@ -922,7 +922,7 @@ slots:
     name: transcription_factor_regulates_gene
     definition_uri: https://cair2015.github.io/als-kg/elements/transcription_factor_regulates_gene
     description: Transcription factor regulates the expression of a target gene.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:regulates
     domain: TranscriptionFactor
@@ -935,7 +935,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/gene_expressed_in_anatomy
     description: Gene is expressed in an anatomical structure, tissue, or cell-type
       context.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:expressed_in
     domain: Gene
@@ -948,7 +948,7 @@ slots:
     definition_uri: https://cair2015.github.io/als-kg/elements/disease_related_to_disease
     description: Disease is related to another disease by comorbidity, shared etiology,
       similar mechanism, or phenotypic similarity.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:related_to
     domain: Disease
@@ -960,7 +960,7 @@ slots:
     name: gene_participates_in_process
     definition_uri: https://cair2015.github.io/als-kg/elements/gene_participates_in_process
     description: Gene or gene product participates in a biological process.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:participates_in
     domain: Gene
@@ -972,7 +972,7 @@ slots:
     name: gene_has_molecular_function
     definition_uri: https://cair2015.github.io/als-kg/elements/gene_has_molecular_function
     description: Gene or gene product has a molecular activity or function.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - RO:0000085
     domain: Gene
@@ -984,7 +984,7 @@ slots:
     name: protein_localized_to_cellular_component
     definition_uri: https://cair2015.github.io/als-kg/elements/protein_localized_to_cellular_component
     description: Protein localizes to or is active in a cellular component.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:located_in
     domain: Protein
@@ -996,7 +996,7 @@ slots:
     name: source
     definition_uri: https://cair2015.github.io/als-kg/elements/source
     description: Data source name
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:source
     slot_uri: dcterms:source
@@ -1005,7 +1005,7 @@ slots:
     name: source_version
     definition_uri: https://cair2015.github.io/als-kg/elements/source_version
     description: Source version or release date
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:hasVersion
     slot_uri: dcterms:hasVersion
@@ -1014,7 +1014,7 @@ slots:
     name: source_url
     definition_uri: https://cair2015.github.io/als-kg/elements/source_url
     description: URL to source resource
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:url
     slot_uri: schema:url
@@ -1023,7 +1023,7 @@ slots:
     name: confidence
     definition_uri: https://cair2015.github.io/als-kg/elements/confidence
     description: Confidence or quality score (0.0-1.0)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:confidence
     range: float
     minimum_value: 0.0
@@ -1032,7 +1032,7 @@ slots:
     name: evidence_type
     definition_uri: https://cair2015.github.io/als-kg/elements/evidence_type
     description: Type of supporting evidence
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - ECO:0000000
     slot_uri: ECO:0000000
@@ -1041,21 +1041,21 @@ slots:
     name: evidence_source
     definition_uri: https://cair2015.github.io/als-kg/elements/evidence_source
     description: Specific study/publication supporting the statement
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:evidence_source
     range: string
   ingest_date:
     name: ingest_date
     definition_uri: https://cair2015.github.io/als-kg/elements/ingest_date
     description: Date of ETL ingest
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:ingest_date
     range: date
   last_updated:
     name: last_updated
     definition_uri: https://cair2015.github.io/als-kg/elements/last_updated
     description: Last modification date
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:modified
     slot_uri: dcterms:modified
@@ -1063,7 +1063,7 @@ slots:
   namedEntity__id:
     name: namedEntity__id
     description: Persistent unique identifier (IRI)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:identifier
     slot_uri: schema:identifier
@@ -1076,7 +1076,7 @@ slots:
   namedEntity__label:
     name: namedEntity__label
     description: Preferred human-readable label
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdfs:label
     slot_uri: rdfs:label
@@ -1089,7 +1089,7 @@ slots:
   namedEntity__definition:
     name: namedEntity__definition
     description: Formal textual definition
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - IAO:0000115
     slot_uri: IAO:0000115
@@ -1101,7 +1101,7 @@ slots:
   namedEntity__synonym:
     name: namedEntity__synonym
     description: Alternative names
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - oboInOwl:hasRelatedSynonym
     slot_uri: oboInOwl:hasRelatedSynonym
@@ -1113,7 +1113,7 @@ slots:
   namedEntity__xref:
     name: namedEntity__xref
     description: Cross-references to external ontologies
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - oboInOwl:hasDbXref
     slot_uri: oboInOwl:hasDbXref
@@ -1125,7 +1125,7 @@ slots:
   namedEntity__comment:
     name: namedEntity__comment
     description: Informal notes or comments
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdfs:comment
     slot_uri: rdfs:comment
@@ -1137,7 +1137,7 @@ slots:
   namedEntity__is_obsolete:
     name: namedEntity__is_obsolete
     description: Deprecation flag
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - owl:deprecated
     slot_uri: owl:deprecated
@@ -1150,7 +1150,7 @@ slots:
   namedEntity__source:
     name: namedEntity__source
     description: Original source/database
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:source
     slot_uri: dcterms:source
@@ -1162,7 +1162,7 @@ slots:
   namedEntity__last_updated:
     name: namedEntity__last_updated
     description: Last modification timestamp
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:modified
     slot_uri: dcterms:modified
@@ -1174,7 +1174,7 @@ slots:
   ontologyClass__source_version:
     name: ontologyClass__source_version
     description: Source database/ontology version
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:hasVersion
     slot_uri: dcterms:hasVersion
@@ -1186,7 +1186,7 @@ slots:
   ontologyClass__ingest_date:
     name: ontologyClass__ingest_date
     description: When entity was imported into ALS-KG
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:ingest_date
     alias: ingest_date
     owner: OntologyClass
@@ -1196,7 +1196,7 @@ slots:
   relationship__subject:
     name: relationship__subject
     description: Subject resource IRI
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:subject
     slot_uri: rdf:subject
@@ -1209,7 +1209,7 @@ slots:
   relationship__predicate:
     name: relationship__predicate
     description: Relationship type IRI
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -1222,7 +1222,7 @@ slots:
   relationship__object:
     name: relationship__object
     description: Object resource IRI
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:object
     slot_uri: rdf:object
@@ -1235,7 +1235,7 @@ slots:
   relationship__source:
     name: relationship__source
     description: Data source for this relationship
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:source
     slot_uri: dcterms:source
@@ -1247,7 +1247,7 @@ slots:
   relationship__confidence:
     name: relationship__confidence
     description: Confidence score (0-1)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:confidence
     alias: confidence
     owner: Relationship
@@ -1257,7 +1257,7 @@ slots:
   relationship__evidence_type:
     name: relationship__evidence_type
     description: Type of evidence supporting relationship
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - ECO:0000000
     slot_uri: ECO:0000000
@@ -1269,7 +1269,7 @@ slots:
   relationship__evidence_source:
     name: relationship__evidence_source
     description: Citation or study ID
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:evidence_source
     alias: evidence_source
     owner: Relationship
@@ -1279,7 +1279,7 @@ slots:
   relationship__ingest_date:
     name: relationship__ingest_date
     description: Ingest date
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:ingest_date
     alias: ingest_date
     owner: Relationship
@@ -1289,7 +1289,7 @@ slots:
   diseaseOrPhenotype__mondo_id:
     name: diseaseOrPhenotype__mondo_id
     description: MONDO cross-reference
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:mondo_id
     alias: mondo_id
     owner: DiseaseOrPhenotype
@@ -1299,7 +1299,7 @@ slots:
   diseaseOrPhenotype__hpo_id:
     name: diseaseOrPhenotype__hpo_id
     description: HPO cross-reference
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:hpo_id
     alias: hpo_id
     owner: DiseaseOrPhenotype
@@ -1308,7 +1308,7 @@ slots:
     range: HpoIdentifier
   disease__mondo_id:
     name: disease__mondo_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:mondo_id
     identifier: true
     alias: mondo_id
@@ -1320,7 +1320,7 @@ slots:
   disease__name:
     name: disease__name
     description: Disease name (preferred from MONDO)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:name
     slot_uri: schema:name
@@ -1331,7 +1331,7 @@ slots:
     range: string
   disease__disease_type:
     name: disease__disease_type
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:disease_type
     alias: disease_type
     owner: Disease
@@ -1340,7 +1340,7 @@ slots:
     range: DiseaseTypeEnum
   disease__onset_type:
     name: disease__onset_type
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:onset_type
     alias: onset_type
     owner: Disease
@@ -1350,7 +1350,7 @@ slots:
   disease__umls_cui:
     name: disease__umls_cui
     description: UMLS Concept Unique Identifier
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:umls_cui
     alias: umls_cui
     owner: Disease
@@ -1360,7 +1360,7 @@ slots:
   disease__omim_id:
     name: disease__omim_id
     description: OMIM (Online Mendelian Inheritance in Man) ID
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:omim_id
     alias: omim_id
     owner: Disease
@@ -1370,7 +1370,7 @@ slots:
   disease__orphanet_id:
     name: disease__orphanet_id
     description: Orphanet rare disease identifier
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:orphanet_id
     alias: orphanet_id
     owner: Disease
@@ -1380,7 +1380,7 @@ slots:
   disease__icd10_code:
     name: disease__icd10_code
     description: ICD-10-CM code for billing/clinical use
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:icd10_code
     alias: icd10_code
     owner: Disease
@@ -1389,7 +1389,7 @@ slots:
     range: string
   phenotype__hpo_id:
     name: phenotype__hpo_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:hpo_id
     identifier: true
     alias: hpo_id
@@ -1401,7 +1401,7 @@ slots:
   phenotype__frequency:
     name: phenotype__frequency
     description: Frequency of phenotype in affected individuals (e.g. Frequent 75-99%)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:frequency
     alias: frequency
     owner: Phenotype
@@ -1411,7 +1411,7 @@ slots:
   phenotype__severity:
     name: phenotype__severity
     description: Severity scale
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:severity
     alias: severity
     owner: Phenotype
@@ -1420,7 +1420,7 @@ slots:
     range: string
   anatomy__uberon_id:
     name: anatomy__uberon_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:uberon_id
     identifier: true
     alias: uberon_id
@@ -1432,7 +1432,7 @@ slots:
   anatomy__bto_id:
     name: anatomy__bto_id
     description: Brenda Tissue Ontology ID
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:bto_id
     alias: bto_id
     owner: Anatomy
@@ -1442,7 +1442,7 @@ slots:
   anatomy__mesh_id:
     name: anatomy__mesh_id
     description: MeSH cross-reference
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:mesh_id
     alias: mesh_id
     owner: Anatomy
@@ -1452,7 +1452,7 @@ slots:
   anatomy__anatomical_system:
     name: anatomy__anatomical_system
     description: Anatomical system classification
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:anatomical_system
     alias: anatomical_system
     owner: Anatomy
@@ -1461,7 +1461,7 @@ slots:
     range: string
   gene__ncbi_gene_id:
     name: gene__ncbi_gene_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:ncbi_gene_id
     identifier: true
     alias: ncbi_gene_id
@@ -1473,7 +1473,7 @@ slots:
   gene__hgnc_symbol:
     name: gene__hgnc_symbol
     description: Official HGNC gene symbol
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:hgnc_symbol
     alias: hgnc_symbol
     owner: Gene
@@ -1483,7 +1483,7 @@ slots:
   gene__ensembl_id:
     name: gene__ensembl_id
     description: Ensembl gene identifier
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:ensembl_id
     alias: ensembl_id
     owner: Gene
@@ -1493,7 +1493,7 @@ slots:
   gene__chromosome:
     name: gene__chromosome
     description: Cytogenetic location (e.g. 21q22.11 for SOD1)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:chromosome
     alias: chromosome
     owner: Gene
@@ -1503,7 +1503,7 @@ slots:
   gene__genomic_pos_start:
     name: gene__genomic_pos_start
     description: GRCh38 start coordinate (1-based)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:genomic_pos_start
     alias: genomic_pos_start
     owner: Gene
@@ -1513,7 +1513,7 @@ slots:
   gene__genomic_pos_end:
     name: gene__genomic_pos_end
     description: GRCh38 end coordinate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:genomic_pos_end
     alias: genomic_pos_end
     owner: Gene
@@ -1524,7 +1524,7 @@ slots:
     name: gene__als_risk_tier
     description: Evidence tier for ALS association (ALSoD classification) - definitive,
       strong, moderate, or candidate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:als_risk_tier
     alias: als_risk_tier
     owner: Gene
@@ -1534,7 +1534,7 @@ slots:
   transcriptionFactor__tf_family:
     name: transcriptionFactor__tf_family
     description: Structural family (C2H2-ZF, bHLH, Homeodomain, etc.)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:tf_family
     alias: tf_family
     owner: TranscriptionFactor
@@ -1544,7 +1544,7 @@ slots:
   transcriptionFactor__dorothea_confidence:
     name: transcriptionFactor__dorothea_confidence
     description: DoRothEA confidence level (A=high, D=low)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:dorothea_confidence
     alias: dorothea_confidence
     owner: TranscriptionFactor
@@ -1553,7 +1553,7 @@ slots:
     range: string
   protein__uniprot_id:
     name: protein__uniprot_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - 'UniProtKB:'
     slot_uri: 'UniProtKB:'
@@ -1567,7 +1567,7 @@ slots:
   protein__protein_name:
     name: protein__protein_name
     description: Protein name (UniProt recommended name)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:name
     slot_uri: schema:name
@@ -1579,7 +1579,7 @@ slots:
   protein__hgnc_symbol:
     name: protein__hgnc_symbol
     description: Gene name (cross-reference to Gene entity)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:hgnc_symbol
     alias: hgnc_symbol
     owner: Protein
@@ -1589,7 +1589,7 @@ slots:
   protein__molecular_weight_kda:
     name: protein__molecular_weight_kda
     description: Molecular weight in kDa
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:molecular_weight_kda
     alias: molecular_weight_kda
     owner: Protein
@@ -1599,7 +1599,7 @@ slots:
   protein__protein_family:
     name: protein__protein_family
     description: Protein family classification (Pfam)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:protein_family
     alias: protein_family
     owner: Protein
@@ -1610,7 +1610,7 @@ slots:
     name: protein__subcellular_location
     description: Cellular compartment(s) where protein is localized (e.g. mitochondrion,
       nucleus, axon)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:subcellular_location
     alias: subcellular_location
     owner: Protein
@@ -1621,7 +1621,7 @@ slots:
   protein__aggregation_prone:
     name: protein__aggregation_prone
     description: Known to form aggregates (TDP-43, SOD1, FUS)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:aggregation_prone
     alias: aggregation_prone
     owner: Protein
@@ -1631,7 +1631,7 @@ slots:
   protein__has_prion_like_domain:
     name: protein__has_prion_like_domain
     description: Contains intrinsically disordered prion-like region
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_prion_like_domain
     alias: has_prion_like_domain
     owner: Protein
@@ -1640,7 +1640,7 @@ slots:
     range: boolean
   variant__clinvar_id:
     name: variant__clinvar_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:clinvar_id
     identifier: true
     alias: clinvar_id
@@ -1652,7 +1652,7 @@ slots:
   variant__rsid:
     name: variant__rsid
     description: dbSNP reference SNP ID
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:rsid
     alias: rsid
     owner: Variant
@@ -1662,7 +1662,7 @@ slots:
   variant__hgvs_c:
     name: variant__hgvs_c
     description: HGVS coding sequence notation (e.g. c.10A>G)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:hgvs_c
     alias: hgvs_c
     owner: Variant
@@ -1672,7 +1672,7 @@ slots:
   variant__hgvs_p:
     name: variant__hgvs_p
     description: HGVS protein notation (e.g. p.Ala4Val)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:hgvs_p
     alias: hgvs_p
     owner: Variant
@@ -1681,7 +1681,7 @@ slots:
     range: string
   variant__variant_type:
     name: variant__variant_type
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:variant_type
     alias: variant_type
     owner: Variant
@@ -1691,7 +1691,7 @@ slots:
   variant__clinical_significance:
     name: variant__clinical_significance
     description: ClinVar clinical interpretation
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:clinical_significance
     alias: clinical_significance
     owner: Variant
@@ -1701,7 +1701,7 @@ slots:
   variant__als_class:
     name: variant__als_class
     description: ALS-specific classification (causal, risk, modifier, protective)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:als_class
     alias: als_class
     owner: Variant
@@ -1711,7 +1711,7 @@ slots:
   variant__maf:
     name: variant__maf
     description: Minor allele frequency in gnomAD non-neuro cohort
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:maf
     alias: maf
     owner: Variant
@@ -1722,7 +1722,7 @@ slots:
     maximum_value: 1.0
   drug__drugbank_id:
     name: drug__drugbank_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:drugbank_id
     identifier: true
     alias: drugbank_id
@@ -1734,7 +1734,7 @@ slots:
   drug__drug_name:
     name: drug__drug_name
     description: Preferred drug name
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:name
     slot_uri: schema:name
@@ -1746,7 +1746,7 @@ slots:
   drug__chembl_id:
     name: drug__chembl_id
     description: ChEMBL compound ID
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:chembl_id
     alias: chembl_id
     owner: Drug
@@ -1756,7 +1756,7 @@ slots:
   drug__inchi_key:
     name: drug__inchi_key
     description: Standard InChIKey hash
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:inchi_key
     alias: inchi_key
     owner: Drug
@@ -1766,7 +1766,7 @@ slots:
   drug__smiles:
     name: drug__smiles
     description: Canonical SMILES string
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:smiles
     alias: smiles
     owner: Drug
@@ -1777,7 +1777,7 @@ slots:
     name: drug__drug_type
     description: Categorization (small molecule, biologic, ASO, cell therapy, gene
       therapy)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:drug_type
     alias: drug_type
     owner: Drug
@@ -1787,7 +1787,7 @@ slots:
   drug__als_approved:
     name: drug__als_approved
     description: FDA approval status for ALS treatment
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:als_approved
     alias: als_approved
     owner: Drug
@@ -1797,7 +1797,7 @@ slots:
   drug__trial_status:
     name: drug__trial_status
     description: Highest clinical trial phase reached
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:trial_status
     alias: trial_status
     owner: Drug
@@ -1807,7 +1807,7 @@ slots:
   drug__mechanism:
     name: drug__mechanism
     description: Known mechanism of action
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:mechanism
     alias: mechanism
     owner: Drug
@@ -1817,7 +1817,7 @@ slots:
   drug__indication:
     name: drug__indication
     description: Clinical indication
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:indication
     alias: indication
     owner: Drug
@@ -1826,7 +1826,7 @@ slots:
     range: string
   exposureOrStressor__ctd_id:
     name: exposureOrStressor__ctd_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:ctd_id
     identifier: true
     alias: ctd_id
@@ -1838,7 +1838,7 @@ slots:
   exposureOrStressor__exposure_name:
     name: exposureOrStressor__exposure_name
     description: Standard name of exposure/stressor
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:name
     slot_uri: schema:name
@@ -1850,7 +1850,7 @@ slots:
   exposureOrStressor__exposure_type:
     name: exposureOrStressor__exposure_type
     description: Category (chemical, metal, pesticide, radiation, biological, other)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:exposure_type
     alias: exposure_type
     owner: ExposureOrStressor
@@ -1860,7 +1860,7 @@ slots:
   exposureOrStressor__mesh_id:
     name: exposureOrStressor__mesh_id
     description: MeSH ID for exposure agent
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:mesh_id
     alias: mesh_id
     owner: ExposureOrStressor
@@ -1870,7 +1870,7 @@ slots:
   exposureOrStressor__cas_number:
     name: exposureOrStressor__cas_number
     description: CAS Registry number
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:cas_number
     alias: cas_number
     owner: ExposureOrStressor
@@ -1880,7 +1880,7 @@ slots:
   exposureOrStressor__als_relevance:
     name: exposureOrStressor__als_relevance
     description: Flagged as ALS-relevant in literature
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:als_relevance
     alias: als_relevance
     owner: ExposureOrStressor
@@ -1889,7 +1889,7 @@ slots:
     range: boolean
   biologicalProcess__go_id:
     name: biologicalProcess__go_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:go_id
     identifier: true
     alias: go_id
@@ -1901,7 +1901,7 @@ slots:
   biologicalProcess__process_name:
     name: biologicalProcess__process_name
     description: Standard process name from GO
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:name
     slot_uri: schema:name
@@ -1913,7 +1913,7 @@ slots:
   biologicalProcess__go_definition:
     name: biologicalProcess__go_definition
     description: GO textual definition
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - IAO:0000115
     slot_uri: IAO:0000115
@@ -1924,7 +1924,7 @@ slots:
     range: string
   molecularFunction__go_id:
     name: molecularFunction__go_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:go_id
     identifier: true
     alias: go_id
@@ -1936,7 +1936,7 @@ slots:
   molecularFunction__function_name:
     name: molecularFunction__function_name
     description: Molecular function name from GO
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:name
     slot_uri: schema:name
@@ -1948,7 +1948,7 @@ slots:
   molecularFunction__go_definition:
     name: molecularFunction__go_definition
     description: GO textual definition
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - IAO:0000115
     slot_uri: IAO:0000115
@@ -1959,7 +1959,7 @@ slots:
     range: string
   cellularComponent__go_id:
     name: cellularComponent__go_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:go_id
     identifier: true
     alias: go_id
@@ -1971,7 +1971,7 @@ slots:
   cellularComponent__component_name:
     name: cellularComponent__component_name
     description: Cellular component name from GO
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:name
     slot_uri: schema:name
@@ -1983,7 +1983,7 @@ slots:
   cellularComponent__go_definition:
     name: cellularComponent__go_definition
     description: GO textual definition
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - IAO:0000115
     slot_uri: IAO:0000115
@@ -1994,7 +1994,7 @@ slots:
     range: string
   pathway__reactome_id:
     name: pathway__reactome_id
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:reactome_id
     identifier: true
     alias: reactome_id
@@ -2006,7 +2006,7 @@ slots:
   pathway__pathway_name:
     name: pathway__pathway_name
     description: Standard Reactome pathway name
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:name
     slot_uri: schema:name
@@ -2018,7 +2018,7 @@ slots:
   pathway__pathway_definition:
     name: pathway__pathway_definition
     description: Reactome pathway description or summary when available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - IAO:0000115
     slot_uri: IAO:0000115
@@ -2031,7 +2031,7 @@ slots:
     name: pathway__species
     description: Species for the Reactome pathway; expected to be Homo sapiens for
       human ALS KG assertions
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:species
     alias: species
     owner: Pathway
@@ -2041,7 +2041,7 @@ slots:
   pathway__parent_pathway:
     name: pathway__parent_pathway
     description: Parent Reactome pathway CURIE when available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:parent_pathway
     alias: parent_pathway
     owner: Pathway
@@ -2052,7 +2052,7 @@ slots:
   diseaseSubtype__subtype_id:
     name: diseaseSubtype__subtype_id
     description: Custom subtype identifier
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:subtype_id
     alias: subtype_id
     owner: DiseaseSubtype
@@ -2062,7 +2062,7 @@ slots:
   diseaseSubtype__cluster_method:
     name: diseaseSubtype__cluster_method
     description: Clustering approach (NMF, WGCNA, scRNA-seq, consensus)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:cluster_method
     alias: cluster_method
     owner: DiseaseSubtype
@@ -2072,7 +2072,7 @@ slots:
   diseaseSubtype__cluster_id:
     name: diseaseSubtype__cluster_id
     description: Cluster number from analysis
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:cluster_id
     alias: cluster_id
     owner: DiseaseSubtype
@@ -2082,7 +2082,7 @@ slots:
   diseaseSubtype__signature_genes:
     name: diseaseSubtype__signature_genes
     description: Top discriminative genes for subtype
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:signature_genes
     alias: signature_genes
     owner: DiseaseSubtype
@@ -2093,7 +2093,7 @@ slots:
   diseaseSubtype__n_patients:
     name: diseaseSubtype__n_patients
     description: Number of patients in subtype
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:n_patients
     alias: n_patients
     owner: DiseaseSubtype
@@ -2103,7 +2103,7 @@ slots:
   diseaseSubtype__cohort:
     name: diseaseSubtype__cohort
     description: Source patient cohort (AnswerALS, NYGC, PRO-ACT)
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:cohort
     alias: cohort
     owner: DiseaseSubtype
@@ -2113,7 +2113,7 @@ slots:
   diseaseSubtype__clinical_correlate:
     name: diseaseSubtype__clinical_correlate
     description: Associated clinical feature or phenotype
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:clinical_correlate
     alias: clinical_correlate
     owner: DiseaseSubtype
@@ -2123,7 +2123,7 @@ slots:
   diseaseSubtype__median_survival_months:
     name: diseaseSubtype__median_survival_months
     description: Median survival from symptom onset
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:median_survival_months
     alias: median_survival_months
     owner: DiseaseSubtype
@@ -2133,7 +2133,7 @@ slots:
   diseaseSubtype__source_publication:
     name: diseaseSubtype__source_publication
     description: DOI or PMID reference
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:bibliographicCitation
     slot_uri: dcterms:bibliographicCitation
@@ -2145,7 +2145,7 @@ slots:
   association__association_id:
     name: association__association_id
     description: Stable identifier for the association record
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - schema:identifier
     slot_uri: schema:identifier
@@ -2157,7 +2157,7 @@ slots:
   association__association_label:
     name: association__association_label
     description: Human-readable summary of the association
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdfs:label
     slot_uri: rdfs:label
@@ -2169,7 +2169,7 @@ slots:
   association__subject:
     name: association__subject
     description: Subject entity IRI or CURIE used to materialize a direct edge
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:subject
     slot_uri: rdf:subject
@@ -2182,7 +2182,7 @@ slots:
   association__predicate:
     name: association__predicate
     description: Direct object property represented by this association
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2195,7 +2195,7 @@ slots:
   association__object:
     name: association__object
     description: Object entity IRI or CURIE used to materialize a direct edge
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:object
     slot_uri: rdf:object
@@ -2208,7 +2208,7 @@ slots:
   association__source:
     name: association__source
     description: Data source for this association
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:source
     slot_uri: dcterms:source
@@ -2220,7 +2220,7 @@ slots:
   association__source_version:
     name: association__source_version
     description: Data source version or release date
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:hasVersion
     slot_uri: dcterms:hasVersion
@@ -2232,7 +2232,7 @@ slots:
   association__evidence_type:
     name: association__evidence_type
     description: Type of supporting evidence
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - ECO:0000000
     slot_uri: ECO:0000000
@@ -2245,7 +2245,7 @@ slots:
     name: association__evidence_source
     description: Publication, study, database record, or extraction artifact supporting
       the association
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:evidence_source
     alias: evidence_source
     owner: Association
@@ -2255,7 +2255,7 @@ slots:
   association__confidence:
     name: association__confidence
     description: Normalized confidence score from 0 to 1
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:confidence
     alias: confidence
     owner: Association
@@ -2265,7 +2265,7 @@ slots:
   association__ingest_date:
     name: association__ingest_date
     description: Date this association was ingested
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:ingest_date
     alias: ingest_date
     owner: Association
@@ -2275,7 +2275,7 @@ slots:
   association__last_updated:
     name: association__last_updated
     description: Date this association was last modified
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - dcterms:modified
     slot_uri: dcterms:modified
@@ -2286,7 +2286,7 @@ slots:
     range: string
   diseasePhenotypeAssociation__has_disease:
     name: diseasePhenotypeAssociation__has_disease
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_disease
     alias: has_disease
     owner: DiseasePhenotypeAssociation
@@ -2296,7 +2296,7 @@ slots:
     required: true
   diseasePhenotypeAssociation__has_phenotype:
     name: diseasePhenotypeAssociation__has_phenotype
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_phenotype
     alias: has_phenotype
     owner: DiseasePhenotypeAssociation
@@ -2306,7 +2306,7 @@ slots:
     required: true
   diseasePhenotypeAssociation__predicate:
     name: diseasePhenotypeAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2319,7 +2319,7 @@ slots:
   diseasePhenotypeAssociation__frequency:
     name: diseasePhenotypeAssociation__frequency
     description: Frequency in affected population or cohort
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:frequency
     alias: frequency
     owner: DiseasePhenotypeAssociation
@@ -2329,7 +2329,7 @@ slots:
   diseasePhenotypeAssociation__severity:
     name: diseasePhenotypeAssociation__severity
     description: Typical severity or severity distribution
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:severity
     alias: severity
     owner: DiseasePhenotypeAssociation
@@ -2339,7 +2339,7 @@ slots:
   diseasePhenotypeAssociation__onset_type:
     name: diseasePhenotypeAssociation__onset_type
     description: Onset pattern when phenotype is onset-specific
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:onset_type
     alias: onset_type
     owner: DiseasePhenotypeAssociation
@@ -2349,7 +2349,7 @@ slots:
   diseasePhenotypeAssociation__cohort:
     name: diseasePhenotypeAssociation__cohort
     description: Cohort or study population supporting this phenotype annotation
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:cohort
     alias: cohort
     owner: DiseasePhenotypeAssociation
@@ -2358,7 +2358,7 @@ slots:
     range: string
   geneDiseaseAssociation__has_gene:
     name: geneDiseaseAssociation__has_gene
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_gene
     alias: has_gene
     owner: GeneDiseaseAssociation
@@ -2368,7 +2368,7 @@ slots:
     required: true
   geneDiseaseAssociation__has_disease:
     name: geneDiseaseAssociation__has_disease
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_disease
     alias: has_disease
     owner: GeneDiseaseAssociation
@@ -2378,7 +2378,7 @@ slots:
     required: true
   geneDiseaseAssociation__predicate:
     name: geneDiseaseAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2391,7 +2391,7 @@ slots:
   geneDiseaseAssociation__association_type:
     name: geneDiseaseAssociation__association_type
     description: causal, risk_factor, protective, modifier, biomarker, or correlative
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:association_type
     alias: association_type
     owner: GeneDiseaseAssociation
@@ -2401,7 +2401,7 @@ slots:
   geneDiseaseAssociation__association_score:
     name: geneDiseaseAssociation__association_score
     description: Source-specific gene-disease association score
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:association_score
     alias: association_score
     owner: GeneDiseaseAssociation
@@ -2411,7 +2411,7 @@ slots:
   geneDiseaseAssociation__p_value:
     name: geneDiseaseAssociation__p_value
     description: Statistical significance when available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:p_value
     alias: p_value
     owner: GeneDiseaseAssociation
@@ -2421,7 +2421,7 @@ slots:
   geneDiseaseAssociation__odds_ratio:
     name: geneDiseaseAssociation__odds_ratio
     description: Genetic association odds ratio when available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:odds_ratio
     alias: odds_ratio
     owner: GeneDiseaseAssociation
@@ -2432,7 +2432,7 @@ slots:
     name: geneDiseaseAssociation__effect_direction
     description: increased_risk, decreased_risk, protective, upregulated, downregulated,
       or unknown
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:effect_direction
     alias: effect_direction
     owner: GeneDiseaseAssociation
@@ -2442,7 +2442,7 @@ slots:
   geneDiseaseAssociation__evidence_count:
     name: geneDiseaseAssociation__evidence_count
     description: Number of supporting studies or records
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:evidence_count
     alias: evidence_count
     owner: GeneDiseaseAssociation
@@ -2451,7 +2451,7 @@ slots:
     range: integer
   variantDiseaseAssociation__has_variant:
     name: variantDiseaseAssociation__has_variant
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_variant
     alias: has_variant
     owner: VariantDiseaseAssociation
@@ -2461,7 +2461,7 @@ slots:
     required: true
   variantDiseaseAssociation__has_disease:
     name: variantDiseaseAssociation__has_disease
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_disease
     alias: has_disease
     owner: VariantDiseaseAssociation
@@ -2471,7 +2471,7 @@ slots:
     required: true
   variantDiseaseAssociation__predicate:
     name: variantDiseaseAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2484,7 +2484,7 @@ slots:
   variantDiseaseAssociation__clinical_significance:
     name: variantDiseaseAssociation__clinical_significance
     description: ClinVar/ACMG or ALS-specific clinical interpretation
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:clinical_significance
     alias: clinical_significance
     owner: VariantDiseaseAssociation
@@ -2495,7 +2495,7 @@ slots:
     name: variantDiseaseAssociation__inheritance_mode
     description: autosomal_dominant, autosomal_recessive, X_linked, mitochondrial,
       complex, or unknown
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:inheritance_mode
     alias: inheritance_mode
     owner: VariantDiseaseAssociation
@@ -2505,7 +2505,7 @@ slots:
   variantDiseaseAssociation__penetrance:
     name: variantDiseaseAssociation__penetrance
     description: Complete, reduced, age-dependent, or unknown penetrance
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:penetrance
     alias: penetrance
     owner: VariantDiseaseAssociation
@@ -2515,7 +2515,7 @@ slots:
   variantDiseaseAssociation__association_type:
     name: variantDiseaseAssociation__association_type
     description: causal, risk_factor, modifier, protective, or uncertain
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:association_type
     alias: association_type
     owner: VariantDiseaseAssociation
@@ -2524,7 +2524,7 @@ slots:
     range: string
   variantProteinEffectAssociation__has_variant:
     name: variantProteinEffectAssociation__has_variant
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_variant
     alias: has_variant
     owner: VariantProteinEffectAssociation
@@ -2534,7 +2534,7 @@ slots:
     required: true
   variantProteinEffectAssociation__has_protein:
     name: variantProteinEffectAssociation__has_protein
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_protein
     alias: has_protein
     owner: VariantProteinEffectAssociation
@@ -2544,7 +2544,7 @@ slots:
     required: true
   variantProteinEffectAssociation__predicate:
     name: variantProteinEffectAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2558,7 +2558,7 @@ slots:
     name: variantProteinEffectAssociation__functional_consequence
     description: missense, frameshift, nonsense, splice_site, synonymous, repeat_expansion,
       or structural
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:functional_consequence
     alias: functional_consequence
     owner: VariantProteinEffectAssociation
@@ -2569,7 +2569,7 @@ slots:
     name: variantProteinEffectAssociation__predicted_effect
     description: loss_of_function, gain_of_function, dominant_negative, aggregation_prone,
       no_change, or unknown
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:predicted_effect
     alias: predicted_effect
     owner: VariantProteinEffectAssociation
@@ -2579,7 +2579,7 @@ slots:
   variantProteinEffectAssociation__assay:
     name: variantProteinEffectAssociation__assay
     description: Functional assay or computational method supporting the effect
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:assay
     alias: assay
     owner: VariantProteinEffectAssociation
@@ -2588,7 +2588,7 @@ slots:
     range: string
   proteinProteinInteractionAssociation__protein_1:
     name: proteinProteinInteractionAssociation__protein_1
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:protein_1
     alias: protein_1
     owner: ProteinProteinInteractionAssociation
@@ -2598,7 +2598,7 @@ slots:
     required: true
   proteinProteinInteractionAssociation__protein_2:
     name: proteinProteinInteractionAssociation__protein_2
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:protein_2
     alias: protein_2
     owner: ProteinProteinInteractionAssociation
@@ -2608,7 +2608,7 @@ slots:
     required: true
   proteinProteinInteractionAssociation__predicate:
     name: proteinProteinInteractionAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2621,7 +2621,7 @@ slots:
   proteinProteinInteractionAssociation__interaction_score:
     name: proteinProteinInteractionAssociation__interaction_score
     description: Source-specific confidence score such as STRING combined score
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:interaction_score
     alias: interaction_score
     owner: ProteinProteinInteractionAssociation
@@ -2632,7 +2632,7 @@ slots:
     name: proteinProteinInteractionAssociation__interaction_type
     description: direct, indirect, physical, genetic, colocalization, pathway, or
       predicted
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:interaction_type
     alias: interaction_type
     owner: ProteinProteinInteractionAssociation
@@ -2642,7 +2642,7 @@ slots:
   proteinProteinInteractionAssociation__assay:
     name: proteinProteinInteractionAssociation__assay
     description: Assay or method supporting the interaction
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:assay
     alias: assay
     owner: ProteinProteinInteractionAssociation
@@ -2651,7 +2651,7 @@ slots:
     range: string
   proteinPathwayAssociation__has_protein:
     name: proteinPathwayAssociation__has_protein
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_protein
     alias: has_protein
     owner: ProteinPathwayAssociation
@@ -2661,7 +2661,7 @@ slots:
     required: true
   proteinPathwayAssociation__has_pathway:
     name: proteinPathwayAssociation__has_pathway
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_pathway
     alias: has_pathway
     owner: ProteinPathwayAssociation
@@ -2671,7 +2671,7 @@ slots:
     required: true
   proteinPathwayAssociation__predicate:
     name: proteinPathwayAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2685,7 +2685,7 @@ slots:
     name: proteinPathwayAssociation__reactome_evidence_code
     description: Reactome evidence code or inferred/electronic/manual annotation category
       when available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:reactome_evidence_code
     alias: reactome_evidence_code
     owner: ProteinPathwayAssociation
@@ -2696,7 +2696,7 @@ slots:
     name: proteinPathwayAssociation__pathway_role
     description: participant, catalyst, regulator, input, output, or member, when
       this detail is available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:pathway_role
     alias: pathway_role
     owner: ProteinPathwayAssociation
@@ -2706,7 +2706,7 @@ slots:
   proteinPathwayAssociation__species:
     name: proteinPathwayAssociation__species
     description: Species context for the Reactome protein-pathway annotation
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:species
     alias: species
     owner: ProteinPathwayAssociation
@@ -2715,7 +2715,7 @@ slots:
     range: string
   drugTargetAssociation__has_drug:
     name: drugTargetAssociation__has_drug
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_drug
     alias: has_drug
     owner: DrugTargetAssociation
@@ -2726,7 +2726,7 @@ slots:
   drugTargetAssociation__target:
     name: drugTargetAssociation__target
     description: Gene or protein target
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:target
     alias: target
     owner: DrugTargetAssociation
@@ -2738,7 +2738,7 @@ slots:
     inlined_as_list: true
   drugTargetAssociation__predicate:
     name: drugTargetAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2752,7 +2752,7 @@ slots:
     name: drugTargetAssociation__action_type
     description: inhibitor, activator, binder, antagonist, agonist, modulator, ASO_knockdown,
       or unknown
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:action_type
     alias: action_type
     owner: DrugTargetAssociation
@@ -2762,7 +2762,7 @@ slots:
   drugTargetAssociation__binding_affinity_nm:
     name: drugTargetAssociation__binding_affinity_nm
     description: Binding affinity in nanomolar when available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:binding_affinity_nm
     alias: binding_affinity_nm
     owner: DrugTargetAssociation
@@ -2772,7 +2772,7 @@ slots:
   drugTargetAssociation__mechanism:
     name: drugTargetAssociation__mechanism
     description: Mechanistic description of target modulation
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:mechanism
     alias: mechanism
     owner: DrugTargetAssociation
@@ -2781,7 +2781,7 @@ slots:
     range: string
   drugDiseaseTherapeuticAssociation__has_drug:
     name: drugDiseaseTherapeuticAssociation__has_drug
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_drug
     alias: has_drug
     owner: DrugDiseaseTherapeuticAssociation
@@ -2791,7 +2791,7 @@ slots:
     required: true
   drugDiseaseTherapeuticAssociation__has_disease:
     name: drugDiseaseTherapeuticAssociation__has_disease
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_disease
     alias: has_disease
     owner: DrugDiseaseTherapeuticAssociation
@@ -2801,7 +2801,7 @@ slots:
     required: true
   drugDiseaseTherapeuticAssociation__predicate:
     name: drugDiseaseTherapeuticAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2815,7 +2815,7 @@ slots:
     name: drugDiseaseTherapeuticAssociation__relation_type
     description: treats, disease_modifying, symptomatic, palliative, contraindicated,
       off_label, or investigational
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:relation_type
     alias: relation_type
     owner: DrugDiseaseTherapeuticAssociation
@@ -2826,7 +2826,7 @@ slots:
     name: drugDiseaseTherapeuticAssociation__approval_status
     description: approved, investigational, withdrawn, off_label, failed_trial, or
       unknown
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:approval_status
     alias: approval_status
     owner: DrugDiseaseTherapeuticAssociation
@@ -2836,7 +2836,7 @@ slots:
   drugDiseaseTherapeuticAssociation__clinical_phase:
     name: drugDiseaseTherapeuticAssociation__clinical_phase
     description: Highest clinical development phase for ALS or ALS subtype
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:clinical_phase
     alias: clinical_phase
     owner: DrugDiseaseTherapeuticAssociation
@@ -2846,7 +2846,7 @@ slots:
   drugDiseaseTherapeuticAssociation__outcome_measure:
     name: drugDiseaseTherapeuticAssociation__outcome_measure
     description: ALSFRS-R, survival, respiratory function, biomarker, or other endpoint
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:outcome_measure
     alias: outcome_measure
     owner: DrugDiseaseTherapeuticAssociation
@@ -2855,7 +2855,7 @@ slots:
     range: string
   exposureDiseaseAssociation__exposure:
     name: exposureDiseaseAssociation__exposure
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:exposure
     alias: exposure
     owner: ExposureDiseaseAssociation
@@ -2865,7 +2865,7 @@ slots:
     required: true
   exposureDiseaseAssociation__has_disease:
     name: exposureDiseaseAssociation__has_disease
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_disease
     alias: has_disease
     owner: ExposureDiseaseAssociation
@@ -2875,7 +2875,7 @@ slots:
     required: true
   exposureDiseaseAssociation__predicate:
     name: exposureDiseaseAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2888,7 +2888,7 @@ slots:
   exposureDiseaseAssociation__association_type:
     name: exposureDiseaseAssociation__association_type
     description: risk_factor, protective, trigger, modifier, or correlative
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:association_type
     alias: association_type
     owner: ExposureDiseaseAssociation
@@ -2898,7 +2898,7 @@ slots:
   exposureDiseaseAssociation__mechanism:
     name: exposureDiseaseAssociation__mechanism
     description: Proposed biological mechanism
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:mechanism
     alias: mechanism
     owner: ExposureDiseaseAssociation
@@ -2907,7 +2907,7 @@ slots:
     range: string
   exposureDiseaseAssociation__epidemiological_support:
     name: exposureDiseaseAssociation__epidemiological_support
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:epidemiological_support
     alias: epidemiological_support
     owner: ExposureDiseaseAssociation
@@ -2917,7 +2917,7 @@ slots:
   exposureDiseaseAssociation__odds_ratio:
     name: exposureDiseaseAssociation__odds_ratio
     description: Epidemiological odds ratio or equivalent effect estimate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:odds_ratio
     alias: odds_ratio
     owner: ExposureDiseaseAssociation
@@ -2927,7 +2927,7 @@ slots:
   exposureDiseaseAssociation__population:
     name: exposureDiseaseAssociation__population
     description: Population, geography, occupation, or cohort context
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:population
     alias: population
     owner: ExposureDiseaseAssociation
@@ -2936,7 +2936,7 @@ slots:
     range: string
   transcriptionFactorRegulationAssociation__transcription_factor:
     name: transcriptionFactorRegulationAssociation__transcription_factor
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:transcription_factor
     alias: transcription_factor
     owner: TranscriptionFactorRegulationAssociation
@@ -2946,7 +2946,7 @@ slots:
     required: true
   transcriptionFactorRegulationAssociation__target_gene:
     name: transcriptionFactorRegulationAssociation__target_gene
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:target_gene
     alias: target_gene
     owner: TranscriptionFactorRegulationAssociation
@@ -2956,7 +2956,7 @@ slots:
     required: true
   transcriptionFactorRegulationAssociation__predicate:
     name: transcriptionFactorRegulationAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -2969,7 +2969,7 @@ slots:
   transcriptionFactorRegulationAssociation__regulation_type:
     name: transcriptionFactorRegulationAssociation__regulation_type
     description: activation, repression, bidirectional, context_dependent, or unknown
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:regulation_type
     alias: regulation_type
     owner: TranscriptionFactorRegulationAssociation
@@ -2979,7 +2979,7 @@ slots:
   transcriptionFactorRegulationAssociation__confidence_level:
     name: transcriptionFactorRegulationAssociation__confidence_level
     description: Source-specific confidence level such as DoRothEA A-D
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:confidence_level
     alias: confidence_level
     owner: TranscriptionFactorRegulationAssociation
@@ -2989,7 +2989,7 @@ slots:
   transcriptionFactorRegulationAssociation__tissue_or_cell_type:
     name: transcriptionFactorRegulationAssociation__tissue_or_cell_type
     description: Tissue or cell type context for the regulatory relationship
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:tissue_or_cell_type
     alias: tissue_or_cell_type
     owner: TranscriptionFactorRegulationAssociation
@@ -2998,7 +2998,7 @@ slots:
     range: string
   geneExpressionAssociation__has_gene:
     name: geneExpressionAssociation__has_gene
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_gene
     alias: has_gene
     owner: GeneExpressionAssociation
@@ -3008,7 +3008,7 @@ slots:
     required: true
   geneExpressionAssociation__has_anatomy:
     name: geneExpressionAssociation__has_anatomy
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:has_anatomy
     alias: has_anatomy
     owner: GeneExpressionAssociation
@@ -3018,7 +3018,7 @@ slots:
     required: true
   geneExpressionAssociation__predicate:
     name: geneExpressionAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -3031,7 +3031,7 @@ slots:
   geneExpressionAssociation__expression_level:
     name: geneExpressionAssociation__expression_level
     description: high, medium, low, absent, upregulated, downregulated, or not_detected
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:expression_level
     alias: expression_level
     owner: GeneExpressionAssociation
@@ -3041,7 +3041,7 @@ slots:
   geneExpressionAssociation__specificity_index:
     name: geneExpressionAssociation__specificity_index
     description: Tissue-specificity score from 0 to 1
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:specificity_index
     alias: specificity_index
     owner: GeneExpressionAssociation
@@ -3051,7 +3051,7 @@ slots:
   geneExpressionAssociation__log2_fold_change:
     name: geneExpressionAssociation__log2_fold_change
     description: Differential expression log2 fold change when available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:log2_fold_change
     alias: log2_fold_change
     owner: GeneExpressionAssociation
@@ -3061,7 +3061,7 @@ slots:
   geneExpressionAssociation__adjusted_p_value:
     name: geneExpressionAssociation__adjusted_p_value
     description: Multiple-testing-adjusted p-value when available
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:adjusted_p_value
     alias: adjusted_p_value
     owner: GeneExpressionAssociation
@@ -3071,7 +3071,7 @@ slots:
   geneExpressionAssociation__tissue_or_cell_type:
     name: geneExpressionAssociation__tissue_or_cell_type
     description: Tissue or cell-type context
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:tissue_or_cell_type
     alias: tissue_or_cell_type
     owner: GeneExpressionAssociation
@@ -3081,7 +3081,7 @@ slots:
   geneExpressionAssociation__disease_stage:
     name: geneExpressionAssociation__disease_stage
     description: Disease stage or clinical context
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:disease_stage
     alias: disease_stage
     owner: GeneExpressionAssociation
@@ -3090,7 +3090,7 @@ slots:
     range: string
   diseaseDiseaseAssociation__disease_1:
     name: diseaseDiseaseAssociation__disease_1
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:disease_1
     alias: disease_1
     owner: DiseaseDiseaseAssociation
@@ -3100,7 +3100,7 @@ slots:
     required: true
   diseaseDiseaseAssociation__disease_2:
     name: diseaseDiseaseAssociation__disease_2
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:disease_2
     alias: disease_2
     owner: DiseaseDiseaseAssociation
@@ -3110,7 +3110,7 @@ slots:
     required: true
   diseaseDiseaseAssociation__predicate:
     name: diseaseDiseaseAssociation__predicate
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:predicate
     slot_uri: rdf:predicate
@@ -3124,7 +3124,7 @@ slots:
     name: diseaseDiseaseAssociation__relation_type
     description: comorbidity, shared_pathway, shared_gene, phenotypic_similarity,
       differential_diagnosis, or disease_subtype
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:relation_type
     alias: relation_type
     owner: DiseaseDiseaseAssociation
@@ -3134,7 +3134,7 @@ slots:
   diseaseDiseaseAssociation__similarity_score:
     name: diseaseDiseaseAssociation__similarity_score
     description: Semantic similarity or clinical overlap score from 0 to 1
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:similarity_score
     alias: similarity_score
     owner: DiseaseDiseaseAssociation
@@ -3144,7 +3144,7 @@ slots:
   diseaseDiseaseAssociation__shared_mechanism:
     name: diseaseDiseaseAssociation__shared_mechanism
     description: Shared biological mechanism, pathway, or clinical rationale
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     slot_uri: alskb:shared_mechanism
     alias: shared_mechanism
     owner: DiseaseDiseaseAssociation
@@ -3157,7 +3157,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/NamedEntity
     description: Root class for all named entities in the ALS-KG ontology. Provides
       core ontology metadata (id, label, definition, synonyms, xrefs).
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:NamedThing
     abstract: true
@@ -3217,7 +3217,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/OntologyClass
     description: Abstract base for entity classes (nodes in knowledge graph). Inherits
       from NamedEntity with semantic web compatible metadata.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - owl:Class
     is_a: NamedEntity
@@ -3249,7 +3249,7 @@ classes:
     description: 'Abstract base for reified relationships (edges with explicit properties).
       Follows RDF triple pattern: subject, predicate, object. Can carry additional
       metadata (confidence, evidence, provenance).'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - rdf:Statement
     abstract: true
@@ -3301,7 +3301,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/DiseaseOrPhenotype
     description: Abstract parent class for all disease/phenotype entities. Following
       MONDO and HPO ontology patterns.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:DiseaseOrPhenotypicFeature
     is_a: OntologyClass
@@ -3336,7 +3336,7 @@ classes:
     description: Disease entity. Encompasses ALS (MONDO:0007743), related neurodegenerative
       disorders (FTD, PLS, PMA, SMA), and comorbidities. Follows MONDO disease hierarchy
       via is_a relationships.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:Disease
     is_a: DiseaseOrPhenotype
@@ -3396,7 +3396,7 @@ classes:
     description: Phenotypic feature (HPO term). Represents observable/measurable characteristics
       associated with diseases. Distinct from drug side effects which are modeled
       via DrugCausesPhenotype relationships.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:PhenotypicFeature
     is_a: DiseaseOrPhenotype
@@ -3438,7 +3438,7 @@ classes:
     description: 'Anatomical structure (UBERON ontology). ALS-specific relevance:
       motor cortex, spinal cord, anterior horn cells, neuromuscular junction. Linked
       to gene expression and disease manifestation.'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:AnatomicalEntity
     is_a: OntologyClass
@@ -3479,7 +3479,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/MolecularEntity
     description: Abstract base for molecular-level entities (genes, proteins, variants).
       Directly related to disease mechanisms via molecular interactions.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:MolecularEntity
     is_a: OntologyClass
@@ -3503,7 +3503,7 @@ classes:
     description: 'Human gene entity (Entrez/NCBI model). Separate from protein product
       to properly distinguish genotype from phenotype. Key ALS genes: C9orf72, SOD1,
       TARDBP, FUS, TBK1, NEK1, SQSTM1, VCP, OPTN.'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:Gene
     is_a: MolecularEntity
@@ -3560,7 +3560,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/TranscriptionFactor
     description: 'Gene encoding a transcription factor (TF). Subclass of Gene, carries
       both :Gene and :TranscriptionFactor labels. Source: DoRothEA + ENCODE TF annotations.'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Gene
     slots:
     - namedEntity__id
@@ -3597,7 +3597,7 @@ classes:
     description: 'Protein product (UniProt model). Distinct from Gene entity to capture
       protein-specific properties: aggregation propensity, prion-like domains, subcellular
       localization.'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:Protein
     is_a: MolecularEntity
@@ -3662,7 +3662,7 @@ classes:
     description: Genetic sequence variant (ClinVar model). Includes SNVs, indels,
       repeat expansions (C9orf72), and structural variants. Links to genes, proteins,
       and disease associations.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:SequenceVariant
     is_a: MolecularEntity
@@ -3722,7 +3722,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/ChemicalEntity
     description: Abstract base for chemical and pharmacological entities (drugs, exposures,
       metabolites).
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:ChemicalEntity
     is_a: OntologyClass
@@ -3745,7 +3745,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/Drug
     description: 'Pharmaceutical compound (DrugBank model). ALS-approved drugs: Riluzole,
       Edaravone, Tofersen, AMX0035. Includes mechanism, targets, side effects.'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:Drug
     is_a: ChemicalEntity
@@ -3813,7 +3813,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/ExposureOrStressor
     description: 'Environmental exposure or chemical stressor from CTD ontology. ALS-relevant:
       BMAA, organophosphate pesticides, heavy metals, solvents.'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:ChemicalSubstance
     is_a: ChemicalEntity
@@ -3866,7 +3866,7 @@ classes:
     description: Abstract base for functional/biological concepts from GO and related
       ontologies. Represents processes, functions, and compartments involved in ALS
       pathology.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: OntologyClass
     abstract: true
     slots:
@@ -3887,7 +3887,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/BiologicalProcess
     description: 'Gene Ontology Biological Process term. ALS-relevant: protein aggregation,
       oxidative stress, neuroinflammation, axonal transport, neurodegeneration, apoptosis.'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:BiologicalProcess
     is_a: BiologicalConcept
@@ -3926,7 +3926,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/MolecularFunction
     description: Gene Ontology Molecular Function term. Describes biochemical activities
       (catalytic, binding, etc.) performed by gene products.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:MolecularActivity
     is_a: BiologicalConcept
@@ -3965,7 +3965,7 @@ classes:
     definition_uri: https://cair2015.github.io/als-kg/elements/CellularComponent
     description: 'Gene Ontology Cellular Component term. ALS-critical compartments:
       stress granule, P-body, cytoplasm, nucleus, axon, neuromuscular junction, mitochondrion.'
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:CellularComponent
     is_a: BiologicalConcept
@@ -4005,7 +4005,7 @@ classes:
     description: Reactome pathway entity representing a curated biological pathway
       or reaction-level pathway context relevant to ALS mechanisms, including neuroinflammation,
       RNA metabolism, protein homeostasis, mitochondrial dysfunction, and axonal transport.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:Pathway
     is_a: BiologicalConcept
@@ -4056,7 +4056,7 @@ classes:
     description: Molecularly-defined disease subtype derived from clustering analysis
       (transcriptomics, proteomics, multi-omics). Represents cohort stratification.
       Links to Disease via is_a relationship; carries distinct clinical correlates.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Disease
     slots:
     - namedEntity__id
@@ -4130,7 +4130,7 @@ classes:
       because the edge needs provenance, evidence, confidence, or additional qualifiers.
       The subject/predicate/object fields allow the association to be materialized
       as an RDF triple or property-graph edge.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     mappings:
     - biolink:Association
     is_a: Relationship
@@ -4206,7 +4206,7 @@ classes:
     description: Optional association for Disease -> Phenotype when the clinical feature
       requires edge metadata such as frequency, onset, severity, source cohort, or
       evidence. Materializes to disease_manifests_as_phenotype.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4260,7 +4260,7 @@ classes:
     description: Optional association for Gene -> Disease when causal/risk/protective
       or correlative gene-disease edges need evidence, scores, statistics, or source-specific
       qualifiers. Materializes to gene_associated_with_disease.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4326,7 +4326,7 @@ classes:
     description: Optional association for Variant -> Disease when variant-level evidence,
       clinical significance, inheritance, penetrance, or source assertions are needed.
       Materializes to variant_associated_with_disease.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4380,7 +4380,7 @@ classes:
     description: Optional association for Variant -> Protein when protein consequence,
       predicted effect, assay result, or functional evidence is needed. Materializes
       to variant_affects_protein.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4431,7 +4431,7 @@ classes:
     description: Optional association for Protein -> Protein when interaction score,
       interaction type, database evidence, or assay metadata are needed. Materializes
       to protein_interacts_with_protein.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4482,7 +4482,7 @@ classes:
     description: Optional association for Protein -> Pathway when Reactome evidence
       code, source release, pathway hierarchy, species, or annotation provenance are
       needed. Materializes to protein_participates_in_pathway.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4533,7 +4533,7 @@ classes:
     description: Optional association for Drug -> MolecularEntity when action type,
       binding affinity, target class, or mechanism evidence is needed. Materializes
       to drug_targets_molecular_entity.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4585,7 +4585,7 @@ classes:
     description: Optional association for Drug -> Disease when therapeutic indication,
       approval status, clinical-trial evidence, or outcome metadata are needed. Materializes
       to drug_treats_or_modulates_disease.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4641,7 +4641,7 @@ classes:
     description: Optional association for ExposureOrStressor -> Disease when epidemiology,
       mechanism, dose, duration, population, or study design metadata are needed.
       Materializes to exposure_associated_with_disease.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4699,7 +4699,7 @@ classes:
     description: Optional association for TranscriptionFactor -> Gene when direction,
       confidence, tissue/cell context, or assay evidence are needed. Materializes
       to transcription_factor_regulates_gene.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4749,7 +4749,7 @@ classes:
     description: Optional association for Gene -> Anatomy when expression level, specificity,
       tissue, cell type, disease stage, or differential-expression qualifiers are
       needed. Materializes to gene_expressed_in_anatomy.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4813,7 +4813,7 @@ classes:
     description: Optional association for Disease -> Disease when disease-disease
       edges need relation type, similarity score, shared mechanism, or comorbidity
       statistics. Materializes to disease_related_to_disease.
-    from_schema: https://alskb.org/ontology/als_kg
+    from_schema: https://cair2015.github.io/als-kg
     is_a: Association
     slots:
     - association__association_id
@@ -4860,7 +4860,7 @@ classes:
     class_uri: alskb:DiseaseDiseaseAssociation
 metamodel_version: 1.7.0
 source_file: als_kg.yaml
-source_file_date: '2026-04-28T21:48:41'
+source_file_date: '2026-04-28T22:01:06'
 source_file_size: 42252
-generation_date: '2026-04-28T21:48:55'
+generation_date: '2026-04-28T22:01:15'
 
