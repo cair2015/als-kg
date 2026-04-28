@@ -211,15 +211,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#class-properties">
-<span class="md-ellipsis">
-      
-        Class Properties
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       
@@ -299,7 +290,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-proteinproteininteractionassociation">Class: ProteinProteinInteractionAssociation</h1>
 <p><em>Optional association for Protein -&gt; Protein when interaction score, interaction type, database evidence, or assay metadata are needed. Materializes to protein_interacts_with_protein.</em></p>
-<p>URI: <a href="https://alskb.org/ontology/ProteinProteinInteractionAssociation">alskb:ProteinProteinInteractionAssociation</a></p>
+<p>URI: <a href="https://cair2015.github.io/als-kg/elements/ProteinProteinInteractionAssociation">alskb:ProteinProteinInteractionAssociation</a></p>
 <pre class="mermaid"><code> classDiagram
     class ProteinProteinInteractionAssociation
     click ProteinProteinInteractionAssociation href "../ProteinProteinInteractionAssociation/"
@@ -369,21 +360,6 @@
 </ul>
 </li>
 </ul>
-<h2 id="class-properties">Class Properties</h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Class URI</td>
-<td><a href="https://alskb.org/ontology/ProteinProteinInteractionAssociation">alskb:ProteinProteinInteractionAssociation</a></td>
-</tr>
-</tbody>
-</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -447,19 +423,19 @@
 <td><a href="../subject/">subject</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>Subject entity IRI or CURIE used to materialize a direct edge</td>
-<td><a href="../Association/">Association</a>, <a href="../Relationship/">Relationship</a></td>
+<td><a href="../Relationship/">Relationship</a>, <a href="../Association/">Association</a></td>
 </tr>
 <tr>
 <td><a href="../object/">object</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>Object entity IRI or CURIE used to materialize a direct edge</td>
-<td><a href="../Association/">Association</a>, <a href="../Relationship/">Relationship</a></td>
+<td><a href="../Relationship/">Relationship</a>, <a href="../Association/">Association</a></td>
 </tr>
 <tr>
 <td><a href="../source/">source</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Data source for this association</td>
-<td><a href="../Association/">Association</a>, <a href="../Relationship/">Relationship</a></td>
+<td><a href="../Relationship/">Relationship</a>, <a href="../Association/">Association</a></td>
 </tr>
 <tr>
 <td><a href="../source_version/">source_version</a></td>
@@ -471,25 +447,25 @@
 <td><a href="../evidence_type/">evidence_type</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Type of supporting evidence</td>
-<td><a href="../Association/">Association</a>, <a href="../Relationship/">Relationship</a></td>
+<td><a href="../Relationship/">Relationship</a>, <a href="../Association/">Association</a></td>
 </tr>
 <tr>
 <td><a href="../evidence_source/">evidence_source</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Publication, study, database record, or extraction artifact supporting the as...</td>
-<td><a href="../Association/">Association</a>, <a href="../Relationship/">Relationship</a></td>
+<td><a href="../Relationship/">Relationship</a>, <a href="../Association/">Association</a></td>
 </tr>
 <tr>
 <td><a href="../confidence/">confidence</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Normalized confidence score from 0 to 1</td>
-<td><a href="../Association/">Association</a>, <a href="../Relationship/">Relationship</a></td>
+<td><a href="../Relationship/">Relationship</a>, <a href="../Association/">Association</a></td>
 </tr>
 <tr>
 <td><a href="../ingest_date/">ingest_date</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Date this association was ingested</td>
-<td><a href="../Association/">Association</a>, <a href="../Relationship/">Relationship</a></td>
+<td><a href="../Relationship/">Relationship</a>, <a href="../Association/">Association</a></td>
 </tr>
 <tr>
 <td><a href="../last_updated/">last_updated</a></td>
@@ -537,7 +513,6 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protein_1</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:protein_1</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Protein</span>
@@ -546,7 +521,6 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protein_2</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:protein_2</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Protein</span>
@@ -564,6 +538,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VariantDiseaseAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VariantProteinEffectAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinPathwayAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DrugTargetAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DrugDiseaseTherapeuticAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExposureDiseaseAssociation</span>
@@ -575,7 +550,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source-specific confidence score such as STRING combined score</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:interaction_score</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
@@ -585,18 +559,15 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">predicted</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:interaction_type</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">  </span><span class="nt">assay</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assay</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Assay or method supporting the interaction</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:assay</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VariantProteinEffectAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:ProteinProteinInteractionAssociation</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -611,7 +582,6 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protein_1</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:protein_1</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protein_1</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -622,7 +592,6 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protein_2</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:protein_2</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protein_2</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -644,6 +613,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VariantDiseaseAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VariantProteinEffectAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinPathwayAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DrugTargetAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DrugDiseaseTherapeuticAssociation</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExposureDiseaseAssociation</span>
@@ -656,7 +626,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source-specific confidence score such as STRING combined score</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:interaction_score</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interaction_score</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -668,7 +637,6 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">predicted</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:interaction_type</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interaction_type</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -678,7 +646,6 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assay</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Assay or method supporting the interaction</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:assay</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">assay</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -770,7 +737,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Publication, study, database record, or extraction artifact supporting</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">the association</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:evidence_source</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evidence_source</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -781,7 +747,6 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">confidence</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Normalized confidence score from 0 to 1</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:confidence</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">confidence</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -792,7 +757,6 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest_date</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Date this association was ingested</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:ingest_date</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest_date</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinProteinInteractionAssociation</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -811,7 +775,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedEntity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Association</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:ProteinProteinInteractionAssociation</span>
 </code></pre></div>
 </details>
 </article>

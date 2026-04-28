@@ -211,15 +211,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#class-properties">
-<span class="md-ellipsis">
-      
-        Class Properties
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       
@@ -302,7 +293,7 @@
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
-<p>URI: <a href="https://alskb.org/ontology/BiologicalConcept">alskb:BiologicalConcept</a></p>
+<p>URI: <a href="https://cair2015.github.io/als-kg/elements/BiologicalConcept">alskb:BiologicalConcept</a></p>
 <pre class="mermaid"><code> classDiagram
     class BiologicalConcept
     click BiologicalConcept href "../BiologicalConcept/"
@@ -316,6 +307,8 @@
         click MolecularFunction href "../MolecularFunction/"
       BiologicalConcept &lt;|-- CellularComponent
         click CellularComponent href "../CellularComponent/"
+      BiologicalConcept &lt;|-- Pathway
+        click Pathway href "../Pathway/"
 
 
       BiologicalConcept : comment
@@ -349,6 +342,7 @@
 <li><a href="../BiologicalProcess/">BiologicalProcess</a></li>
 <li><a href="../MolecularFunction/">MolecularFunction</a></li>
 <li><a href="../CellularComponent/">CellularComponent</a></li>
+<li><a href="../Pathway/">Pathway</a></li>
 </ul>
 </li>
 </ul>
@@ -356,21 +350,6 @@
 </ul>
 </li>
 </ul>
-<h2 id="class-properties">Class Properties</h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Class URI</td>
-<td><a href="https://alskb.org/ontology/BiologicalConcept">alskb:BiologicalConcept</a></td>
-</tr>
-</tbody>
-</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -484,7 +463,6 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OntologyClass</span>
 <span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:BiologicalConcept</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -511,7 +489,6 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest_date</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">When entity was imported into ALS-KG</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:ingest_date</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest_date</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BiologicalConcept</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
@@ -615,7 +592,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedEntity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Association</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:BiologicalConcept</span>
 </code></pre></div>
 </details>
 </article>

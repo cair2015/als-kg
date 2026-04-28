@@ -529,53 +529,33 @@ Alias: source_version</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MolecularEntity/">MolecularEntity</a></td>
-<td>Abstract base for molecular-level entities (genes, proteins, variants)</td>
+<td><a href="../ExposureOrStressor/">ExposureOrStressor</a></td>
+<td>Environmental exposure or chemical stressor from CTD ontology</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
-<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../VariantProteinEffectAssociation/">VariantProteinEffectAssociation</a></td>
-<td>Optional association for Variant -&gt; Protein when protein consequence, predict...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../GeneExpressionAssociation/">GeneExpressionAssociation</a></td>
-<td>Optional association for Gene -&gt; Anatomy when expression level, specificity, ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DiseaseOrPhenotype/">DiseaseOrPhenotype</a></td>
-<td>Abstract parent class for all disease/phenotype entities</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
-<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TranscriptionFactorRegulationAssociation/">TranscriptionFactorRegulationAssociation</a></td>
-<td>Optional association for TranscriptionFactor -&gt; Gene when direction, confiden...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DrugTargetAssociation/">DrugTargetAssociation</a></td>
-<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TranscriptionFactor/">TranscriptionFactor</a></td>
-<td>Gene encoding a transcription factor (TF)</td>
+<td><a href="../ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
+<td>Optional association for Protein -&gt; Pathway when Reactome evidence code, sour...</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../DiseaseSubtype/">DiseaseSubtype</a></td>
 <td>Molecularly-defined disease subtype derived from clustering analysis (transcr...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Phenotype/">Phenotype</a></td>
+<td>Phenotypic feature (HPO term)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MolecularEntity/">MolecularEntity</a></td>
+<td>Abstract base for molecular-level entities (genes, proteins, variants)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BiologicalConcept/">BiologicalConcept</a></td>
+<td>Abstract base for functional/biological concepts from GO and related ontologi...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -589,83 +569,13 @@ Alias: source_version</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Gene/">Gene</a></td>
-<td>Human gene entity (Entrez/NCBI model)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Disease/">Disease</a></td>
-<td>Disease entity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ExposureOrStressor/">ExposureOrStressor</a></td>
-<td>Environmental exposure or chemical stressor from CTD ontology</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td>Abstract base for optional evidence-bearing associations</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
-<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../BiologicalConcept/">BiologicalConcept</a></td>
-<td>Abstract base for functional/biological concepts from GO and related ontologi...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MolecularFunction/">MolecularFunction</a></td>
-<td>Gene Ontology Molecular Function term</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OntologyClass/">OntologyClass</a></td>
-<td>Abstract base for entity classes (nodes in knowledge graph)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../GeneDiseaseAssociation/">GeneDiseaseAssociation</a></td>
-<td>Optional association for Gene -&gt; Disease when causal/risk/protective or corre...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Variant/">Variant</a></td>
-<td>Genetic sequence variant (ClinVar model)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Anatomy/">Anatomy</a></td>
-<td>Anatomical structure (UBERON ontology)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Phenotype/">Phenotype</a></td>
-<td>Phenotypic feature (HPO term)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../BiologicalProcess/">BiologicalProcess</a></td>
-<td>Gene Ontology Biological Process term</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a></td>
-<td>Optional association for Disease -&gt; Phenotype when the clinical feature requi...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Drug/">Drug</a></td>
 <td>Pharmaceutical compound (DrugBank model)</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>Abstract base for chemical and pharmacological entities (drugs, exposures, me...</td>
+<td><a href="../Pathway/">Pathway</a></td>
+<td>Reactome pathway entity representing a curated biological pathway or reaction...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -674,8 +584,108 @@ Alias: source_version</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Gene/">Gene</a></td>
+<td>Human gene entity (Entrez/NCBI model)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
+<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DiseaseOrPhenotype/">DiseaseOrPhenotype</a></td>
+<td>Abstract parent class for all disease/phenotype entities</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ExposureDiseaseAssociation/">ExposureDiseaseAssociation</a></td>
 <td>Optional association for ExposureOrStressor -&gt; Disease when epidemiology, mec...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MolecularFunction/">MolecularFunction</a></td>
+<td>Gene Ontology Molecular Function term</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Variant/">Variant</a></td>
+<td>Genetic sequence variant (ClinVar model)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Disease/">Disease</a></td>
+<td>Disease entity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
+<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Anatomy/">Anatomy</a></td>
+<td>Anatomical structure (UBERON ontology)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
+<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BiologicalProcess/">BiologicalProcess</a></td>
+<td>Gene Ontology Biological Process term</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TranscriptionFactorRegulationAssociation/">TranscriptionFactorRegulationAssociation</a></td>
+<td>Optional association for TranscriptionFactor -&gt; Gene when direction, confiden...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TranscriptionFactor/">TranscriptionFactor</a></td>
+<td>Gene encoding a transcription factor (TF)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Association/">Association</a></td>
+<td>Abstract base for optional evidence-bearing associations</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OntologyClass/">OntologyClass</a></td>
+<td>Abstract base for entity classes (nodes in knowledge graph)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../VariantProteinEffectAssociation/">VariantProteinEffectAssociation</a></td>
+<td>Optional association for Variant -&gt; Protein when protein consequence, predict...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GeneExpressionAssociation/">GeneExpressionAssociation</a></td>
+<td>Optional association for Gene -&gt; Anatomy when expression level, specificity, ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a></td>
+<td>Optional association for Disease -&gt; Phenotype when the clinical feature requi...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td>Abstract base for chemical and pharmacological entities (drugs, exposures, me...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GeneDiseaseAssociation/">GeneDiseaseAssociation</a></td>
+<td>Optional association for Gene -&gt; Disease when causal/risk/protective or corre...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DrugTargetAssociation/">DrugTargetAssociation</a></td>
+<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
 <td>no</td>
 </tr>
 </tbody>

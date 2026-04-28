@@ -514,7 +514,7 @@
 
 <h1 id="slot-has_disease">Slot: has_disease</h1>
 <p><em>Referenced disease entity in an association record.</em></p>
-<p>URI: <a href="https://alskb.org/ontology/has_disease">alskb:has_disease</a>
+<p>URI: <a href="https://cair2015.github.io/als-kg/elements/has_disease">alskb:has_disease</a>
 Alias: has_disease</p>
 <!-- no inheritance hierarchy -->
 
@@ -529,18 +529,8 @@ Alias: has_disease</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
-<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a></td>
 <td>Optional association for Disease -&gt; Phenotype when the clinical feature requi...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../GeneDiseaseAssociation/">GeneDiseaseAssociation</a></td>
-<td>Optional association for Gene -&gt; Disease when causal/risk/protective or corre...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -551,6 +541,16 @@ Alias: has_disease</p>
 <tr>
 <td><a href="../ExposureDiseaseAssociation/">ExposureDiseaseAssociation</a></td>
 <td>Optional association for ExposureOrStressor -&gt; Disease when epidemiology, mec...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GeneDiseaseAssociation/">GeneDiseaseAssociation</a></td>
+<td>Optional association for Gene -&gt; Disease when causal/risk/protective or corre...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
+<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -572,10 +572,6 @@ Alias: has_disease</p>
 <tr>
 <td>Domain Of</td>
 <td><a href="../DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a>, <a href="../GeneDiseaseAssociation/">GeneDiseaseAssociation</a>, <a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a>, <a href="../DrugDiseaseTherapeuticAssociation/">DrugDiseaseTherapeuticAssociation</a>, <a href="../ExposureDiseaseAssociation/">ExposureDiseaseAssociation</a></td>
-</tr>
-<tr>
-<td>Slot URI</td>
-<td><a href="https://alskb.org/ontology/has_disease">alskb:has_disease</a></td>
 </tr>
 </tbody>
 </table>
@@ -624,7 +620,6 @@ Alias: has_disease</p>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Referenced disease entity in an association record.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:has_disease</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_disease</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DiseasePhenotypeAssociation</span>

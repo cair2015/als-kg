@@ -503,7 +503,7 @@
 
 <h1 id="slot-variant_affects_protein">Slot: variant_affects_protein</h1>
 <p><em>Sequence variant changes or is predicted to affect a protein product.</em></p>
-<p>URI: <a href="https://w3id.org/biolink/vocab/affects">biolink:affects</a>
+<p>URI: <a href="https://cair2015.github.io/als-kg/elements/variant_affects_protein">alskb:variant_affects_protein</a>
 Alias: variant_affects_protein</p>
 <!-- no inheritance hierarchy -->
 
@@ -524,10 +524,6 @@ Alias: variant_affects_protein</p>
 <tr>
 <td>Domain</td>
 <td><a href="../Variant/">Variant</a></td>
-</tr>
-<tr>
-<td>Slot URI</td>
-<td><a href="https://w3id.org/biolink/vocab/affects">biolink:affects</a></td>
 </tr>
 </tbody>
 </table>
@@ -562,11 +558,15 @@ Alias: variant_affects_protein</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>biolink:affects</td>
+<td>alskb:variant_affects_protein</td>
 </tr>
 <tr>
 <td>native</td>
 <td>alskb:variant_affects_protein</td>
+</tr>
+<tr>
+<td>close</td>
+<td>biolink:affects</td>
 </tr>
 </tbody>
 </table>
@@ -575,9 +575,10 @@ Alias: variant_affects_protein</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variant_affects_protein</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sequence variant changes or is predicted to affect a protein product.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
+<span class="nt">close_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">biolink:affects</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variant</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">biolink:affects</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variant_affects_protein</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Protein</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>

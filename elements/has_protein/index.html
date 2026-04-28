@@ -514,7 +514,7 @@
 
 <h1 id="slot-has_protein">Slot: has_protein</h1>
 <p><em>Referenced protein entity in an association record.</em></p>
-<p>URI: <a href="https://alskb.org/ontology/has_protein">alskb:has_protein</a>
+<p>URI: <a href="https://cair2015.github.io/als-kg/elements/has_protein">alskb:has_protein</a>
 Alias: has_protein</p>
 <!-- no inheritance hierarchy -->
 
@@ -531,6 +531,11 @@ Alias: has_protein</p>
 <tr>
 <td><a href="../VariantProteinEffectAssociation/">VariantProteinEffectAssociation</a></td>
 <td>Optional association for Variant -&gt; Protein when protein consequence, predict...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
+<td>Optional association for Protein -&gt; Pathway when Reactome evidence code, sour...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -551,11 +556,7 @@ Alias: has_protein</p>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../VariantProteinEffectAssociation/">VariantProteinEffectAssociation</a></td>
-</tr>
-<tr>
-<td>Slot URI</td>
-<td><a href="https://alskb.org/ontology/has_protein">alskb:has_protein</a></td>
+<td><a href="../VariantProteinEffectAssociation/">VariantProteinEffectAssociation</a>, <a href="../ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
 </tr>
 </tbody>
 </table>
@@ -604,10 +605,10 @@ Alias: has_protein</p>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Referenced protein entity in an association record.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:has_protein</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_protein</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VariantProteinEffectAssociation</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProteinPathwayAssociation</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Protein</span>
 </code></pre></div>
 </details>

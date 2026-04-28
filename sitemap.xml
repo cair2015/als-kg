@@ -209,6 +209,10 @@
          <lastmod>2026-04-28</lastmod>
     </url>
     <url>
+         <loc>https://.github.io/ALS-KG/elements/Pathway/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
          <loc>https://.github.io/ALS-KG/elements/Phenotype/</loc>
          <lastmod>2026-04-28</lastmod>
     </url>
@@ -217,7 +221,15 @@
          <lastmod>2026-04-28</lastmod>
     </url>
     <url>
+         <loc>https://.github.io/ALS-KG/elements/ProteinPathwayAssociation/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
          <loc>https://.github.io/ALS-KG/elements/ProteinProteinInteractionAssociation/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
+         <loc>https://.github.io/ALS-KG/elements/ReactomeIdentifier/</loc>
          <lastmod>2026-04-28</lastmod>
     </url>
     <url>
@@ -573,6 +585,10 @@
          <lastmod>2026-04-28</lastmod>
     </url>
     <url>
+         <loc>https://.github.io/ALS-KG/elements/has_pathway/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
          <loc>https://.github.io/ALS-KG/elements/has_phenotype/</loc>
          <lastmod>2026-04-28</lastmod>
     </url>
@@ -717,6 +733,22 @@
          <lastmod>2026-04-28</lastmod>
     </url>
     <url>
+         <loc>https://.github.io/ALS-KG/elements/parent_pathway/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
+         <loc>https://.github.io/ALS-KG/elements/pathway_definition/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
+         <loc>https://.github.io/ALS-KG/elements/pathway_name/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
+         <loc>https://.github.io/ALS-KG/elements/pathway_role/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
          <loc>https://.github.io/ALS-KG/elements/penetrance/</loc>
          <lastmod>2026-04-28</lastmod>
     </url>
@@ -758,6 +790,18 @@
     </url>
     <url>
          <loc>https://.github.io/ALS-KG/elements/protein_name/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
+         <loc>https://.github.io/ALS-KG/elements/protein_participates_in_pathway/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
+         <loc>https://.github.io/ALS-KG/elements/reactome_evidence_code/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
+         <loc>https://.github.io/ALS-KG/elements/reactome_id/</loc>
          <lastmod>2026-04-28</lastmod>
     </url>
     <url>
@@ -806,6 +850,10 @@
     </url>
     <url>
          <loc>https://.github.io/ALS-KG/elements/source_version/</loc>
+         <lastmod>2026-04-28</lastmod>
+    </url>
+    <url>
+         <loc>https://.github.io/ALS-KG/elements/species/</loc>
          <lastmod>2026-04-28</lastmod>
     </url>
     <url>

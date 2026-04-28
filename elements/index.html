@@ -574,7 +574,7 @@
 
 
 <h1 id="als-knowledge-graph-ontology-model">ALS Knowledge Graph Ontology Model</h1>
-<p>Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Follows OWL 2 / RDF / OBO conventions with formal class hierarchies, direct object properties, optional evidence-bearing association classes, and semantic web alignment. Suitable for export to OWL, RDF/Turtle, or integration with biomedical ontology ecosystems.</p>
+<p>Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Uses a local default namespace for ALS-specific classes and slots, explicit Biolink/ontology URIs only for externally defined concepts and predicates, direct object properties for canonical KG edges, and optional evidence-bearing association classes for provenance-rich statements.</p>
 <p>URI: https://alskb.org/ontology/als_kg</p>
 <p>Name: als_kg</p>
 <h2 id="classes">Classes</h2>
@@ -613,6 +613,10 @@
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MolecularFunction/">MolecularFunction</a></td>
 <td>Gene Ontology Molecular Function term</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Pathway/">Pathway</a></td>
+<td>Reactome pathway entity representing a curated biological pathway or reaction...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalEntity/">ChemicalEntity</a></td>
@@ -697,6 +701,10 @@
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GeneExpressionAssociation/">GeneExpressionAssociation</a></td>
 <td>Optional association for Gene -&gt; Anatomy when expression level, specificity, ...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
+<td>Optional association for Protein -&gt; Pathway when Reactome evidence code, sour...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
@@ -1014,6 +1022,10 @@
 <td>Referenced gene entity in an association record</td>
 </tr>
 <tr>
+<td><a href="has_pathway/">has_pathway</a></td>
+<td>Referenced Reactome pathway entity in an association record</td>
+</tr>
+<tr>
 <td><a href="has_phenotype/">has_phenotype</a></td>
 <td>Referenced phenotype entity in an association record</td>
 </tr>
@@ -1158,6 +1170,22 @@
 <td>Statistical significance when available</td>
 </tr>
 <tr>
+<td><a href="parent_pathway/">parent_pathway</a></td>
+<td>Parent Reactome pathway CURIE when available</td>
+</tr>
+<tr>
+<td><a href="pathway_definition/">pathway_definition</a></td>
+<td>Reactome pathway description or summary when available</td>
+</tr>
+<tr>
+<td><a href="pathway_name/">pathway_name</a></td>
+<td>Standard Reactome pathway name</td>
+</tr>
+<tr>
+<td><a href="pathway_role/">pathway_role</a></td>
+<td>participant, catalyst, regulator, input, output, or member, when this detail ...</td>
+</tr>
+<tr>
 <td><a href="penetrance/">penetrance</a></td>
 <td>Complete, reduced, age-dependent, or unknown penetrance</td>
 </tr>
@@ -1200,6 +1228,18 @@
 <tr>
 <td><a href="protein_name/">protein_name</a></td>
 <td>Protein name (UniProt recommended name)</td>
+</tr>
+<tr>
+<td><a href="protein_participates_in_pathway/">protein_participates_in_pathway</a></td>
+<td>Protein participates in or is annotated to a Reactome pathway</td>
+</tr>
+<tr>
+<td><a href="reactome_evidence_code/">reactome_evidence_code</a></td>
+<td>Reactome evidence code or inferred/electronic/manual annotation category when...</td>
+</tr>
+<tr>
+<td><a href="reactome_id/">reactome_id</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="regulation_type/">regulation_type</a></td>
@@ -1248,6 +1288,10 @@
 <tr>
 <td><a href="source_version/">source_version</a></td>
 <td>Source version or release date</td>
+</tr>
+<tr>
+<td><a href="species/">species</a></td>
+<td>Species for the Reactome pathway; expected to be Homo sapiens for human ALS K...</td>
 </tr>
 <tr>
 <td><a href="specificity_index/">specificity_index</a></td>
@@ -1454,6 +1498,10 @@
 <tr>
 <td><a href="Objectidentifier/">Objectidentifier</a></td>
 <td>A URI or CURIE that represents an object in the model</td>
+</tr>
+<tr>
+<td><a href="ReactomeIdentifier/">ReactomeIdentifier</a></td>
+<td>Reactome stable pathway identifier as a CURIE (e</td>
 </tr>
 <tr>
 <td><a href="Sparqlpath/">Sparqlpath</a></td>

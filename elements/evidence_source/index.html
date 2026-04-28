@@ -514,7 +514,7 @@
 
 <h1 id="slot-evidence_source">Slot: evidence_source</h1>
 <p><em>Specific study/publication supporting the statement</em></p>
-<p>URI: <a href="https://alskb.org/ontology/evidence_source">alskb:evidence_source</a>
+<p>URI: <a href="https://cair2015.github.io/als-kg/elements/evidence_source">alskb:evidence_source</a>
 Alias: evidence_source</p>
 <!-- no inheritance hierarchy -->
 
@@ -529,28 +529,8 @@ Alias: evidence_source</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
-<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TranscriptionFactorRegulationAssociation/">TranscriptionFactorRegulationAssociation</a></td>
-<td>Optional association for TranscriptionFactor -&gt; Gene when direction, confiden...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td>Abstract base for optional evidence-bearing associations</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DrugTargetAssociation/">DrugTargetAssociation</a></td>
-<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
-<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
+<td><a href="../Relationship/">Relationship</a></td>
+<td>Abstract base for reified relationships (edges with explicit properties)</td>
 <td>no</td>
 </tr>
 <tr>
@@ -559,13 +539,18 @@ Alias: evidence_source</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../VariantProteinEffectAssociation/">VariantProteinEffectAssociation</a></td>
-<td>Optional association for Variant -&gt; Protein when protein consequence, predict...</td>
+<td><a href="../DrugDiseaseTherapeuticAssociation/">DrugDiseaseTherapeuticAssociation</a></td>
+<td>Optional association for Drug -&gt; Disease when therapeutic indication, approva...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ExposureDiseaseAssociation/">ExposureDiseaseAssociation</a></td>
-<td>Optional association for ExposureOrStressor -&gt; Disease when epidemiology, mec...</td>
+<td><a href="../TranscriptionFactorRegulationAssociation/">TranscriptionFactorRegulationAssociation</a></td>
+<td>Optional association for TranscriptionFactor -&gt; Gene when direction, confiden...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
+<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -574,23 +559,43 @@ Alias: evidence_source</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
+<td>Optional association for Protein -&gt; Pathway when Reactome evidence code, sour...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExposureDiseaseAssociation/">ExposureDiseaseAssociation</a></td>
+<td>Optional association for ExposureOrStressor -&gt; Disease when epidemiology, mec...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Association/">Association</a></td>
+<td>Abstract base for optional evidence-bearing associations</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
+<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DrugTargetAssociation/">DrugTargetAssociation</a></td>
+<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../VariantProteinEffectAssociation/">VariantProteinEffectAssociation</a></td>
+<td>Optional association for Variant -&gt; Protein when protein consequence, predict...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
+<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../GeneExpressionAssociation/">GeneExpressionAssociation</a></td>
 <td>Optional association for Gene -&gt; Anatomy when expression level, specificity, ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DrugDiseaseTherapeuticAssociation/">DrugDiseaseTherapeuticAssociation</a></td>
-<td>Optional association for Drug -&gt; Disease when therapeutic indication, approva...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Relationship/">Relationship</a></td>
-<td>Abstract base for reified relationships (edges with explicit properties)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
-<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -612,10 +617,6 @@ Alias: evidence_source</p>
 <tr>
 <td>Domain Of</td>
 <td><a href="../Relationship/">Relationship</a>, <a href="../Association/">Association</a></td>
-</tr>
-<tr>
-<td>Slot URI</td>
-<td><a href="https://alskb.org/ontology/evidence_source">alskb:evidence_source</a></td>
 </tr>
 </tbody>
 </table>
@@ -664,7 +665,6 @@ Alias: evidence_source</p>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specific study/publication supporting the statement</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alskb:evidence_source</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evidence_source</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relationship</span>

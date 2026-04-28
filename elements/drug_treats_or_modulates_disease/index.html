@@ -503,7 +503,7 @@
 
 <h1 id="slot-drug_treats_or_modulates_disease">Slot: drug_treats_or_modulates_disease</h1>
 <p><em>Drug treats, modifies, palliates, or is being investigated for a disease.</em></p>
-<p>URI: <a href="https://w3id.org/biolink/vocab/treats">biolink:treats</a>
+<p>URI: <a href="https://cair2015.github.io/als-kg/elements/drug_treats_or_modulates_disease">alskb:drug_treats_or_modulates_disease</a>
 Alias: drug_treats_or_modulates_disease</p>
 <!-- no inheritance hierarchy -->
 
@@ -524,10 +524,6 @@ Alias: drug_treats_or_modulates_disease</p>
 <tr>
 <td>Domain</td>
 <td><a href="../Drug/">Drug</a></td>
-</tr>
-<tr>
-<td>Slot URI</td>
-<td><a href="https://w3id.org/biolink/vocab/treats">biolink:treats</a></td>
 </tr>
 </tbody>
 </table>
@@ -562,11 +558,15 @@ Alias: drug_treats_or_modulates_disease</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>biolink:treats</td>
+<td>alskb:drug_treats_or_modulates_disease</td>
 </tr>
 <tr>
 <td>native</td>
 <td>alskb:drug_treats_or_modulates_disease</td>
+</tr>
+<tr>
+<td>close</td>
+<td>biolink:treats</td>
 </tr>
 </tbody>
 </table>
@@ -575,9 +575,10 @@ Alias: drug_treats_or_modulates_disease</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drug_treats_or_modulates_disease</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Drug treats, modifies, palliates, or is being investigated for a disease.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alskb.org/ontology/als_kg</span>
+<span class="nt">close_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">biolink:treats</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Drug</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">biolink:treats</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drug_treats_or_modulates_disease</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Disease</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
