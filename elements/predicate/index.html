@@ -529,28 +529,8 @@ Alias: predicate</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
-<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
-<td>Optional association for Protein -&gt; Pathway when Reactome evidence code, sour...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DrugTargetAssociation/">DrugTargetAssociation</a></td>
-<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TranscriptionFactorRegulationAssociation/">TranscriptionFactorRegulationAssociation</a></td>
-<td>Optional association for TranscriptionFactor -&gt; Gene when direction, confiden...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DrugDiseaseTherapeuticAssociation/">DrugDiseaseTherapeuticAssociation</a></td>
-<td>Optional association for Drug -&gt; Disease when therapeutic indication, approva...</td>
+<td><a href="../DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
+<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -559,18 +539,18 @@ Alias: predicate</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
-<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Relationship/">Relationship</a></td>
-<td>Abstract base for reified relationships (edges with explicit properties)</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ExposureDiseaseAssociation/">ExposureDiseaseAssociation</a></td>
 <td>Optional association for ExposureOrStressor -&gt; Disease when epidemiology, mec...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TranscriptionFactorRegulationAssociation/">TranscriptionFactorRegulationAssociation</a></td>
+<td>Optional association for TranscriptionFactor -&gt; Gene when direction, confiden...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a></td>
+<td>Optional association for Disease -&gt; Phenotype when the clinical feature requi...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -579,8 +559,8 @@ Alias: predicate</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
-<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
+<td><a href="../Relationship/">Relationship</a></td>
+<td>Abstract base for reified relationships (edges with explicit properties)</td>
 <td>no</td>
 </tr>
 <tr>
@@ -594,8 +574,28 @@ Alias: predicate</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a></td>
-<td>Optional association for Disease -&gt; Phenotype when the clinical feature requi...</td>
+<td><a href="../VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
+<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DrugDiseaseTherapeuticAssociation/">DrugDiseaseTherapeuticAssociation</a></td>
+<td>Optional association for Drug -&gt; Disease when therapeutic indication, approva...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProteinPathwayAssociation/">ProteinPathwayAssociation</a></td>
+<td>Optional association for Protein -&gt; Pathway when Reactome evidence code, sour...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DrugTargetAssociation/">DrugTargetAssociation</a></td>
+<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
+<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
 <td>no</td>
 </tr>
 </tbody>
