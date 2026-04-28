@@ -14,7 +14,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../about/">
+        <link rel="next" href="../published-schema/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Schema - ALS-KG</title>
+        <title>Schema Reference - ALS-KG</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#als-kg" class="md-skip">
+        <a href="#als-knowledge-graph-ontology-model" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Schema
+              Schema Reference
             
           </span>
         </div>
@@ -311,7 +311,7 @@
   <span class="md-ellipsis">
     
   
-    Schema
+    Schema Reference
   
 
     
@@ -329,7 +329,7 @@
   <span class="md-ellipsis">
     
   
-    Schema
+    Schema Reference
   
 
     
@@ -413,6 +413,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../published-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Published Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -546,10 +573,10 @@
   
 
 
-<h1 id="als-kg">ALS-KG</h1>
-<p>Knowledge Graph for ALS studies</p>
-<p>URI: https://w3id.org//ALS-KG</p>
-<p>Name: ALS-KG</p>
+<h1 id="als-knowledge-graph-ontology-model">ALS Knowledge Graph Ontology Model</h1>
+<p>Comprehensive ontology model for the ALS Knowledge Graph (ALS-KG). Follows OWL 2 / RDF / OBO conventions with formal class hierarchies, direct object properties, optional evidence-bearing association classes, and semantic web alignment. Suitable for export to OWL, RDF/Turtle, or integration with biomedical ontology ecosystems.</p>
+<p>URI: https://alskb.org/ontology/als_kg</p>
+<p>Name: als_kg</p>
 <h2 id="classes">Classes</h2>
 <table>
 <thead>
@@ -560,16 +587,132 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="NamedThing/">NamedThing</a></td>
-<td>A generic grouping for any identifiable entity</td>
+<td><a href="NamedEntity/">NamedEntity</a></td>
+<td>Root class for all named entities in the ALS-KG ontology</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Person/">Person</a></td>
-<td>Represents a Person</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OntologyClass/">OntologyClass</a></td>
+<td>Abstract base for entity classes (nodes in knowledge graph)</td>
 </tr>
 <tr>
-<td><a href="PersonCollection/">PersonCollection</a></td>
-<td>A holder for Person objects</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Anatomy/">Anatomy</a></td>
+<td>Anatomical structure (UBERON ontology)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BiologicalConcept/">BiologicalConcept</a></td>
+<td>Abstract base for functional/biological concepts from GO and related ontologi...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BiologicalProcess/">BiologicalProcess</a></td>
+<td>Gene Ontology Biological Process term</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CellularComponent/">CellularComponent</a></td>
+<td>Gene Ontology Cellular Component term</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MolecularFunction/">MolecularFunction</a></td>
+<td>Gene Ontology Molecular Function term</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChemicalEntity/">ChemicalEntity</a></td>
+<td>Abstract base for chemical and pharmacological entities (drugs, exposures, me...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Drug/">Drug</a></td>
+<td>Pharmaceutical compound (DrugBank model)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExposureOrStressor/">ExposureOrStressor</a></td>
+<td>Environmental exposure or chemical stressor from CTD ontology</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DiseaseOrPhenotype/">DiseaseOrPhenotype</a></td>
+<td>Abstract parent class for all disease/phenotype entities</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Disease/">Disease</a></td>
+<td>Disease entity</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DiseaseSubtype/">DiseaseSubtype</a></td>
+<td>Molecularly-defined disease subtype derived from clustering analysis (transcr...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Phenotype/">Phenotype</a></td>
+<td>Phenotypic feature (HPO term)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MolecularEntity/">MolecularEntity</a></td>
+<td>Abstract base for molecular-level entities (genes, proteins, variants)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Gene/">Gene</a></td>
+<td>Human gene entity (Entrez/NCBI model)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TranscriptionFactor/">TranscriptionFactor</a></td>
+<td>Gene encoding a transcription factor (TF)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protein/">Protein</a></td>
+<td>Protein product (UniProt model)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Variant/">Variant</a></td>
+<td>Genetic sequence variant (ClinVar model)</td>
+</tr>
+<tr>
+<td><a href="Relationship/">Relationship</a></td>
+<td>Abstract base for reified relationships (edges with explicit properties)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Association/">Association</a></td>
+<td>Abstract base for optional evidence-bearing associations</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DiseaseDiseaseAssociation/">DiseaseDiseaseAssociation</a></td>
+<td>Optional association for Disease -&gt; Disease when disease-disease edges need r...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DiseasePhenotypeAssociation/">DiseasePhenotypeAssociation</a></td>
+<td>Optional association for Disease -&gt; Phenotype when the clinical feature requi...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DrugDiseaseTherapeuticAssociation/">DrugDiseaseTherapeuticAssociation</a></td>
+<td>Optional association for Drug -&gt; Disease when therapeutic indication, approva...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DrugTargetAssociation/">DrugTargetAssociation</a></td>
+<td>Optional association for Drug -&gt; MolecularEntity when action type, binding af...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExposureDiseaseAssociation/">ExposureDiseaseAssociation</a></td>
+<td>Optional association for ExposureOrStressor -&gt; Disease when epidemiology, mec...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GeneDiseaseAssociation/">GeneDiseaseAssociation</a></td>
+<td>Optional association for Gene -&gt; Disease when causal/risk/protective or corre...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GeneExpressionAssociation/">GeneExpressionAssociation</a></td>
+<td>Optional association for Gene -&gt; Anatomy when expression level, specificity, ...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProteinProteinInteractionAssociation/">ProteinProteinInteractionAssociation</a></td>
+<td>Optional association for Protein -&gt; Protein when interaction score, interacti...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TranscriptionFactorRegulationAssociation/">TranscriptionFactorRegulationAssociation</a></td>
+<td>Optional association for TranscriptionFactor -&gt; Gene when direction, confiden...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VariantDiseaseAssociation/">VariantDiseaseAssociation</a></td>
+<td>Optional association for Variant -&gt; Disease when variant-level evidence, clin...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VariantProteinEffectAssociation/">VariantProteinEffectAssociation</a></td>
+<td>Optional association for Variant -&gt; Protein when protein consequence, predict...</td>
 </tr>
 </tbody>
 </table>
@@ -583,36 +726,604 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="age_in_years/">age_in_years</a></td>
-<td>Number of years since birth</td>
+<td><a href="action_type/">action_type</a></td>
+<td>inhibitor, activator, binder, antagonist, agonist, modulator, ASO_knockdown, ...</td>
 </tr>
 <tr>
-<td><a href="birth_date/">birth_date</a></td>
-<td>Date on which a person is born</td>
+<td><a href="adjusted_p_value/">adjusted_p_value</a></td>
+<td>Multiple-testing-adjusted p-value when available</td>
 </tr>
 <tr>
-<td><a href="description/">description</a></td>
-<td>A human-readable description for a thing</td>
+<td><a href="aggregation_prone/">aggregation_prone</a></td>
+<td>Known to form aggregates (TDP-43, SOD1, FUS)</td>
 </tr>
 <tr>
-<td><a href="id/">id</a></td>
-<td>A unique identifier for a thing</td>
+<td><a href="als_approved/">als_approved</a></td>
+<td>FDA approval status for ALS treatment</td>
 </tr>
 <tr>
-<td><a href="name/">name</a></td>
-<td>A human-readable name for a thing</td>
+<td><a href="als_class/">als_class</a></td>
+<td>ALS-specific classification (causal, risk, modifier, protective)</td>
 </tr>
 <tr>
-<td><a href="people/">people</a></td>
+<td><a href="als_relevance/">als_relevance</a></td>
+<td>Flagged as ALS-relevant in literature</td>
+</tr>
+<tr>
+<td><a href="als_risk_tier/">als_risk_tier</a></td>
+<td>Evidence tier for ALS association (ALSoD classification) - definitive, strong...</td>
+</tr>
+<tr>
+<td><a href="anatomical_system/">anatomical_system</a></td>
+<td>Anatomical system classification</td>
+</tr>
+<tr>
+<td><a href="approval_status/">approval_status</a></td>
+<td>approved, investigational, withdrawn, off_label, failed_trial, or unknown</td>
+</tr>
+<tr>
+<td><a href="assay/">assay</a></td>
+<td>Functional assay or computational method supporting the effect</td>
+</tr>
+<tr>
+<td><a href="association_id/">association_id</a></td>
+<td>Stable identifier for the association record</td>
+</tr>
+<tr>
+<td><a href="association_label/">association_label</a></td>
+<td>Human-readable summary of the association</td>
+</tr>
+<tr>
+<td><a href="association_score/">association_score</a></td>
+<td>Source-specific gene-disease association score</td>
+</tr>
+<tr>
+<td><a href="association_type/">association_type</a></td>
+<td>causal, risk_factor, protective, modifier, biomarker, or correlative</td>
+</tr>
+<tr>
+<td><a href="binding_affinity_nm/">binding_affinity_nm</a></td>
+<td>Binding affinity in nanomolar when available</td>
+</tr>
+<tr>
+<td><a href="bto_id/">bto_id</a></td>
+<td>Brenda Tissue Ontology ID</td>
+</tr>
+<tr>
+<td><a href="cas_number/">cas_number</a></td>
+<td>CAS Registry number</td>
+</tr>
+<tr>
+<td><a href="chembl_id/">chembl_id</a></td>
+<td>ChEMBL compound ID</td>
+</tr>
+<tr>
+<td><a href="chromosome/">chromosome</a></td>
+<td>Cytogenetic location (e</td>
+</tr>
+<tr>
+<td><a href="clinical_correlate/">clinical_correlate</a></td>
+<td>Associated clinical feature or phenotype</td>
+</tr>
+<tr>
+<td><a href="clinical_phase/">clinical_phase</a></td>
+<td>Highest clinical development phase for ALS or ALS subtype</td>
+</tr>
+<tr>
+<td><a href="clinical_significance/">clinical_significance</a></td>
+<td>ClinVar clinical interpretation</td>
+</tr>
+<tr>
+<td><a href="clinvar_id/">clinvar_id</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="primary_email/">primary_email</a></td>
-<td>The main email address of a person</td>
+<td><a href="cluster_id/">cluster_id</a></td>
+<td>Cluster number from analysis</td>
 </tr>
 <tr>
-<td><a href="vital_status/">vital_status</a></td>
-<td>living or dead status</td>
+<td><a href="cluster_method/">cluster_method</a></td>
+<td>Clustering approach (NMF, WGCNA, scRNA-seq, consensus)</td>
+</tr>
+<tr>
+<td><a href="cohort/">cohort</a></td>
+<td>Source patient cohort (AnswerALS, NYGC, PRO-ACT)</td>
+</tr>
+<tr>
+<td><a href="comment/">comment</a></td>
+<td>Informal comment or note on entity</td>
+</tr>
+<tr>
+<td><a href="component_name/">component_name</a></td>
+<td>Cellular component name from GO</td>
+</tr>
+<tr>
+<td><a href="confidence/">confidence</a></td>
+<td>Confidence or quality score (0</td>
+</tr>
+<tr>
+<td><a href="confidence_level/">confidence_level</a></td>
+<td>Source-specific confidence level such as DoRothEA A-D</td>
+</tr>
+<tr>
+<td><a href="ctd_id/">ctd_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="definition/">definition</a></td>
+<td>Textual definition following OBO definition format</td>
+</tr>
+<tr>
+<td><a href="disease_1/">disease_1</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="disease_2/">disease_2</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="disease_affects_anatomy/">disease_affects_anatomy</a></td>
+<td>Disease affects, involves, or primarily manifests in an anatomical structure</td>
+</tr>
+<tr>
+<td><a href="disease_manifests_as_phenotype/">disease_manifests_as_phenotype</a></td>
+<td>Disease has or presents with a phenotype or clinical feature</td>
+</tr>
+<tr>
+<td><a href="disease_related_to_disease/">disease_related_to_disease</a></td>
+<td>Disease is related to another disease by comorbidity, shared etiology, simila...</td>
+</tr>
+<tr>
+<td><a href="disease_stage/">disease_stage</a></td>
+<td>Disease stage or clinical context</td>
+</tr>
+<tr>
+<td><a href="disease_type/">disease_type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="dorothea_confidence/">dorothea_confidence</a></td>
+<td>DoRothEA confidence level (A=high, D=low)</td>
+</tr>
+<tr>
+<td><a href="drug_name/">drug_name</a></td>
+<td>Preferred drug name</td>
+</tr>
+<tr>
+<td><a href="drug_targets_molecular_entity/">drug_targets_molecular_entity</a></td>
+<td>Drug, biologic, ASO, or other therapeutic agent targets a gene or protein</td>
+</tr>
+<tr>
+<td><a href="drug_treats_or_modulates_disease/">drug_treats_or_modulates_disease</a></td>
+<td>Drug treats, modifies, palliates, or is being investigated for a disease</td>
+</tr>
+<tr>
+<td><a href="drug_type/">drug_type</a></td>
+<td>Categorization (small molecule, biologic, ASO, cell therapy, gene therapy)</td>
+</tr>
+<tr>
+<td><a href="drugbank_id/">drugbank_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="effect_direction/">effect_direction</a></td>
+<td>increased_risk, decreased_risk, protective, upregulated, downregulated, or un...</td>
+</tr>
+<tr>
+<td><a href="ensembl_id/">ensembl_id</a></td>
+<td>Ensembl gene identifier</td>
+</tr>
+<tr>
+<td><a href="epidemiological_support/">epidemiological_support</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="evidence_count/">evidence_count</a></td>
+<td>Number of supporting studies or records</td>
+</tr>
+<tr>
+<td><a href="evidence_source/">evidence_source</a></td>
+<td>Specific study/publication supporting the statement</td>
+</tr>
+<tr>
+<td><a href="evidence_type/">evidence_type</a></td>
+<td>Type of supporting evidence</td>
+</tr>
+<tr>
+<td><a href="exposure/">exposure</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="exposure_associated_with_disease/">exposure_associated_with_disease</a></td>
+<td>Environmental exposure or stressor is associated with disease risk or progres...</td>
+</tr>
+<tr>
+<td><a href="exposure_name/">exposure_name</a></td>
+<td>Standard name of exposure/stressor</td>
+</tr>
+<tr>
+<td><a href="exposure_type/">exposure_type</a></td>
+<td>Category (chemical, metal, pesticide, radiation, biological, other)</td>
+</tr>
+<tr>
+<td><a href="expression_level/">expression_level</a></td>
+<td>high, medium, low, absent, upregulated, downregulated, or not_detected</td>
+</tr>
+<tr>
+<td><a href="frequency/">frequency</a></td>
+<td>Frequency of phenotype in affected individuals (e</td>
+</tr>
+<tr>
+<td><a href="function_name/">function_name</a></td>
+<td>Molecular function name from GO</td>
+</tr>
+<tr>
+<td><a href="functional_consequence/">functional_consequence</a></td>
+<td>missense, frameshift, nonsense, splice_site, synonymous, repeat_expansion, or...</td>
+</tr>
+<tr>
+<td><a href="gene_associated_with_disease/">gene_associated_with_disease</a></td>
+<td>Gene has causal, risk, modifier, protective, or correlative association with ...</td>
+</tr>
+<tr>
+<td><a href="gene_encodes_protein/">gene_encodes_protein</a></td>
+<td>Gene encodes a protein product</td>
+</tr>
+<tr>
+<td><a href="gene_expressed_in_anatomy/">gene_expressed_in_anatomy</a></td>
+<td>Gene is expressed in an anatomical structure, tissue, or cell-type context</td>
+</tr>
+<tr>
+<td><a href="gene_has_molecular_function/">gene_has_molecular_function</a></td>
+<td>Gene or gene product has a molecular activity or function</td>
+</tr>
+<tr>
+<td><a href="gene_participates_in_process/">gene_participates_in_process</a></td>
+<td>Gene or gene product participates in a biological process</td>
+</tr>
+<tr>
+<td><a href="genomic_pos_end/">genomic_pos_end</a></td>
+<td>GRCh38 end coordinate</td>
+</tr>
+<tr>
+<td><a href="genomic_pos_start/">genomic_pos_start</a></td>
+<td>GRCh38 start coordinate (1-based)</td>
+</tr>
+<tr>
+<td><a href="go_definition/">go_definition</a></td>
+<td>GO textual definition</td>
+</tr>
+<tr>
+<td><a href="go_id/">go_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="has_anatomy/">has_anatomy</a></td>
+<td>Referenced anatomy entity in an association record</td>
+</tr>
+<tr>
+<td><a href="has_disease/">has_disease</a></td>
+<td>Referenced disease entity in an association record</td>
+</tr>
+<tr>
+<td><a href="has_drug/">has_drug</a></td>
+<td>Referenced drug entity in an association record</td>
+</tr>
+<tr>
+<td><a href="has_gene/">has_gene</a></td>
+<td>Referenced gene entity in an association record</td>
+</tr>
+<tr>
+<td><a href="has_phenotype/">has_phenotype</a></td>
+<td>Referenced phenotype entity in an association record</td>
+</tr>
+<tr>
+<td><a href="has_prion_like_domain/">has_prion_like_domain</a></td>
+<td>Contains intrinsically disordered prion-like region</td>
+</tr>
+<tr>
+<td><a href="has_protein/">has_protein</a></td>
+<td>Referenced protein entity in an association record</td>
+</tr>
+<tr>
+<td><a href="has_variant/">has_variant</a></td>
+<td>Referenced variant entity in an association record</td>
+</tr>
+<tr>
+<td><a href="hgnc_symbol/">hgnc_symbol</a></td>
+<td>Official HGNC gene symbol</td>
+</tr>
+<tr>
+<td><a href="hgvs_c/">hgvs_c</a></td>
+<td>HGVS coding sequence notation (e</td>
+</tr>
+<tr>
+<td><a href="hgvs_p/">hgvs_p</a></td>
+<td>HGVS protein notation (e</td>
+</tr>
+<tr>
+<td><a href="hpo_id/">hpo_id</a></td>
+<td>HPO cross-reference</td>
+</tr>
+<tr>
+<td><a href="icd10_code/">icd10_code</a></td>
+<td>ICD-10-CM code for billing/clinical use</td>
+</tr>
+<tr>
+<td><a href="id/">id</a></td>
+<td>Unique identifier (IRI or URI)</td>
+</tr>
+<tr>
+<td><a href="inchi_key/">inchi_key</a></td>
+<td>Standard InChIKey hash</td>
+</tr>
+<tr>
+<td><a href="indication/">indication</a></td>
+<td>Clinical indication</td>
+</tr>
+<tr>
+<td><a href="ingest_date/">ingest_date</a></td>
+<td>Date of ETL ingest</td>
+</tr>
+<tr>
+<td><a href="inheritance_mode/">inheritance_mode</a></td>
+<td>autosomal_dominant, autosomal_recessive, X_linked, mitochondrial, complex, or...</td>
+</tr>
+<tr>
+<td><a href="interaction_score/">interaction_score</a></td>
+<td>Source-specific confidence score such as STRING combined score</td>
+</tr>
+<tr>
+<td><a href="interaction_type/">interaction_type</a></td>
+<td>direct, indirect, physical, genetic, colocalization, pathway, or predicted</td>
+</tr>
+<tr>
+<td><a href="is_obsolete/">is_obsolete</a></td>
+<td>Whether this entity is deprecated/obsolete</td>
+</tr>
+<tr>
+<td><a href="label/">label</a></td>
+<td>Human-readable label for the entity</td>
+</tr>
+<tr>
+<td><a href="last_updated/">last_updated</a></td>
+<td>Last modification date</td>
+</tr>
+<tr>
+<td><a href="log2_fold_change/">log2_fold_change</a></td>
+<td>Differential expression log2 fold change when available</td>
+</tr>
+<tr>
+<td><a href="maf/">maf</a></td>
+<td>Minor allele frequency in gnomAD non-neuro cohort</td>
+</tr>
+<tr>
+<td><a href="mechanism/">mechanism</a></td>
+<td>Known mechanism of action</td>
+</tr>
+<tr>
+<td><a href="median_survival_months/">median_survival_months</a></td>
+<td>Median survival from symptom onset</td>
+</tr>
+<tr>
+<td><a href="mesh_id/">mesh_id</a></td>
+<td>MeSH cross-reference</td>
+</tr>
+<tr>
+<td><a href="molecular_weight_kda/">molecular_weight_kda</a></td>
+<td>Molecular weight in kDa</td>
+</tr>
+<tr>
+<td><a href="mondo_id/">mondo_id</a></td>
+<td>MONDO cross-reference</td>
+</tr>
+<tr>
+<td><a href="n_patients/">n_patients</a></td>
+<td>Number of patients in subtype</td>
+</tr>
+<tr>
+<td><a href="name/">name</a></td>
+<td>Disease name (preferred from MONDO)</td>
+</tr>
+<tr>
+<td><a href="ncbi_gene_id/">ncbi_gene_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="object/">object</a></td>
+<td>Object of the relationship (resource IRI)</td>
+</tr>
+<tr>
+<td><a href="odds_ratio/">odds_ratio</a></td>
+<td>Genetic association odds ratio when available</td>
+</tr>
+<tr>
+<td><a href="omim_id/">omim_id</a></td>
+<td>OMIM (Online Mendelian Inheritance in Man) ID</td>
+</tr>
+<tr>
+<td><a href="onset_type/">onset_type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="orphanet_id/">orphanet_id</a></td>
+<td>Orphanet rare disease identifier</td>
+</tr>
+<tr>
+<td><a href="outcome_measure/">outcome_measure</a></td>
+<td>ALSFRS-R, survival, respiratory function, biomarker, or other endpoint</td>
+</tr>
+<tr>
+<td><a href="p_value/">p_value</a></td>
+<td>Statistical significance when available</td>
+</tr>
+<tr>
+<td><a href="penetrance/">penetrance</a></td>
+<td>Complete, reduced, age-dependent, or unknown penetrance</td>
+</tr>
+<tr>
+<td><a href="population/">population</a></td>
+<td>Population, geography, occupation, or cohort context</td>
+</tr>
+<tr>
+<td><a href="predicate/">predicate</a></td>
+<td>Predicate / property type IRI</td>
+</tr>
+<tr>
+<td><a href="predicted_effect/">predicted_effect</a></td>
+<td>loss_of_function, gain_of_function, dominant_negative, aggregation_prone, no_...</td>
+</tr>
+<tr>
+<td><a href="process_name/">process_name</a></td>
+<td>Standard process name from GO</td>
+</tr>
+<tr>
+<td><a href="protein_1/">protein_1</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="protein_2/">protein_2</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="protein_family/">protein_family</a></td>
+<td>Protein family classification (Pfam)</td>
+</tr>
+<tr>
+<td><a href="protein_interacts_with_protein/">protein_interacts_with_protein</a></td>
+<td>Protein physically or functionally interacts with another protein</td>
+</tr>
+<tr>
+<td><a href="protein_localized_to_cellular_component/">protein_localized_to_cellular_component</a></td>
+<td>Protein localizes to or is active in a cellular component</td>
+</tr>
+<tr>
+<td><a href="protein_name/">protein_name</a></td>
+<td>Protein name (UniProt recommended name)</td>
+</tr>
+<tr>
+<td><a href="regulation_type/">regulation_type</a></td>
+<td>activation, repression, bidirectional, context_dependent, or unknown</td>
+</tr>
+<tr>
+<td><a href="relation_type/">relation_type</a></td>
+<td>treats, disease_modifying, symptomatic, palliative, contraindicated, off_labe...</td>
+</tr>
+<tr>
+<td><a href="rsid/">rsid</a></td>
+<td>dbSNP reference SNP ID</td>
+</tr>
+<tr>
+<td><a href="severity/">severity</a></td>
+<td>Severity scale</td>
+</tr>
+<tr>
+<td><a href="shared_mechanism/">shared_mechanism</a></td>
+<td>Shared biological mechanism, pathway, or clinical rationale</td>
+</tr>
+<tr>
+<td><a href="signature_genes/">signature_genes</a></td>
+<td>Top discriminative genes for subtype</td>
+</tr>
+<tr>
+<td><a href="similarity_score/">similarity_score</a></td>
+<td>Semantic similarity or clinical overlap score from 0 to 1</td>
+</tr>
+<tr>
+<td><a href="smiles/">smiles</a></td>
+<td>Canonical SMILES string</td>
+</tr>
+<tr>
+<td><a href="source/">source</a></td>
+<td>Data source name</td>
+</tr>
+<tr>
+<td><a href="source_publication/">source_publication</a></td>
+<td>DOI or PMID reference</td>
+</tr>
+<tr>
+<td><a href="source_url/">source_url</a></td>
+<td>URL to source resource</td>
+</tr>
+<tr>
+<td><a href="source_version/">source_version</a></td>
+<td>Source version or release date</td>
+</tr>
+<tr>
+<td><a href="specificity_index/">specificity_index</a></td>
+<td>Tissue-specificity score from 0 to 1</td>
+</tr>
+<tr>
+<td><a href="subcellular_location/">subcellular_location</a></td>
+<td>Cellular compartment(s) where protein is localized (e</td>
+</tr>
+<tr>
+<td><a href="subject/">subject</a></td>
+<td>Subject of the relationship (resource IRI)</td>
+</tr>
+<tr>
+<td><a href="subtype_id/">subtype_id</a></td>
+<td>Custom subtype identifier</td>
+</tr>
+<tr>
+<td><a href="synonym/">synonym</a></td>
+<td>Alternative names or labels</td>
+</tr>
+<tr>
+<td><a href="target/">target</a></td>
+<td>Gene or protein target</td>
+</tr>
+<tr>
+<td><a href="target_gene/">target_gene</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="tf_family/">tf_family</a></td>
+<td>Structural family (C2H2-ZF, bHLH, Homeodomain, etc</td>
+</tr>
+<tr>
+<td><a href="tissue_or_cell_type/">tissue_or_cell_type</a></td>
+<td>Tissue or cell type context for the regulatory relationship</td>
+</tr>
+<tr>
+<td><a href="transcription_factor/">transcription_factor</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="transcription_factor_regulates_gene/">transcription_factor_regulates_gene</a></td>
+<td>Transcription factor regulates the expression of a target gene</td>
+</tr>
+<tr>
+<td><a href="trial_status/">trial_status</a></td>
+<td>Highest clinical trial phase reached</td>
+</tr>
+<tr>
+<td><a href="uberon_id/">uberon_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="umls_cui/">umls_cui</a></td>
+<td>UMLS Concept Unique Identifier</td>
+</tr>
+<tr>
+<td><a href="uniprot_id/">uniprot_id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="variant_affects_protein/">variant_affects_protein</a></td>
+<td>Sequence variant changes or is predicted to affect a protein product</td>
+</tr>
+<tr>
+<td><a href="variant_associated_with_disease/">variant_associated_with_disease</a></td>
+<td>Sequence variant has causal, risk, modifier, protective, or correlative assoc...</td>
+</tr>
+<tr>
+<td><a href="variant_type/">variant_type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="xref/">xref</a></td>
+<td>Cross-reference to equivalent entity in another ontology</td>
 </tr>
 </tbody>
 </table>
@@ -626,7 +1337,27 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="PersonStatus/">PersonStatus</a></td>
+<td><a href="DiseaseTypeEnum/">DiseaseTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="EvidenceTypeEnum/">EvidenceTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="GeneTypeEnum/">GeneTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="OnsetTypeEnum/">OnsetTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="RelationshipTypeEnum/">RelationshipTypeEnum</a></td>
+<td>Standard relationship types following RDF/OWL semantics</td>
+</tr>
+<tr>
+<td><a href="VariantTypeEnum/">VariantTypeEnum</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -643,6 +1374,14 @@
 <tr>
 <td><a href="Boolean/">Boolean</a></td>
 <td>A binary (true or false) value</td>
+</tr>
+<tr>
+<td><a href="ClinvarIdentifier/">ClinvarIdentifier</a></td>
+<td>ClinVar variation numeric ID</td>
+</tr>
+<tr>
+<td><a href="CtdIdentifier/">CtdIdentifier</a></td>
+<td>CTD chemical/stressor identifier</td>
 </tr>
 <tr>
 <td><a href="Curie/">Curie</a></td>
@@ -669,8 +1408,20 @@
 <td>A real number that conforms to the xsd:double specification</td>
 </tr>
 <tr>
+<td><a href="DrugBankIdentifier/">DrugBankIdentifier</a></td>
+<td>DrugBank primary identifier (e</td>
+</tr>
+<tr>
 <td><a href="Float/">Float</a></td>
 <td>A real number that conforms to the xsd:float specification</td>
+</tr>
+<tr>
+<td><a href="GoIdentifier/">GoIdentifier</a></td>
+<td>Gene Ontology term identifier (e</td>
+</tr>
+<tr>
+<td><a href="HpoIdentifier/">HpoIdentifier</a></td>
+<td>HPO phenotype term identifier (e</td>
 </tr>
 <tr>
 <td><a href="Integer/">Integer</a></td>
@@ -683,6 +1434,14 @@
 <tr>
 <td><a href="Jsonpointer/">Jsonpointer</a></td>
 <td>A string encoding a JSON Pointer</td>
+</tr>
+<tr>
+<td><a href="MondoIdentifier/">MondoIdentifier</a></td>
+<td>MONDO disease ontology identifier (e</td>
+</tr>
+<tr>
+<td><a href="NcbiGeneIdentifier/">NcbiGeneIdentifier</a></td>
+<td>NCBI Entrez Gene numeric ID</td>
 </tr>
 <tr>
 <td><a href="Ncname/">Ncname</a></td>
@@ -707,6 +1466,14 @@
 <tr>
 <td><a href="Time/">Time</a></td>
 <td>A time object represents a (local) time of day, independent of any particular...</td>
+</tr>
+<tr>
+<td><a href="UberonIdentifier/">UberonIdentifier</a></td>
+<td>UBERON anatomy ontology identifier</td>
+</tr>
+<tr>
+<td><a href="UniprotIdentifier/">UniprotIdentifier</a></td>
+<td>UniProt accession identifier</td>
 </tr>
 <tr>
 <td><a href="Uri/">Uri</a></td>
@@ -788,7 +1555,7 @@
       
       
         <a
-          href="../about/"
+          href="../published-schema/"
           class="md-footer__link md-footer__link--next"
           rel="next"
         >
@@ -797,7 +1564,7 @@
               <span class="md-footer__direction">
                 Next
               </span>
-              About
+              Published Schema
             </div>
           </div>
           <div class="md-footer__button md-icon">
