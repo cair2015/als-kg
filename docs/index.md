@@ -1,5 +1,7 @@
-# ALS-KG
+<meta http-equiv="refresh" content="0; url=elements/">
 
-Knowledge Graph for ALS studies
+# Redirecting
 
-- Auto-generated [schema documentation](elements/index.md)
+Go to the [Schema Reference](elements/index.md).
+
+The generated class pages include Mermaid inheritance diagrams, and the merged schema artifact is available at [Schema YAML](schema/als_kg.yaml).

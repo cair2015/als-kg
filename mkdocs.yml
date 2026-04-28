@@ -48,10 +48,16 @@ markdown_extensions:
 
 watch:
   - src/als_kg/schema
+  - docs
+
+not_in_nav: |
+  /elements/*
+  !/elements/index.md
 
 nav:
   - Home: index.md
-  - Schema: elements/index.md
+  - Schema Reference: elements/index.md
+  - Published Schema: published-schema.md
   - About: about.md
 
 exclude_docs: |

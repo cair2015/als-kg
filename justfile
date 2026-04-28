@@ -140,8 +140,6 @@ _post_upgrade_v020py:
     from pathlib import Path
     # Git move files from folder src to folder dest
     tasks = [
-        (Path("src/docs/files"), Path("docs")),
-        (Path("src/docs/templates"), Path("docs/templates-linkml")),
         (Path("src/data/examples"), Path("tests/data/")),
     ]
     for src, dest in tasks:

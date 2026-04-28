@@ -2,16 +2,37 @@
 
 # ALS-KG
 
-Knowledge Graph for ALS studies
+ALS-KG is a LinkML-based schema and ontology project for representing knowledge relevant to amyotrophic lateral sclerosis (ALS), including diseases, phenotypes, genes, proteins, variants, drugs, exposures, and their associations.
+
+## Repository
+
+[https://github.com/cair2015/als-kg](https://github.com/cair2015/als-kg)
 
 ## Documentation Website
 
-[https://.github.io/ALS-KG](https://.github.io/ALS-KG)
+[https://cair2015.github.io/als-kg](https://cair2015.github.io/als-kg)
+
+## Development Workflow
+
+The schema source of truth is:
+
+`src/als_kg/schema/als_kg.yaml`
+
+Common commands:
+
+```bash
+just gen-doc
+just gen-project
+just test
+```
+
+These commands regenerate documentation, rebuild generated artifacts, and validate the project.
 
 ## Repository Structure
 
 * [docs/](docs/) - mkdocs-managed documentation
   * [elements/](docs/elements/) - generated schema documentation
+  * [schema/](docs/schema/) - published schema artifacts
 * [examples/](examples/) - Examples of using the schema
 * [project/](project/) - project files (these files are auto-generated, do not edit)
 * [src/](src/) - source files (edit these)
