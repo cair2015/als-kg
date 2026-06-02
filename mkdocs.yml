@@ -47,7 +47,7 @@ markdown_extensions:
   #       - gen_pages.py  # or any other name or path
 
 watch:
-  - src/als_kg/schema
+  - src/alskg/schema
   - docs
 
 not_in_nav: |

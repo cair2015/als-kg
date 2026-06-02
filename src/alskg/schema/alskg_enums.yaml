@@ -1,0 +1,577 @@
+id: https://w3id.org/alskg/schema/alskg-enums
+name: alskg_enums
+title: ALSKG Enumeration Types
+description: Controlled vocabularies and enumeration types for the ALSKG schema.
+license: MIT
+prefixes:
+  linkml: https://w3id.org/linkml/
+  alskg: https://w3id.org/alskg/schema/
+default_prefix: alskg
+imports:
+- linkml:types
+enums:
+  NodeLabelEnum:
+    description: Current three-letter OptimusKG Neo4j node labels.
+    permissible_values:
+      ANA:
+        description: Anatomy node label.
+      BPO:
+        description: BiologicalProcess node label.
+      CCO:
+        description: CellularComponent node label.
+      DIS:
+        description: Disease node label.
+      DRG:
+        description: Drug node label.
+      EXP:
+        description: Exposure node label.
+      GEN:
+        description: Gene node label.
+      MFN:
+        description: MolecularFunction node label.
+      MST:
+        description: MolecularSubtype node label. Represents transcriptome-derived molecular disease subtypes
+          defined by unsupervised multi-omic clustering (e.g. ALS-Ox, ALS-Glia, ALS-TE from the NYGC ALS
+          Consortium). Not an ontology-derived class; uses a synthetic ALSMS ID scheme.
+      PHE:
+        description: Phenotype node label.
+      PWY:
+        description: Pathway node label.
+      ECX:
+        description: GeneExpressionContext node label. Represents reified gene expression context nodes
+          linking a gene, molecular subtype, tissue/anatomy, expression direction, and provenance into
+          a single semantic unit.
+      ALS:
+        description: ALS focal disease node label used if materializing AmyotrophicLateralSclerosis separately
+          from DIS.
+      AST:
+        description: ALS subtype node.
+      CST:
+        description: Clinical subtype node.
+      GST:
+        description: Genetic subtype node.
+      PST:
+        description: Pathology subtype or pathogenesis statement node depending on local implementation;
+          prefer PSTMT for PathogenesisStatement to avoid collision.
+      PGS:
+        description: Progression subtype node.
+      SSC:
+        description: Subtype scheme node.
+      SCR:
+        description: Subtype criterion node.
+      VAR:
+        description: Sequence variant node.
+      REX:
+        description: Repeat expansion node.
+      CLT:
+        description: Cell type node.
+      PGM:
+        description: Pathogenic mechanism node.
+      MEV:
+        description: Molecular event node.
+      PAG:
+        description: Protein aggregate node.
+      EST:
+        description: Evidence statement node.
+      PSTMT:
+        description: Pathogenesis statement node.
+      DER:
+        description: Differential expression result node.
+      PAR:
+        description: Protein abundance result node.
+      POB:
+        description: Phenotype observation node.
+      DST:
+        description: Disease stage node.
+      PRG:
+        description: Progression pattern node.
+      BMK:
+        description: Biomarker node.
+      STU:
+        description: Study node.
+      DAT:
+        description: Dataset node.
+      COH:
+        description: Cohort node.
+      CMP:
+        description: Comparator group node.
+      SMP:
+        description: Sample node.
+      ASY:
+        description: Assay node.
+      MOD:
+        description: Model system node.
+      TX:
+        description: Therapeutic intervention node.
+      TRI:
+        description: Clinical trial node.
+      DRH:
+        description: Drug repurposing hypothesis node.
+      BAG:
+        description: Biological agent node.
+  RelationshipTypeEnum:
+    description: Current Neo4j relationship type strings observed in the installed OptimusKG graph.
+    permissible_values:
+      ACTIVATOR:
+        description: Drug activates the gene product or target associated with the gene.
+      ADVERSE_DRUG_REACTION:
+        description: Drug-to-phenotype relationship indicating an adverse drug reaction.
+      AGONIST:
+        description: Drug acts as an agonist of the gene product or target associated with the gene.
+      ALLOSTERIC_ANTAGONIST:
+        description: Drug acts as an allosteric antagonist of the gene product or target associated with
+          the gene.
+      ANTAGONIST:
+        description: Drug acts as an antagonist of the gene product or target associated with the gene.
+      ASSOCIATED_WITH:
+        description: Association relationship; generally evidence-bearing but not necessarily causal.
+      BINDING_AGENT:
+        description: Drug binds the gene product or target associated with the gene.
+      BLOCKER:
+        description: Drug blocks the gene product or target associated with the gene.
+      CARRIER:
+        description: Drug-gene relationship where the gene product is a carrier in pharmacologic context.
+      CONTRAINDICATION:
+        description: Drug is contraindicated for a disease or phenotype context.
+      DEGRADER:
+        description: Drug degrades or induces degradation of the gene product or target.
+      ENZYME:
+        description: Drug-gene relationship where the gene product is an enzyme in drug metabolism or
+          action context.
+      EXPRESSION_ABSENT:
+        description: Gene expression is reported absent in an anatomical context.
+      EXPRESSION_PRESENT:
+        description: Gene expression is reported present in an anatomical context.
+      INDICATION:
+        description: Drug has an indicated therapeutic use for a disease, phenotype, or biological process
+          context.
+      INHIBITOR:
+        description: Drug inhibits the gene product or target associated with the gene.
+      INTERACTS_WITH:
+        description: Generic interaction or annotation-style relationship. Interpret according to the
+          source and node pair; it may indicate interaction, membership, annotation, or functional context.
+      INVERSE_AGONIST:
+        description: Drug acts as an inverse agonist of the gene product or target.
+      IS_A:
+        description: Ontology subclass relationship indicating the source concept is a kind of the target
+          concept.
+      LINKED_TO:
+        description: Generic linkage relation; interpret as associative rather than causal unless source
+          evidence says otherwise.
+      MODULATOR:
+        description: Drug modulates the gene product or target associated with the gene.
+      NEGATIVE_ALLOSTERIC_MODULATOR:
+        description: Drug acts as a negative allosteric modulator of the gene product or target.
+      NEGATIVE_MODULATOR:
+        description: Drug negatively modulates the gene product or target.
+      OFF_LABEL_USE:
+        description: Drug has off-label use for a disease or phenotype context.
+      OPENER:
+        description: Drug opens the gene product or target, often a channel target.
+      PARENT:
+        description: Parent-child hierarchy relationship from the source concept to a broader or parent
+          concept in the same or related ontology.
+      PARTIAL_AGONIST:
+        description: Drug acts as a partial agonist of the gene product or target.
+      HAS_MOLECULAR_SUBTYPE:
+        description: Disease-to-MolecularSubtype relationship indicating that a disease node is associated
+          with or can present as a given molecular subtype. Direction is Disease -> MolecularSubtype.
+          Not equivalent to ontological subclassing; represents a transcriptomic classification layer
+          orthogonal to ontological disease hierarchy.
+      DYSREGULATED_IN:
+        description: Gene-to-MolecularSubtype relationship indicating that a gene or genomic feature is
+          differentially expressed (upregulated or downregulated) in a given molecular subtype relative
+          to controls. Edge direction is Gene -> MolecularSubtype. Properties encode direction (UP/DOWN),
+          tissue context (cortex or cord), and optionally cell model (e.g. iPSC motor neuron line).
+      MEASURED_IN:
+        description: MolecularSubtype-to-Anatomy relationship indicating the tissue or biological context
+          in which the molecular subtype was characterized. Edge direction is MolecularSubtype -> Anatomy.
+      PHENOTYPE_PRESENT:
+        description: Disease-to-phenotype relationship indicating the phenotype is present in the disease
+          context.
+      POSITIVE_ALLOSTERIC_MODULATOR:
+        description: Drug acts as a positive allosteric modulator of the gene product or target.
+      POSITIVE_MODULATOR:
+        description: Drug positively modulates the gene product or target.
+      RELEASING_AGENT:
+        description: Drug acts as a releasing agent affecting the gene product or related target system.
+      STABILISER:
+        description: Drug stabilizes the gene product or target.
+      SUBSTRATE:
+        description: Drug is a substrate of the gene product, often an enzyme or transporter.
+      SYNERGISTIC_INTERACTION:
+        description: Drug-drug relationship indicating synergistic interaction.
+      TARGET:
+        description: Drug targets the gene product associated with the gene.
+      TRANSPORTER:
+        description: Drug-gene relationship where the gene product is a transporter in pharmacologic context.
+      HAS_EXPRESSION_CONTEXT:
+        description: 'Gene-to-GeneExpressionContext relationship. Links a gene to a reified expression
+          context node that captures the molecular subtype, tissue/anatomy, expression direction, and
+          provenance of a differential expression finding. Edge direction: Gene -> GeneExpressionContext.'
+      IN_ANATOMY:
+        description: 'GeneExpressionContext-to-Anatomy relationship. Links a reified expression context
+          to the tissue or anatomical region in which the expression was measured. Optional: null when
+          context is an iPSC cell model with no corresponding anatomy node. Edge direction: GeneExpressionContext
+          -> Anatomy.'
+      HAS_ALS_SUBTYPE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      IS_SUBTYPE_OF:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      HAS_SUBTYPE_SCHEME:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      HAS_SUBTYPE_CRITERION:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      DEFINED_BY_GENE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      DEFINED_BY_VARIANT:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      HAS_PATHOGENIC_MECHANISM:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      AFFECTS_ANATOMY:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      INVOLVES_CELL_TYPE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      HAS_PHENOTYPE_OBSERVATION:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      HAS_VARIANT:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      AFFECTS_GENE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      ALTERS_PROTEIN:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      CONTRIBUTES_TO_PATHOGENIC_MECHANISM:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      OCCURS_IN_CELL_TYPE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      OCCURS_IN_ANATOMY:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      MEASURES_GENE_EXPRESSION_OF:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      OCCURS_IN_SUBTYPE_CONTEXT:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      MEASURED_BY_ASSAY:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      DERIVES_FROM_DATASET:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      SUPPORTED_BY:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      HAS_OBSERVED_PHENOTYPE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      INDICATES_PATHOGENIC_MECHANISM:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      PRIORITIZES_DRUG:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      TARGETS_GENE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      MODULATES_PATHOGENIC_MECHANISM:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      TESTED_IN_CLINICAL_TRIAL:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      ENROLLS_SUBTYPE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+      MODELS_SUBTYPE:
+        description: ALS-KG extension relationship type for Neo4j materialization.
+  GeneBiotypeEnum:
+    description: Gene biotype classifications from HGNC/Ensembl, stored on Gene nodes.
+    permissible_values:
+      protein_coding:
+        description: Protein-coding gene
+      lncRNA:
+        description: Long non-coding RNA
+      miRNA:
+        description: MicroRNA
+      snRNA:
+        description: Small nuclear RNA
+      snoRNA:
+        description: Small nucleolar RNA
+      rRNA:
+        description: Ribosomal RNA
+      tRNA:
+        description: Transfer RNA
+      pseudogene:
+        description: Pseudogene
+      misc_RNA:
+        description: Miscellaneous RNA
+      other:
+        description: Other or unclassified biotype
+  ExpressionCallQualityEnum:
+    description: Bgee expression call quality levels for ANA-GEN edges. Reflects confidence in gene expression
+      calls derived from curated RNA-seq data.
+    permissible_values:
+      gold:
+        description: High-confidence expression call (multiple concordant evidence types)
+      silver:
+        description: Moderate-confidence expression call
+  DrugTractabilityModalityEnum:
+    description: Drug discovery modality categories for tractability assessments on Gene nodes. Sourced
+      from Open Targets tractability pipeline.
+    permissible_values:
+      sm:
+        description: Small molecule modality
+      ab:
+        description: Antibody modality
+      pr:
+        description: PROTAC (protein degrader) modality
+      oc:
+        description: Other clinical modality
+  HomologyTypeEnum:
+    description: Types of homology relationships in gene homologue annotations on Gene nodes.
+    permissible_values:
+      ortholog_one2one:
+        description: One-to-one ortholog (single copy in both species)
+      ortholog_one2many:
+        description: One-to-many ortholog
+      ortholog_many2many:
+        description: Many-to-many ortholog
+      within_species_paralog:
+        description: Paralog within the same species
+      other_paralog:
+        description: Other paralogous relationship
+      gene_split:
+        description: Split gene (fragment)
+  ExpressionDirectionEnum:
+    description: Direction of differential expression relative to a comparator. Includes legacy OptimusKG
+      values UP/DOWN and semantic ALS-KG values increased/decreased/unchanged/mixed/unknown.
+    permissible_values:
+      UP:
+        description: Gene or feature is upregulated (higher expression) in the molecular subtype compared
+          to non-ALS controls.
+      DOWN:
+        description: Gene or feature is downregulated (lower expression) in the molecular subtype compared
+          to non-ALS controls.
+      increased:
+        description: Expression is higher in the case or condition group than in the comparator group.
+      decreased:
+        description: Expression is lower in the case or condition group than in the comparator group.
+      unchanged:
+        description: No statistically meaningful expression change is observed.
+      mixed:
+        description: Direction differs across cohorts, cell types, tissues, assays, or analytical methods.
+      unknown:
+        description: Direction is not specified or cannot be determined.
+  BiologicalContextTypeEnum:
+    description: Type of biological context (tissue or cell model) in which molecular subtype gene expression
+      was measured. Used on DYSREGULATED_IN edges.
+    permissible_values:
+      postmortem_cortex:
+        description: Human postmortem motor cortex tissue sample.
+      postmortem_cord:
+        description: Human postmortem spinal cord tissue sample.
+      iPSC_motor_neuron:
+        description: iPSC-derived induced motor neuron cell model.
+      C9orf72_motor_neuron:
+        description: iPSC motor neuron model carrying C9orf72 repeat expansion mutation.
+      FUS_motor_neuron:
+        description: iPSC motor neuron model carrying FUS mutation.
+      TDP43_motor_neuron:
+        description: iPSC motor neuron model carrying TARDBP/TDP-43 mutation.
+      spinal_cord_cervical:
+        description: Human postmortem cervical spinal cord tissue sample.
+      spinal_cord_thoracic:
+        description: Human postmortem thoracic spinal cord tissue sample.
+      spinal_cord_lumbar:
+        description: Human postmortem lumbar spinal cord tissue sample.
+  MolecularSubtypeClassificationBasisEnum:
+    description: Computational or experimental basis used to define and assign molecular subtypes. Describes
+      how the subtype was derived from raw data.
+    permissible_values:
+      unsupervised_transcriptomics:
+        description: Molecular subtype derived by unsupervised clustering of postmortem transcriptomes
+          (e.g. k-means, hierarchical clustering, NMF).
+      deep_multiomics_classifier:
+        description: Molecular subtype assigned by a deep learning multi-omics classifier (e.g. the DANCer
+          neural network from the NYGC ALS Consortium, Cell Reports 2025).
+      bootstrap_clustering:
+        description: Subtype assigned via bootstrap-based resampling and clustering stability analysis.
+  SubtypeAxisEnum:
+    description: Axes along which ALS subtypes may be defined.
+    permissible_values:
+      clinical_onset:
+        description: Subtype based on site or pattern of clinical onset, such as bulbar-onset or limb-onset
+          ALS.
+      motor_neuron_involvement:
+        description: Subtype based on upper and lower motor neuron involvement pattern.
+      genetic:
+        description: Subtype based on a gene, variant, repeat expansion, or inherited/genetic cause.
+      molecular:
+        description: Subtype derived from molecular data such as transcriptomics, proteomics, epigenomics,
+          or multi-omics.
+      pathology:
+        description: Subtype based on pathological findings such as TDP-43, SOD1, or FUS proteinopathy.
+      cognitive_behavioral:
+        description: Subtype based on cognitive or behavioral features such as ALS-FTD.
+      progression:
+        description: Subtype based on progression speed, survival, or functional decline.
+      anatomical:
+        description: Subtype based on dominant anatomical system or region affected.
+      model_system:
+        description: Subtype or disease model defined in an experimental model system.
+  EvidenceStrengthEnum:
+    description: Qualitative evidence strength for a scientific assertion.
+    permissible_values:
+      definitive:
+        description: Strongly supported by replicated, high-quality evidence or accepted clinical/genetic
+          evidence.
+      strong:
+        description: Supported by substantial evidence from curated, experimental, or replicated sources.
+      moderate:
+        description: Supported by some evidence, but with limitations or limited replication.
+      weak:
+        description: Supported by limited or preliminary evidence.
+      conflicting:
+        description: Evidence is inconsistent across studies or modalities.
+      unknown:
+        description: Evidence strength has not been assessed.
+  EvidenceModalityEnum:
+    description: Modality or source type of evidence supporting a statement.
+    permissible_values:
+      clinical:
+        description: Evidence from clinical observations, examinations, diagnostic records, or clinical
+          cohorts.
+      genetic:
+        description: Evidence from genetic association, segregation, variant interpretation, or sequencing
+          studies.
+      transcriptomic:
+        description: Evidence from RNA-seq, single-cell RNA-seq, spatial transcriptomics, microarray,
+          or related assays.
+      proteomic:
+        description: Evidence from protein abundance, localization, aggregation, or post-translational
+          modification assays.
+      pathology:
+        description: Evidence from histology, immunostaining, digital pathology, or neuropathological
+          assessment.
+      biomarker:
+        description: Evidence from molecular, imaging, electrophysiological, or clinical biomarkers.
+      experimental_model:
+        description: Evidence from animal, cell, iPSC, organoid, or other model systems.
+      literature_curated:
+        description: Evidence curated from scientific literature.
+      database_curated:
+        description: Evidence curated from a database or knowledge base.
+      computational_prediction:
+        description: Evidence generated by computational model, embedding, machine learning, or algorithmic
+          inference.
+  VariantConsequenceEnum:
+    description: Broad variant consequence categories relevant to ALS.
+    permissible_values:
+      repeat_expansion:
+        description: Pathogenic or potentially pathogenic repeat expansion.
+      missense_variant:
+        description: Variant causing an amino-acid substitution.
+      nonsense_variant:
+        description: Variant introducing a premature stop codon.
+      frameshift_variant:
+        description: Insertion/deletion that shifts the coding frame.
+      splice_region_variant:
+        description: Variant affecting splice region or splicing.
+      noncoding_variant:
+        description: Variant located outside coding sequence.
+      structural_variant:
+        description: Larger deletion, duplication, inversion, insertion, or translocation.
+      copy_number_variant:
+        description: Copy number gain or loss.
+      unknown:
+        description: Consequence is not known.
+  PathogenicityEnum:
+    description: Clinical or research pathogenicity interpretation of a genetic variant.
+    permissible_values:
+      pathogenic:
+        description: Variant is interpreted as disease-causing.
+      likely_pathogenic:
+        description: Variant is likely disease-causing.
+      risk_factor:
+        description: Variant is associated with increased disease risk but may not be fully penetrant
+          or causal alone.
+      uncertain_significance:
+        description: Variant has uncertain pathogenic significance.
+      likely_benign:
+        description: Variant is likely benign.
+      benign:
+        description: Variant is benign.
+      unknown:
+        description: Pathogenicity is not known.
+  PathogenicMechanismEnum:
+    description: Major ALS pathogenic mechanism categories.
+    permissible_values:
+      TDP43_proteinopathy:
+        description: TDP-43 mislocalization, aggregation, loss of nuclear function, or gain of toxic function.
+      SOD1_toxicity:
+        description: Toxic gain of function, aggregation, or dysfunction related to SOD1.
+      FUS_proteinopathy:
+        description: FUS mislocalization, aggregation, or RNA-binding dysfunction.
+      C9orf72_repeat_toxicity:
+        description: Toxicity related to C9orf72 repeat expansion, RNA foci, DPR proteins, or haploinsufficiency.
+      RNA_processing_dysfunction:
+        description: Disrupted RNA splicing, transport, stability, translation, or RNA granule biology.
+      impaired_proteostasis:
+        description: Protein quality control, ubiquitin-proteasome, autophagy, or lysosomal dysfunction.
+      mitochondrial_dysfunction:
+        description: Mitochondrial impairment, energy metabolism dysfunction, or mitochondrial stress.
+      oxidative_stress:
+        description: Oxidative damage or disrupted redox homeostasis.
+      neuroinflammation:
+        description: Inflammatory processes involving microglia, astrocytes, peripheral immune cells,
+          complement, or cytokines.
+      glutamate_excitotoxicity:
+        description: Excitotoxic injury involving glutamate signaling or uptake.
+      axonal_transport_defect:
+        description: Defect in axonal transport, cytoskeletal dynamics, or neuromuscular connectivity.
+      nucleocytoplasmic_transport_defect:
+        description: Disrupted nuclear-cytoplasmic transport or nuclear pore biology.
+      DNA_repair_defect:
+        description: Defect in DNA damage response or genome maintenance.
+      metabolic_dysfunction:
+        description: Altered metabolic state, lipid metabolism, or energy homeostasis.
+      neuromuscular_junction_dysfunction:
+        description: Pathological change at the neuromuscular junction.
+      other:
+        description: Other pathogenic mechanism not covered by the listed categories.
+  DrugActionDirectionEnum:
+    description: Direction or mechanism of a drug action on a target or biological process.
+    permissible_values:
+      inhibits:
+        description: Drug decreases activity or function of the target.
+      activates:
+        description: Drug increases activity or function of the target.
+      antagonizes:
+        description: Drug blocks receptor or target activation.
+      agonizes:
+        description: Drug activates receptor or target signaling.
+      modulates:
+        description: Drug modulates the target without specifying direction.
+      degrades:
+        description: Drug promotes degradation of the target.
+      stabilizes:
+        description: Drug stabilizes the target, complex, or functional state.
+      binds:
+        description: Drug binds the target, direction not specified.
+      unknown:
+        description: Drug action is not specified.
+  RepurposingStatusEnum:
+    description: Status of a drug repurposing hypothesis.
+    permissible_values:
+      proposed:
+        description: Hypothesis is proposed based on KG, literature, omics, or computational evidence.
+      prioritized:
+        description: Hypothesis has been ranked or prioritized for further study.
+      experimentally_supported:
+        description: Hypothesis has supporting experimental-model evidence.
+      clinically_tested:
+        description: Hypothesis has been evaluated in a clinical trial or observational clinical study.
+      deprioritized:
+        description: Hypothesis is deprioritized because of weak evidence, wrong direction, toxicity,
+          or lack of feasibility.
+      rejected:
+        description: Hypothesis is rejected based on negative or contradictory evidence.
+  SexEnum:
+    description: Biological sex or sex category used in a study or observation when reported.
+    permissible_values:
+      female:
+        description: Female.
+      male:
+        description: Male.
+      mixed:
+        description: Mixed or combined sex groups.
+      unknown:
+        description: Sex not reported or unknown.

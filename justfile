@@ -21,6 +21,9 @@ shebang := if os() == 'windows' {
 # Environment variables with defaults
 schema_name := env_var_or_default("LINKML_SCHEMA_NAME", "_no_schema_given_")
 source_schema_dir := env_var_or_default("LINKML_SCHEMA_SOURCE_DIR", "")
+configured_source_schema_path := env_var_or_default("LINKML_SCHEMA_PATH", "")
+python_package_dir := env_var_or_default("LINKML_PYTHON_PACKAGE_DIR", "src/alskg")
+python_module_name := env_var_or_default("LINKML_PYTHON_MODULE_NAME", "alskg_schema")
 config_yaml := if env_var_or_default("LINKML_GENERATORS_CONFIG_YAML", "") != "" {
   "--config-file " + env_var_or_default("LINKML_GENERATORS_CONFIG_YAML", "")
 } else {
@@ -35,8 +38,15 @@ gen_ts_args := env_var_or_default("LINKML_GENERATORS_TYPESCRIPT_ARGS", "")
 # Directory variables
 src := "src"
 dest := "project"
-pymodel := src / schema_name / "datamodel"
-source_schema_path := source_schema_dir / schema_name + ".yaml"
+pymodel := python_package_dir / "datamodel"
+source_schema_path := if configured_source_schema_path != "" {
+  configured_source_schema_path
+} else {
+  source_schema_dir / schema_name + ".yaml"
+}
+optimuskg_schema_path := "src/optimuskg/schema/optimuskg_semantic_schema.yaml"
+als_ontology_schema_path := "src/alskg/schema/alskg_ontology.yaml"
+als_schema_path := "src/alskg/schema/alskg_schema.yaml"
 docdir := "docs/elements"  # Directory for generated documentation
 distrib_schema_path := "docs/schema"  # Directory for publishing schema artifacts
 
@@ -104,14 +114,14 @@ testdoc: gen-doc _serve
 # Generate the Python data models (dataclasses & pydantic)
 gen-python:
   uv run gen-project -d  {{pymodel}} -I python {{source_schema_path}}
-  uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
+  uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{python_module_name}}_pydantic.py
 
 # Generate project files including Python data model
 [group('model development')]
 gen-project:
   uv run gen-project {{config_yaml}} -d {{dest}} {{source_schema_path}}
   mv {{dest}}/*.py {{pymodel}}
-  uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
+  uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{python_module_name}}_pydantic.py
 
   @# Some generators ignore config_yaml or cannot create directories, so we run them separately.
   uv run gen-java {{gen_java_args}} --output-directory {{dest}}/java/ {{source_schema_path}}
@@ -125,6 +135,25 @@ gen-project:
     mkdir -p {{dest}}/owl ; \
   fi
   uv run gen-owl {{gen_owl_args}} {{source_schema_path}} > "{{dest}}/owl/{{schema_name}}.owl.ttl"
+
+# Generate OWL TTL for OptimusKG semantic ontology schema
+[group('model development')]
+gen-owl-optimuskg:
+  uv run gen-owl {{gen_owl_args}} {{optimuskg_schema_path}} > "src/optimuskg/schema/optimuskg_semantic_schema.owl.ttl"
+
+# Generate OWL TTL for alskg semantic ontology schema
+[group('model development')]
+gen-owl-alskg:
+  uv run gen-owl {{gen_owl_args}} {{als_schema_path}} > "src/alskg/schema/alskg_schema.owl.ttl"
+
+
+# Generate OWL TTL for ALS KG clean semantic schema
+[group('model development')]
+gen-owl-alskg-ontology:
+  @if [ ! -d "{{dest}}/owl" ]; then \
+    mkdir -p {{dest}}/owl ; \
+  fi
+  uv run gen-owl {{gen_owl_args}} {{als_ontology_schema_path}} > "src/alskg/schema/alskg_ontology.owl.ttl"
 
 # ============== Migrations recipes for Copier ==============
 

@@ -16,7 +16,7 @@ ALS-KG is a LinkML-based schema and ontology project for representing knowledge 
 
 The schema source of truth is:
 
-`src/als_kg/schema/als_kg.yaml`
+`src/alskg/schema/als_kg.yaml`
 
 Common commands:
 
@@ -24,6 +24,7 @@ Common commands:
 just gen-doc
 just gen-project
 just test
+NEO4J_PASSWORD='<password>' uv run als-kg-validate-neo4j
 ```
 
 These commands regenerate documentation, rebuild generated artifacts, and validate the project.
@@ -36,10 +37,10 @@ These commands regenerate documentation, rebuild generated artifacts, and valida
 * [examples/](examples/) - Examples of using the schema
 * [project/](project/) - project files (these files are auto-generated, do not edit)
 * [src/](src/) - source files (edit these)
-  * [als_kg](src/als_kg)
-    * [schema/](src/als_kg/schema) -- LinkML schema
+  * [alskg](src/alskg)
+    * [schema/](src/alskg/schema) -- LinkML schema
       (edit this)
-    * [datamodel/](src/als_kg/datamodel) -- generated
+    * [datamodel/](src/alskg/datamodel) -- generated
       Python datamodel
 * [tests/](tests/) - Python tests
   * [data/](tests/data) - Example data

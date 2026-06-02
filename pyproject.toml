@@ -18,8 +18,12 @@ dependencies = [
   "dotenv>=0.9.9",
   "linkml-runtime >=1.9.4",
   "neo4j>=5.28.3",
+  "polars>=1.36.1",
   "rdflib>=7.6.0",
 ]
+
+[project.scripts]
+als-kg-validate-neo4j = "alskg.etl.validate_neo4j:main"
 
 [dependency-groups]
 dev = [
@@ -36,6 +40,9 @@ dev = [
 
 [tool.hatch.version]
 source = "uv-dynamic-versioning"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/alskg"]
 
 # Ref.: https://github.com/ninoseki/uv-dynamic-versioning/
 [tool.uv-dynamic-versioning]
@@ -54,8 +61,8 @@ skip = [
   "pyproject.toml",
   "uv.lock",
   "project/*",
-  "src/als_kg/datamodel/als_kg_pydantic.py",
-  "src/als_kg/datamodel/als_kg.py",
+  "src/alskg/datamodel/als_kg_pydantic.py",
+  "src/alskg/datamodel/als_kg.py",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -71,6 +78,6 @@ extend-exclude = [
   "uv.lock",
   "pyproject.toml",
   "project/*",
-  "src/als_kg/datamodel/als_kg_pydantic.py",
-  "src/als_kg/datamodel/als_kg.py",
+  "src/alskg/datamodel/als_kg_pydantic.py",
+  "src/alskg/datamodel/als_kg.py",
 ]

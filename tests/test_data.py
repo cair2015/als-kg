@@ -4,7 +4,7 @@ import glob
 import pytest
 from pathlib import Path
 
-import als_kg.datamodel.als_kg
+import alskg.datamodel.als_kg
 from linkml_runtime.loaders import yaml_loader
 
 DATA_DIR_VALID = Path(__file__).parent / "data" / "valid"
@@ -19,7 +19,7 @@ def test_valid_data_files(filepath):
     """Test loading of all valid data files."""
     target_class_name = Path(filepath).stem.split("-")[0]
     tgt_class = getattr(
-        als_kg.datamodel.als_kg,
+        alskg.datamodel.als_kg,
         target_class_name,
     )
     obj = yaml_loader.load(filepath, target_class=tgt_class)
@@ -31,7 +31,7 @@ def test_invalid_data_files(filepath):
     """Test invalid data files fail to load against the target class."""
     target_class_name = Path(filepath).stem.split("-")[0]
     tgt_class = getattr(
-        als_kg.datamodel.als_kg,
+        alskg.datamodel.als_kg,
         target_class_name,
     )
     with pytest.raises(Exception):

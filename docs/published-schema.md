@@ -2,11 +2,11 @@
 
 This project publishes the merged LinkML schema generated from:
 
-`src/als_kg/schema/als_kg.yaml`
+`src/alskg/schema/alskg_schema.yaml`
 
 Raw artifact links:
 
-- [Schema YAML](schema/als_kg.yaml)
+- [Schema YAML](schema/alskg_schema.yaml)
 
 Generated reference pages are available in the [Schema Reference](elements/index.md).
 

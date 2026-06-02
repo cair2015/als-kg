@@ -9,7 +9,10 @@
 LINKML_SCHEMA_NAME="als_kg"
 LINKML_SCHEMA_AUTHOR="Robin Cai <robincai92130@gmail.com>"
 LINKML_SCHEMA_DESCRIPTION="Knowledge Graph for ALS studies"
-LINKML_SCHEMA_SOURCE_DIR="src/als_kg/schema"
+LINKML_SCHEMA_SOURCE_DIR="src/alskg/schema"
+LINKML_SCHEMA_PATH="src/alskg/schema/alskg_schema.yaml"
+LINKML_PYTHON_PACKAGE_DIR="src/alskg"
+LINKML_PYTHON_MODULE_NAME="alskg_schema"
 
 ###### linkml generator variables, used by justfile
 
