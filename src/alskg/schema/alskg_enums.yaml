@@ -575,3 +575,38 @@ enums:
         description: Mixed or combined sex groups.
       unknown:
         description: Sex not reported or unknown.
+  SubtypeClassificationOriginEnum:
+    description: Origin or derivation method for an ALS subtype. Distinguishes clinically and ontologically
+      defined subtypes from those derived computationally via machine learning or multi-omics analysis.
+      Used on ALSSubtype.classification_origin.
+    permissible_values:
+      ontological:
+        description: 'Subtype defined by position in a biomedical ontology (MONDO, EFO, ORDO). Examples:
+          Familial ALS, Juvenile ALS, FTD/ALS spectrum nodes from OptimusKG.'
+      clinical:
+        description: 'Subtype defined by clinical presentation, site of onset, motor neuron involvement,
+          or functional criteria. Examples: bulbar-onset ALS, upper-motor-neuron-predominant ALS, ALS-FTD.'
+      genomic:
+        description: 'Subtype defined by a specific causal or risk gene, sequence variant, or repeat expansion.
+          Examples: SOD1-ALS, C9orf72-ALS, TARDBP-ALS, FUS-ALS.'
+      pathological:
+        description: 'Subtype defined by neuropathological or proteinopathy findings. Examples: TDP-43
+          proteinopathy subtype, SOD1 aggregation pattern.'
+      transcriptomic_ml:
+        description: 'Subtype derived by unsupervised or supervised machine learning applied to bulk or
+          single-cell RNA-seq data. Examples: ALS-Ox, ALS-Glia, ALS-TE from the NYGC ALS Consortium (Tam
+          et al. 2019; DANCer, Cell Reports 2025).'
+      proteomic_ml:
+        description: Subtype derived by machine learning applied to protein abundance, post-translational
+          modification, or pathway activation data.
+      epigenomic_ml:
+        description: Subtype derived by machine learning applied to methylation, chromatin accessibility,
+          or other epigenomic data.
+      multiomics_ml:
+        description: Subtype derived by machine learning integrating two or more omics data types (e.g.
+          transcriptomics + proteomics + methylation). Use when no single omics layer is the primary driver.
+      clinical_ml:
+        description: Subtype derived by machine learning applied to clinical variables such as ALSFRS-R
+          trajectories, survival curves, symptom onset patterns, or neuroimaging features.
+      unknown:
+        description: Classification origin is not known or has not been recorded.

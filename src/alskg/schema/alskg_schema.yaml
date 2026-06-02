@@ -1,11 +1,11 @@
 id: https://w3id.org/alskg/schema/alskg-schema
 name: alskg_schema
 title: ALSKG Schema Extending OptimusKG
-description: A LinkML schema for ALSKG that extends the OptimusKG semantic model while preserving
-  Neo4j-compatible node classes, relationship classes, and graph semantics. It adds ALS-focused classes
-  and relationships for subtypes, variants, pathogenesis, gene expression, cohorts, samples, assays,
-  evidence, biomarkers, model systems, therapy, and drug repurposing.
-version: 0.2.0-alskg-neo4j-extension
+description: A LinkML schema for ALSKG that extends the OptimusKG semantic model while preserving Neo4j-compatible
+  node classes, relationship classes, and graph semantics. It adds ALS-focused classes and relationships
+  for subtypes, variants, pathogenesis, gene expression, cohorts, samples, assays, evidence, biomarkers,
+  model systems, therapy, and drug repurposing.
+version: 0.4.0-alskg
 license: MIT
 see_also:
 - https://arxiv.org/abs/2604.27269
@@ -108,10 +108,10 @@ slots:
     slot_uri: schema:identifier
     description: Primary OptimusKG node identifier, usually a CURIE or source-specific accession.
   original_optimus_label:
-    range: string
+    range: NodeLabelEnum
     description: Original three-letter OptimusKG node label as stored in Neo4j, such as GEN, DIS, or DRG.
   original_optimus_relationship_type:
-    range: string
+    range: RelationshipTypeEnum
     description: Original Neo4j relationship type string used in the installed OptimusKG database.
   name:
     range: string
@@ -2051,11 +2051,6 @@ classes:
       (GO), Pathway (Reactome).'
     class_uri: owl:Class
     slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
     - has_synonym
     - has_cross_reference
     - definition
@@ -2071,11 +2066,6 @@ classes:
       MedDRA).'
     class_uri: biolink:DiseaseOrPhenotypicFeature
     slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
     - has_synonym
     - has_cross_reference
   PhysicalEntity:
@@ -2088,11 +2078,6 @@ classes:
       Covers: Gene (ENSG), Protein (UniProt), Drug (ChEMBL/DrugBank/RxNorm), Exposure (MeSH/CTD).'
     class_uri: biolink:ChemicalEntityOrGeneOrGeneProduct
     slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
     - has_synonym
     - has_cross_reference
   AnalyticalEntity:
@@ -2105,7 +2090,7 @@ classes:
       (reified differential expression findings, ECX label).'
     class_uri: biolink:StudyResult
   Anatomy:
-    is_a: AnalyticalEntity
+    is_a: OntologyClass
     description: 'An anatomical entity or anatomical region represented in OptimusKG. Current Neo4j label:
       `ANA`.
 
@@ -2114,18 +2099,6 @@ classes:
       13,120 anatomical entities (6.9% of nodes) from the Uberon cross-species anatomy ontology. Covers
       organs, tissues, cell types, developmental structures, and systems. Source: Uberon. Node file: nodes/anatomy.parquet'
     class_uri: biolink:AnatomicalEntity
-    slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
-    - definition
-    - synonyms
-    - xrefs
-    - ontology
     annotations:
       neo4j_label:
         tag: neo4j_label
@@ -2161,18 +2134,6 @@ classes:
       with a defined beginning and end (e.g. "apoptotic process", "DNA repair", "cell division"). Source:
       Gene Ontology (GO). Node file: nodes/biological_process.parquet'
     class_uri: biolink:BiologicalProcess
-    slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
-    - definition
-    - synonyms
-    - xrefs
-    - ontology
     annotations:
       neo4j_label:
         tag: neo4j_label
@@ -2206,18 +2167,6 @@ classes:
       located (e.g. "nucleus", "mitochondria", "plasma membrane", "ribosome"). Source: Gene Ontology (GO).
       Node file: nodes/cellular_component.parquet'
     class_uri: biolink:CellularComponent
-    slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
-    - definition
-    - synonyms
-    - xrefs
-    - ontology
     annotations:
       neo4j_label:
         tag: neo4j_label
@@ -2252,13 +2201,6 @@ classes:
       structure. Sources: DrugCentral, Mondo, Open Targets. Node file: nodes/disease.parquet'
     class_uri: biolink:Disease
     slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
     - disease_has_molecular_subtype
     - has_als_subtype
     - has_pathogenic_mechanism
@@ -2360,13 +2302,6 @@ classes:
       Primary ontologies: ChEMBL, DrugBank, RxNorm. Node file: nodes/drug.parquet'
     class_uri: biolink:Drug
     slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
     - modulates_pathogenic_mechanism
     - targets_gene
     - targets_protein
@@ -2452,14 +2387,6 @@ classes:
       Database). Covers chemical exposures, physical agents, dietary factors, and lifestyle exposures.
       Source: Comparative Toxicogenomics Database (CTD). Node file: nodes/exposure.parquet'
     class_uri: biolink:EnvironmentalExposure
-    slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
     annotations:
       neo4j_label:
         tag: neo4j_label
@@ -2496,15 +2423,8 @@ classes:
       Bgee, and HGNC. Primary ontologies: ENSG (Ensembl Gene IDs), NCBIGene. Node file: nodes/gene.parquet'
     class_uri: biolink:Gene
     slots:
-    - id
-    - name
     - symbol
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
     - encodes
-    - has_synonym
-    - has_cross_reference
     - gene_has_expression_context
     - has_variant
     - contributes_to_pathogenic_mechanism
@@ -2545,18 +2465,6 @@ classes:
       level (e.g. "protein kinase activity", "DNA binding", "ATP hydrolysis activity"). Source: Gene Ontology
       (GO). Node file: nodes/molecular_function.parquet'
     class_uri: biolink:MolecularActivity
-    slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
-    - definition
-    - synonyms
-    - xrefs
-    - ontology
     annotations:
       neo4j_label:
         tag: neo4j_label
@@ -2589,13 +2497,6 @@ classes:
       features and traits associated with diseases. Sources: HPO, MedDRA, Open Targets. Node file: nodes/phenotype.parquet'
     class_uri: biolink:PhenotypicFeature
     slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
     - is_supported_by
     - description
     - code
@@ -2686,12 +2587,6 @@ classes:
       pathways (1.5% of nodes) from Reactome, covering molecular reactions, signaling cascades, metabolic
       processes, and disease pathways in human cells. Sources: Open Targets, Reactome. Node file: nodes/pathway.parquet'
     class_uri: biolink:Pathway
-    slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
     annotations:
       neo4j_label:
         tag: neo4j_label
@@ -2717,22 +2612,6 @@ classes:
       or computational evidence. This class preserves compatibility with the current Neo4j `MST` label
       while making MolecularSubtype a proper subclass of ALSSubtype.
     class_uri: alskg:MolecularSubtype
-    slots:
-    - id
-    - name
-    - original_optimus_label
-    - direct_sources
-    - indirect_sources
-    - has_synonym
-    - has_cross_reference
-    - has_subtype_scheme
-    - has_subtype_criterion
-    - has_pathogenic_mechanism
-    - affects_anatomy
-    - involves_cell_type
-    - is_supported_by
-    - has_phenotype_observation
-    - has_expression_result
     annotations:
       neo4j_label:
         tag: neo4j_label
@@ -2791,6 +2670,22 @@ classes:
         range: string
         description: Display color used in the original publication's visualizations (e.g. "blue" for
           ALS-Ox, "gold" for ALS-Glia, "red" for ALS-TE). Informational only.
+      computational_method:
+        range: string
+        required: false
+        description: 'Specific computational or machine learning method used to derive this molecular
+          subtype. Record the algorithm or model name and version where available. Examples: "k-means
+          (k=3, postmortem cortex transcriptomes)", "NMF rank-3 factorization", "DANCer deep multi-omics
+          classifier v1.0 (Cell Reports 2025)", "scVI + Leiden clustering (resolution 0.4)". Leave null
+          for clinically or ontologically defined subtypes.'
+        slot_uri: alskg:computational_method
+      expected_subtype_count:
+        range: integer
+        required: false
+        description: Number of distinct subtypes identified in the defining study or analysis run (e.g.
+          3 for ALS-Ox/Glia/TE, or the k chosen for a k-means run). Useful for tracking how the subtype
+          landscape expands as new ML analyses are added.
+        slot_uri: alskg:expected_subtype_count
   RelationshipAssertion:
     abstract: true
     description: 'Abstract root class for all typed, asserted relationships between named entities in
@@ -4884,6 +4779,7 @@ classes:
       source_schema:
         tag: source_schema
         value: optimuskg_schema.yaml
+    is_a: ProvenanceEntity
   OntologyMetadata:
     description: Metadata about the source ontology for a node. Captured verbatim from the OWL or JSON
       ontology file header at ingestion time.
@@ -4908,14 +4804,13 @@ classes:
     slots:
     - id
     - name
+    is_a: ProvenanceEntity
   Protein:
     is_a: PhysicalEntity
     description: A protein or protein-level biological entity associated with or encoded by a Gene. This
       semantic-view class normalizes values that may appear in OptimusKG gene properties such as associated_proteins.
     class_uri: biolink:Protein
     slots:
-    - id
-    - name
     - has_database_accession
     - has_isoform
     - contributes_to_pathogenic_mechanism
@@ -4924,10 +4819,6 @@ classes:
     description: A specific protein isoform or translated product, for example an Ensembl protein accession
       that may represent a transcript-specific protein product.
     class_uri: alskg:ProteinIsoform
-    slots:
-    - id
-    - name
-    - has_database_accession
   DatabaseAccession:
     is_a: ProvenanceEntity
     description: A database-specific identifier or accession for a biological entity. This class allows
@@ -4971,6 +4862,7 @@ classes:
     - has_publication
     - from_data_source
     - description
+    is_a: ProvenanceEntity
   Synonym:
     is_a: ProvenanceEntity
     description: A lexical synonym, alias, obsolete label, or alternate name with optional source attribution.
@@ -4991,19 +4883,7 @@ classes:
       expression findings as Neo4j nodes such as ECX.
     class_uri: alskg:GeneExpressionContext
     slots:
-    - id
     - source
-    - direct_sources
-    - indirect_sources
-    - measures_gene_expression_of
-    - has_expression_direction
-    - occurs_in_subtype_context
-    - occurs_in_cell_type
-    - occurs_in_anatomy
-    - measured_in_sample
-    - measured_by_assay
-    - derives_from_dataset
-    - is_supported_by
     attributes:
       gene:
         range: Gene
@@ -5148,16 +5028,6 @@ classes:
     description: Amyotrophic lateral sclerosis as the focal disease class for ALS-KG. Use this class for
       the ALS disease node when extending OptimusKG; it may be represented by the same MONDO/DOID identifier
       used by the OptimusKG Disease node.
-    slots:
-    - id
-    - name
-    - has_synonym
-    - has_cross_reference
-    - has_als_subtype
-    - has_pathogenic_mechanism
-    - has_phenotype_observation
-    - affects_anatomy
-    - involves_cell_type
     annotations:
       recommended_neo4j_label:
         tag: recommended_neo4j_label
@@ -5169,8 +5039,6 @@ classes:
     description: Abstract class for a subtype of a disease, including clinical, genetic, molecular, pathology,
       and progression-based subtypes.
     slots:
-    - id
-    - name
     - is_subtype_of
     - has_subtype_scheme
     - has_subtype_criterion
@@ -5181,11 +5049,6 @@ classes:
     description: An ALS subtype defined by clinical onset, genotype, molecular signature, pathology, progression
       rate, anatomy, cell type, or another explicit subtype criterion.
     slots:
-    - id
-    - name
-    - is_subtype_of
-    - has_subtype_scheme
-    - has_subtype_criterion
     - is_defined_by_gene
     - is_defined_by_variant
     - is_defined_by_pathogenic_mechanism
@@ -5194,7 +5057,6 @@ classes:
     - involves_cell_type
     - has_pathogenic_mechanism
     - has_expression_result
-    - is_supported_by
     - als_subtype_is_subtype_of_disease
     - als_subtype_has_subtype_scheme
     - als_subtype_has_subtype_criterion
@@ -5208,6 +5070,17 @@ classes:
       recommended_neo4j_label:
         tag: recommended_neo4j_label
         value: AST
+    attributes:
+      classification_origin:
+        range: SubtypeClassificationOriginEnum
+        required: false
+        description: How this ALS subtype was derived or defined. Distinguishes clinically or ontologically
+          grounded subtypes from those produced by machine learning on omics data. Use transcriptomic_ml,
+          proteomic_ml, epigenomic_ml, or multiomics_ml for computationally derived subtypes such as ALS-Ox,
+          ALS-Glia, and ALS-TE. Use genomic for gene-defined subtypes (SOD1-ALS, C9orf72-ALS). Use clinical
+          for onset-based or functional subtypes. Defaults to unknown when not recorded.
+        ifabsent: string(unknown)
+        slot_uri: alskg:classification_origin
   ClinicalSubtype:
     is_a: ALSSubtype
     class_uri: alskg:ClinicalSubtype
@@ -5250,8 +5123,6 @@ classes:
     description: A scheme or taxonomy used to classify ALS subtypes, such as clinical-onset subtype, ALS-OPM
       motor phenotype, genotype subtype, molecular cluster, pathology subtype, or progression subtype.
     slots:
-    - id
-    - name
     - description
     - from_data_source
     annotations:
@@ -5264,8 +5135,6 @@ classes:
     description: A criterion used to assign or define an ALS subtype, such as a gene variant, symptom
       pattern, anatomical onset region, transcriptomic signature, pathology feature, or progression threshold.
     slots:
-    - id
-    - name
     - description
     - is_supported_by
     annotations:
@@ -5278,8 +5147,6 @@ classes:
     description: A genomic sequence variant relevant to ALS, including SNVs, indels, structural variants,
       copy number changes, and repeat expansions.
     slots:
-    - id
-    - name
     - has_variant_type
     - has_pathogenicity
     - affects_gene
@@ -5306,11 +5173,6 @@ classes:
     description: A cell type relevant to ALS biology, such as upper motor neuron, lower motor neuron,
       astrocyte, microglia, oligodendrocyte, skeletal muscle cell, or immune cell. Prefer Cell Ontology
       CURIEs when available.
-    slots:
-    - id
-    - name
-    - has_synonym
-    - has_cross_reference
     annotations:
       recommended_neo4j_label:
         tag: recommended_neo4j_label
@@ -5323,8 +5185,6 @@ classes:
       toxicity, impaired RNA metabolism, mitochondrial dysfunction, oxidative stress, neuroinflammation,
       excitotoxicity, or impaired proteostasis.
     slots:
-    - id
-    - name
     - has_pathogenic_mechanism_category
     - involves_biological_process
     - involves_molecular_function
@@ -5344,8 +5204,6 @@ classes:
       cytoplasmic aggregation, altered splicing, repeat RNA foci formation, DPR protein accumulation,
       mitochondrial complex dysregulation, or complement activation.
     slots:
-    - id
-    - name
     - contributes_to_pathogenic_mechanism
     - is_supported_by
     annotations:
@@ -5358,8 +5216,6 @@ classes:
     description: An abnormal protein aggregate or pathological inclusion relevant to ALS, such as phosphorylated
       TDP-43 inclusions, SOD1 aggregates, FUS inclusions, or dipeptide-repeat protein aggregates.
     slots:
-    - id
-    - name
     - has_protein_component
     - occurs_in_cell_type
     - occurs_in_anatomy
@@ -5374,8 +5230,6 @@ classes:
     description: A reified, evidence-backed assertion in ALS-KG. Use statement/result nodes when the claim
       depends on subtype, tissue, cell type, cohort, assay, statistical support, or publication evidence.
     slots:
-    - id
-    - name
     - description
     - is_supported_by
     - derives_from_dataset
@@ -5393,13 +5247,11 @@ classes:
     description: An evidence-backed assertion connecting a gene, variant, protein, molecular event, subtype,
       anatomy, or cell type to an ALS pathogenic mechanism.
     slots:
-    - id
     - contributes_to_pathogenic_mechanism
     - occurs_in_disease_context
     - occurs_in_subtype_context
     - occurs_in_cell_type
     - occurs_in_anatomy
-    - is_supported_by
     annotations:
       recommended_neo4j_label:
         tag: recommended_neo4j_label
@@ -5411,7 +5263,6 @@ classes:
       subtype, anatomy, cell type, cohort, sample, assay, dataset, and statistical support. This is the
       semantic parent for the Neo4j-compatible GeneExpressionContext class.
     slots:
-    - id
     - measures_gene_expression_of
     - has_expression_direction
     - has_log_fold_change
@@ -5423,11 +5274,8 @@ classes:
     - occurs_in_subtype_context
     - occurs_in_cell_type
     - occurs_in_anatomy
-    - occurs_in_cohort
     - measured_in_sample
     - measured_by_assay
-    - derives_from_dataset
-    - is_supported_by
     - differential_expression_measures_gene
     - differential_expression_occurs_in_subtype
     - differential_expression_occurs_in_anatomy
@@ -5444,7 +5292,6 @@ classes:
     description: A protein abundance, localization, or pathology result in an ALS context, including protein,
       aggregate, tissue, cell type, assay, cohort, and evidence.
     slots:
-    - id
     - measures_protein_abundance_of
     - has_abundance_direction
     - occurs_in_disease_context
@@ -5453,8 +5300,6 @@ classes:
     - occurs_in_anatomy
     - measured_in_sample
     - measured_by_assay
-    - derives_from_dataset
-    - is_supported_by
     annotations:
       recommended_neo4j_label:
         tag: recommended_neo4j_label
@@ -5465,14 +5310,11 @@ classes:
     description: A contextual observation that a phenotype, symptom, sign, or clinical feature is present,
       absent, frequent, rare, early, late, or otherwise characterized in ALS or an ALS subtype.
     slots:
-    - id
     - has_observed_phenotype
     - occurs_in_disease_context
     - occurs_in_subtype_context
     - has_disease_stage
     - has_progression_pattern
-    - occurs_in_cohort
-    - is_supported_by
     - phenotype_observation_has_observed_phenotype
     - phenotype_observation_occurs_in_subtype
     annotations:
@@ -5484,9 +5326,6 @@ classes:
     class_uri: alskg:DiseaseStage
     description: A temporal or clinical stage of ALS, such as early disease, established disease, late
       disease, pre-symptomatic carrier state, or time since symptom onset.
-    slots:
-    - id
-    - name
     annotations:
       recommended_neo4j_label:
         tag: recommended_neo4j_label
@@ -5496,9 +5335,6 @@ classes:
     class_uri: alskg:ProgressionPattern
     description: A disease progression pattern such as fast progression, slow progression, respiratory
       progression, spreading pattern, or ALSFRS-R decline trajectory.
-    slots:
-    - id
-    - name
     annotations:
       recommended_neo4j_label:
         tag: recommended_neo4j_label
@@ -5509,8 +5345,6 @@ classes:
     description: A molecular, imaging, electrophysiological, pathological, or clinical biomarker relevant
       to ALS diagnosis, subtype, prognosis, progression, mechanism, or therapeutic response.
     slots:
-    - id
-    - name
     - biomarker_for_disease
     - biomarker_for_subtype
     - indicates_pathogenic_mechanism
@@ -5606,8 +5440,6 @@ classes:
     description: A biological model system used to study ALS, including animal models, iPSC-derived cells,
       organoids, cell lines, or perturbation systems.
     slots:
-    - id
-    - name
     - models_disease
     - models_subtype
     - has_genetic_perturbation
@@ -5623,8 +5455,6 @@ classes:
     description: A therapeutic intervention relevant to ALS, including small molecules, antisense oligonucleotides,
       gene therapy, biologics, rehabilitation, respiratory support, or investigational therapies.
     slots:
-    - id
-    - name
     - targets_gene
     - targets_protein
     - modulates_pathogenic_mechanism
@@ -5640,12 +5470,9 @@ classes:
     description: A clinical trial or interventional study relevant to ALS, ALS subtypes, therapies, biomarkers,
       or outcomes.
     slots:
-    - id
-    - name
     - tests_intervention
     - enrolls_subtype
     - has_outcome_measure
-    - has_publication
     - clinical_trial_enrolls_subtype
     annotations:
       recommended_neo4j_label:
@@ -5658,7 +5485,6 @@ classes:
       subtype based on target genes, disease mechanisms, expression directionality, pathways, biomarkers,
       model evidence, or clinical evidence.
     slots:
-    - id
     - prioritizes_drug
     - targets_gene
     - targets_protein
@@ -5666,7 +5492,6 @@ classes:
     - occurs_in_disease_context
     - occurs_in_subtype_context
     - has_evidence_basis
-    - is_supported_by
     - drug_repurposing_hypothesis_prioritizes_drug
     - drug_repurposing_hypothesis_targets_gene
     - drug_repurposing_hypothesis_modulates_pathogenic_mechanism
@@ -6495,8 +6320,6 @@ classes:
       of an OptimusKG Neo4j graph.
     class_uri: alskg:ALSKGExtensionGraph
     slots:
-    - id
-    - name
     - description
   ExternalKnowledgeReference:
     is_a: ProvenanceEntity
@@ -6508,3 +6331,39 @@ classes:
     - name
     - from_data_source
     - url
+enums:
+  SubtypeClassificationOriginEnum:
+    description: Origin or derivation method for an ALS subtype. Distinguishes clinically and ontologically
+      defined subtypes from those derived computationally via machine learning or multi-omics analysis.
+      Used on ALSSubtype.classification_origin.
+    permissible_values:
+      ontological:
+        description: 'Subtype defined by position in a biomedical ontology (MONDO, EFO, ORDO). Examples:
+          Familial ALS, Juvenile ALS, FTD/ALS spectrum nodes from OptimusKG.'
+      clinical:
+        description: 'Subtype defined by clinical presentation, site of onset, motor neuron involvement,
+          or functional criteria. Examples: bulbar-onset ALS, upper-motor-neuron-predominant ALS, ALS-FTD.'
+      genomic:
+        description: 'Subtype defined by a specific causal or risk gene, sequence variant, or repeat expansion.
+          Examples: SOD1-ALS, C9orf72-ALS, TARDBP-ALS, FUS-ALS.'
+      pathological:
+        description: 'Subtype defined by neuropathological or proteinopathy findings. Examples: TDP-43
+          proteinopathy subtype, SOD1 aggregation pattern.'
+      transcriptomic_ml:
+        description: 'Subtype derived by unsupervised or supervised machine learning applied to bulk or
+          single-cell RNA-seq data. Examples: ALS-Ox, ALS-Glia, ALS-TE from the NYGC ALS Consortium (Tam
+          et al. 2019; DANCer, Cell Reports 2025).'
+      proteomic_ml:
+        description: Subtype derived by machine learning applied to protein abundance, post-translational
+          modification, or pathway activation data.
+      epigenomic_ml:
+        description: Subtype derived by machine learning applied to methylation, chromatin accessibility,
+          or other epigenomic data.
+      multiomics_ml:
+        description: Subtype derived by machine learning integrating two or more omics data types (e.g.
+          transcriptomics + proteomics + methylation). Use when no single omics layer is the primary driver.
+      clinical_ml:
+        description: Subtype derived by machine learning applied to clinical variables such as ALSFRS-R
+          trajectories, survival curves, symptom onset patterns, or neuroimaging features.
+      unknown:
+        description: Classification origin is not known or has not been recorded.
