@@ -1,0 +1,284 @@
+id: https://example.org/alskg/neo4j_extension_schema
+name: alskg_neo4j_extension_schema
+title: ALSKG Neo4j Extension Schema
+description: A pragmatic first-step ALSKG extension schema for extending an existing
+  OptimusKG Neo4j database with ALS-specific labels, ALS molecular subtype nodes,
+  anatomy associations, and evidence-backed gene-expression result nodes.
+version: 0.1.0
+license: CC-BY-4.0
+prefixes:
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  alskg:
+    prefix_prefix: alskg
+    prefix_reference: https://example.org/alskg/
+  biolink:
+    prefix_prefix: biolink
+    prefix_reference: https://w3id.org/biolink/vocab/
+  MONDO:
+    prefix_prefix: MONDO
+    prefix_reference: http://purl.obolibrary.org/obo/MONDO_
+  UBERON:
+    prefix_prefix: UBERON
+    prefix_reference: http://purl.obolibrary.org/obo/UBERON_
+  HGNC:
+    prefix_prefix: HGNC
+    prefix_reference: 'https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:'
+  GO:
+    prefix_prefix: GO
+    prefix_reference: http://purl.obolibrary.org/obo/GO_
+  HPO:
+    prefix_prefix: HPO
+    prefix_reference: http://purl.obolibrary.org/obo/HP_
+  ECO:
+    prefix_prefix: ECO
+    prefix_reference: http://purl.obolibrary.org/obo/ECO_
+default_prefix: alskg
+default_range: string
+imports:
+- linkml:types
+classes:
+  NamedEntity:
+    abstract: true
+    description: A named graph entity with a stable identifier and human-readable
+      label.
+    slots:
+    - id
+    - name
+    - description
+  Disease:
+    is_a: NamedEntity
+    class_uri: biolink:Disease
+    description: A disease concept. In the initial ALSKG extension, the existing OptimusKG
+      ALS disease node receives the additional ALS label.
+    slots:
+    - has_subtype
+    annotations:
+      neo4j_existing_label: Disease or DIS
+      recommended_als_label: ALS
+  ALSSubtype:
+    is_a: NamedEntity
+    class_uri: alskg:ALSSubtype
+    description: A subtype of amyotrophic lateral sclerosis, represented initially
+      as a compact Neo4j node with subtype_category used to distinguish molecular,
+      clinical, genetic, pathology, and progression subtypes.
+    slots:
+    - full_name
+    - subtype_category
+    - is_subtype_of
+    - measured_in_anatomy
+    - has_expression_result
+    annotations:
+      neo4j_label: ALSSubtype
+  Gene:
+    is_a: NamedEntity
+    class_uri: biolink:Gene
+    description: A gene node reused from OptimusKG. ALSKG expression result nodes
+      point to Gene rather than storing gene identifiers as strings.
+    slots:
+    - symbol
+    annotations:
+      neo4j_existing_label: Gene or GEN
+  Anatomy:
+    is_a: NamedEntity
+    class_uri: biolink:AnatomicalEntity
+    description: An anatomical structure, tissue, or region reused from OptimusKG,
+      such as spinal cord, motor cortex, brainstem, or corticospinal tract.
+    annotations:
+      neo4j_existing_label: Anatomy or ANA
+  CellType:
+    is_a: NamedEntity
+    class_uri: biolink:Cell
+    description: A cell type relevant to ALS, such as motor neuron, astrocyte, microglia,
+      oligodendrocyte, or immune cell. Optional in version 1 but recommended when
+      single-cell data are added.
+    annotations:
+      neo4j_label: CellType
+  ExpressionResult:
+    is_a: NamedEntity
+    class_uri: alskg:ExpressionResult
+    description: A contextual differential gene-expression result. This node stores
+      direction, statistics, comparison, and evidence context, and connects to subtype,
+      gene, anatomy, dataset, sample, assay, and optionally cell type.
+    slots:
+    - result_type
+    - expression_direction
+    - log_fold_change
+    - p_value
+    - adjusted_p_value
+    - false_discovery_rate
+    - comparison
+    - has_gene
+    - occurs_in_subtype
+    - measured_in_anatomy
+    - occurs_in_cell_type
+    - derived_from_dataset
+    - measured_by_assay
+    - measured_in_sample
+    - supported_by_evidence
+    annotations:
+      neo4j_label: ExpressionResult
+  Dataset:
+    is_a: NamedEntity
+    class_uri: biolink:Dataset
+    description: A dataset, study-derived data release, or analysis table from which
+      expression results or subtype definitions are derived.
+    slots:
+    - source
+    - url
+    annotations:
+      neo4j_label: Dataset
+  Evidence:
+    is_a: NamedEntity
+    class_uri: ECO:0000000
+    description: Evidence supporting a subtype, anatomy association, or expression
+      result. May represent a publication, curation record, dataset evidence, or computational
+      analysis result.
+    slots:
+    - evidence_type
+    - confidence_score
+    - source
+    - url
+    annotations:
+      neo4j_label: Evidence
+  Assay:
+    is_a: NamedEntity
+    class_uri: alskg:Assay
+    description: An experimental or analytical assay, such as bulk RNA-seq, single-nucleus
+      RNA-seq, spatial transcriptomics, proteomics, pathology staining, or clinical
+      assessment.
+    annotations:
+      neo4j_label: Assay
+  Sample:
+    is_a: NamedEntity
+    class_uri: alskg:Sample
+    description: A biological or analytical sample used in a study, such as postmortem
+      spinal cord, motor cortex, iPSC-derived motor neuron, CSF, blood, or sorted
+      cell population.
+    annotations:
+      neo4j_label: Sample
+slots:
+  id:
+    identifier: true
+    range: uriorcurie
+    description: Stable CURIE or URI identifier.
+  name:
+    range: string
+    description: Short display name.
+  full_name:
+    range: string
+    description: Expanded display name for a subtype or concept.
+  description:
+    range: string
+    description: Human-readable definition or scope note.
+  symbol:
+    range: string
+    description: Gene symbol.
+  source:
+    range: string
+    description: Source database, study, or curation source.
+  url:
+    range: uri
+    description: Source URL.
+  subtype_category:
+    range: SubtypeCategoryEnum
+    description: Subtype axis/category, e.g., molecular subtype, clinical subtype,
+      genetic subtype.
+  result_type:
+    range: string
+    description: Type of result, e.g., differential_expression.
+  expression_direction:
+    range: ExpressionDirectionEnum
+    description: Direction of differential expression.
+  log_fold_change:
+    range: float
+    description: Log fold-change for the expression result.
+  p_value:
+    range: float
+    description: Nominal p-value.
+  adjusted_p_value:
+    range: float
+    description: Multiple-testing-adjusted p-value.
+  false_discovery_rate:
+    range: float
+    description: False discovery rate or q-value.
+  comparison:
+    range: string
+    description: Comparator definition, e.g., ALS-Glia vs control.
+  evidence_type:
+    range: string
+    description: Evidence modality or evidence code.
+  confidence_score:
+    range: float
+    minimum_value: 0
+    maximum_value: 1
+    description: Optional normalized confidence score.
+  is_subtype_of:
+    range: Disease
+    description: Connects an ALS subtype to the ALS disease node.
+    slot_uri: alskg:is_subtype_of
+  has_subtype:
+    range: ALSSubtype
+    multivalued: true
+    description: Connects the ALS disease node to its subtype nodes.
+    slot_uri: alskg:has_subtype
+  measured_in_anatomy:
+    range: Anatomy
+    multivalued: true
+    description: Connects a subtype or expression result to the anatomical context
+      where it was measured.
+    slot_uri: alskg:measured_in_anatomy
+  has_expression_result:
+    range: ExpressionResult
+    multivalued: true
+    description: Connects an ALS subtype to expression result nodes.
+    slot_uri: alskg:has_expression_result
+  has_gene:
+    range: Gene
+    description: Connects an expression result to the gene being measured.
+    slot_uri: alskg:measures_gene
+  occurs_in_subtype:
+    range: ALSSubtype
+    description: Connects an expression result to the ALS subtype context.
+    slot_uri: alskg:occurs_in_subtype
+  occurs_in_cell_type:
+    range: CellType
+    description: Connects an expression result to a cell type context.
+    slot_uri: alskg:occurs_in_cell_type
+  derived_from_dataset:
+    range: Dataset
+    description: Connects a result or assertion to its source dataset.
+    slot_uri: alskg:derived_from_dataset
+  measured_by_assay:
+    range: Assay
+    description: Connects a result to the assay used to generate it.
+    slot_uri: alskg:measured_by_assay
+  measured_in_sample:
+    range: Sample
+    description: Connects a result to the biological or analytical sample.
+    slot_uri: alskg:measured_in_sample
+  supported_by_evidence:
+    range: Evidence
+    multivalued: true
+    description: Connects a node or result to supporting evidence.
+    slot_uri: alskg:supported_by_evidence
+enums:
+  SubtypeCategoryEnum:
+    description: Subtype category values used in the first-step ALSKG extension.
+    permissible_values:
+      molecular subtype: {}
+      clinical subtype: {}
+      genetic subtype: {}
+      pathology subtype: {}
+      progression subtype: {}
+      other: {}
+  ExpressionDirectionEnum:
+    description: Directionality values for differential gene expression.
+    permissible_values:
+      increased: {}
+      decreased: {}
+      unchanged: {}
+      mixed: {}
+      not_applicable: {}
+      unknown: {}
